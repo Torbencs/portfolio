@@ -1,17 +1,68 @@
-#wrapper
-    background-color: #ffffff
-    min-height: 100vh
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
+$fontColor: #373536
+
+body
+    margin: 0
+    font-family: "Roboto"
+    font-weight: 400
+    background-color: #f4f8fa
+
+a
+    color: $fontColor
+
+    &:hover
+        color: $fontColor
+
+.wrapper
+    width: 54vw
+    margin: 0 auto
+    &--left
+        width: 54vw
+        margin: 0 auto
+        animation: wrapper__slideToLeft 1s cubic-bezier(.5,.73,.57,.8) 1 normal forwards
 
 header
-
+    margin-top: 5em
+    margin-left: 2em
     h1
-        font-size: calc(10px + 2.5vmin)
+        font-family: 'Poppins'
+        font-size: 2.6em
         font-weight: 700
-        letter-spacing: -0.02em
-        color: #2e2b2b
+        color: $fontColor
         -webkit-font-smoothing: antialiased
         -moz-osx-font-smoothing: grayscale
+        line-height: 0.8em
+        letter-spacing: 0.0em
+
+.homeMenu
+    text-align: center
+    margin-top: 7em
+
+    &__link
+        font-size: 1.1em
+        display: block
+        letter-spacing: 0.08em
+        line-height: 2em
+
+    a:hover
+        font-weight: 600
+
+    &--left
+        text-align: center
+        margin-top: 7em
+        animation: slideToLeft 1s cubic-bezier(.18,1.01,.71,.95) 1 normal forwards
+
+        a:hover
+            font-weight: 600
+
+@keyframes slideToLeft
+    0%
+        width: 100%
+    100%
+        width: 0%
+        margin-left: 2em
+
+@keyframes wrapper__slideToLeft
+    0%
+
+    100%
+        width: 70vw
