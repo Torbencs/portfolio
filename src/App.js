@@ -22,7 +22,9 @@ function App() {
       <div className={currentPage == "home" ? "wrapper" : "wrapper--left"}>
         <header>
           <h1>
-            <Link to="/portfolio">torben.</Link>
+            <Link to="/portfolio">
+              torben<span className={"--yellow"}>.</span>
+            </Link>
           </h1>
         </header>
         <main>

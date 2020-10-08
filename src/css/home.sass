@@ -4,25 +4,27 @@ body
     margin: 0
     font-family: "Roboto"
     font-weight: 400
-    background-color: #f4f8fa
+    background-color: #efefef
 
 a
     color: $fontColor
 
-    &:hover
-        color: $fontColor
+.--yellow
+    font-size: 1.2em
+    color: #f8d619
+    margin-left: 0.05em
 
 .wrapper
-    width: 54vw
+    width: 70vw
     margin: 0 auto
+    animation: wrapper__slideToRight 1s cubic-bezier(.5,.73,.57,.8) 1 normal forwards
     &--left
-        width: 54vw
+        width: 45vw
         margin: 0 auto
         animation: wrapper__slideToLeft 1s cubic-bezier(.5,.73,.57,.8) 1 normal forwards
 
 header
     margin-top: 5em
-    margin-left: 2em
     h1
         font-family: 'Poppins'
         font-size: 2.6em
@@ -36,15 +38,17 @@ header
 .homeMenu
     text-align: center
     margin-top: 7em
+    animation: slideToRight 1s cubic-bezier(.18,1.01,.71,.95) 1 normal forwards
 
     &__link
         font-size: 1.1em
         display: block
         letter-spacing: 0.08em
         line-height: 2em
+        color: #373536c1
 
     a:hover
-        font-weight: 600
+        color: #f3c41a
 
     &--left
         text-align: center
@@ -52,7 +56,7 @@ header
         animation: slideToLeft 1s cubic-bezier(.18,1.01,.71,.95) 1 normal forwards
 
         a:hover
-            font-weight: 600
+            color: #f3c41a
 
 @keyframes slideToLeft
     0%
@@ -61,8 +65,20 @@ header
         width: 0%
         margin-left: 2em
 
+@keyframes slideToRight
+    0%
+        width: 0%
+        margin-left: 2em
+    100%
+        width: 100%
+
 @keyframes wrapper__slideToLeft
     0%
 
     100%
         width: 70vw
+@keyframes wrapper__slideToRight
+    0%
+
+    100%
+        width: 45vw

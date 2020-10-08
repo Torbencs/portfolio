@@ -25,7 +25,10 @@ const About = (props) => {
           play
         </Link>
       </nav>
-      <article className={"about__article"}></article>
+
+      <div className={"about__article--circle"}>
+        <article className={"about__article"}></article>
+      </div>
     </div>
   );
 };
