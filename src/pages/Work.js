@@ -4,15 +4,16 @@ import { Link } from "react-router-dom";
 //Css
 import "../css/layout.sass";
 
-const About = (props) => {
+const Work = (props) => {
   useEffect(() => {
-    props.currentPage("about");
+    props.currentPage("work");
   }, []);
 
   return (
     <div>
       <section>
         <article>
+          {" "}
           <p>
             sed commodo urna <br></br>
             vestibulum. Nulla purus neque, lobortis at fermentum sed, rutrum nec
@@ -81,4 +82,4 @@ const About = (props) => {
   );
 };
 
-export default About;
+export default Work;

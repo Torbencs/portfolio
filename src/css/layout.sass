@@ -1,0 +1,41 @@
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar
+    display: none
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body
+    -ms-overflow-style: none
+    scrollbar-width: none
+
+section
+    margin: -11em auto auto 12em
+
+article
+    width: 55vw
+    animation: fadeIn 1s ease-in 1 normal forwards
+    /** -webkit-box-shadow: -6px -4px 21px -3px rgba(53,53,56,0.31) **/
+   /**  -moz-box-shadow: -6px -4px 21px -3px rgba(53,53,56,0.31) **/
+    /** box-shadow: -6px -4px 21px -3px rgba(53,53,56,0.31) **/
+
+.--circle
+    position: fixed
+    float: right
+    right: -30em
+    bottom: -32em
+    width: 1000px
+    height: 1000px
+    border-radius: 50%
+    background-color: #f3c41a
+    animation: slideIn--circle 1s cubic-bezier(.18,1.01,.71,.95) 1 normal forwards
+    z-index: -1
+
+@keyframes fadeIn
+    0%
+        opacity: 0
+    100%
+        opacity: 1
+
+@keyframes slideIn--circle
+    0%
+        right: -100em
+    100%
