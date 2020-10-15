@@ -4,15 +4,10 @@ body
     margin: 0
     font-family: "Roboto"
     font-weight: 400
-    background-color: #efefef
+    background-color: #f3f3f3
 
 a
     color: $fontColor
-
-.--yellow
-    font-size: 1.2em
-    color: #f8d619
-    margin-left: 0.05em
 
 .wrapper
     width: 70vw
@@ -35,6 +30,13 @@ header
         line-height: 0.8em
         letter-spacing: 0.0em
 
+#nav__yellow-dot
+    position: absolute
+    font-size: 1.2em
+    color: #f8d619
+    margin-left: 0.05em
+    transition: 0.5s 0.06s
+
 .homeMenu
     text-align: center
     margin-top: 7em
@@ -46,7 +48,9 @@ header
         letter-spacing: 0.08em
         line-height: 2em
         color: #373536c1
-
+    a
+        width: 7em
+        margin: auto
     a:hover
         color: #f3c41a
 

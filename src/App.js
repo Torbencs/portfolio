@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Route,
   BrowserRouter as Router,
@@ -18,8 +18,84 @@ import "./css/fonts.css";
 import "./App.css";
 
 function App() {
+  //The page the user is currently on
   const [currentPage, setCurrentPage] = useState("home");
+  //The current or most recent hover target (used to move the yellow dot in the nav)
+  const [currentHover, setCurrentHover] = useState("home");
+  //The current position of the yellow dot. Saved in state so it can be used as starting point for play ball
+  const [yellowDotPos, setYellowDotPos] = useState({ x: 0, y: 0 });
 
+  //Save reference to the yellow dot span tag
+  const refYellowDot = useRef(null);
+
+  /* Yellow navigation dot move effect
+  //
+  */
+  useEffect(() => {
+    // - Save the current hovered elements bounding rectangle to the 'currentHoverEl' variable
+    let currentHoverEl = document.getElementById(`${currentHover}`);
+    currentHoverEl = getAbsoluteBoundingRect(currentHoverEl);
+
+    // - Change the line height of the yellow dot span tag if it is not over the home header. Keeps the dot aligned with the different font sizes
+    currentHover == "home"
+      ? (refYellowDot.current.style.lineHeight = "1.05em")
+      : (refYellowDot.current.style.lineHeight = "0.2em");
+
+    // - Set yellow dot's top distance equal to the current hover target
+    refYellowDot.current.style.top = currentHoverEl.top + "px";
+
+    setYellowDotPos({
+      x: currentHoverEl.top,
+      y: currentHoverEl.left,
+    });
+
+    // - Re-run every time 'currentHover' changes
+  }, [currentHover]);
+
+  /* Helper function to get absolute positioned bounding rectangle
+  //
+  */
+  const getAbsoluteBoundingRect = (el) => {
+    var doc = document,
+      win = window,
+      body = doc.body,
+      // pageXOffset and pageYOffset work everywhere except IE <9.
+      offsetX =
+        win.pageXOffset !== undefined
+          ? win.pageXOffset
+          : (doc.documentElement || body.parentNode || body).scrollLeft,
+      offsetY =
+        win.pageYOffset !== undefined
+          ? win.pageYOffset
+          : (doc.documentElement || body.parentNode || body).scrollTop,
+      rect = el.getBoundingClientRect();
+
+    if (el !== body) {
+      var parent = el.parentNode;
+
+      // The element's rect will be affected by the scroll positions of
+      // *all* of its scrollable parents, not just the window, so we have
+      // to walk up the tree and collect every scroll offset. Good times.
+      while (parent !== body) {
+        offsetX += parent.scrollLeft;
+        offsetY += parent.scrollTop;
+        parent = parent.parentNode;
+      }
+    }
+
+    return {
+      bottom: rect.bottom + offsetY,
+      height: rect.height,
+      left: rect.left + offsetX,
+      right: rect.right + offsetX,
+      top: rect.top + offsetY,
+      width: rect.width,
+    };
+  };
+
+  /* Render
+  //
+  */
   return (
     <Router>
       <div id={"pointerLockDiv"}>
@@ -34,8 +110,22 @@ function App() {
           >
             <header>
               <h1>
-                <Link to="/portfolio">
-                  torben<span className={"--yellow"}>.</span>
+                <Link
+                  id={"home"}
+                  to="/portfolio"
+                  onMouseEnter={() => {
+                    currentPage == "home"
+                      ? setCurrentHover("home")
+                      : setCurrentHover(currentPage);
+                  }}
+                  onClick={() => {
+                    setCurrentHover("home");
+                  }}
+                >
+                  torben
+                  <span id={"nav__yellow-dot"} ref={refYellowDot}>
+                    .
+                  </span>
                 </Link>
               </h1>
               <nav
@@ -45,18 +135,58 @@ function App() {
                     : "homeMenu--left"
                 }
               >
-                <Link className="homeMenu__link" to="/about">
+                <Link
+                  id={"about"}
+                  className="homeMenu__link"
+                  to="/about"
+                  onMouseEnter={() => {
+                    setCurrentHover("about");
+                  }}
+                  onMouseLeave={() => {
+                    currentPage == "home"
+                      ? setCurrentHover("home")
+                      : setCurrentHover(currentPage);
+                  }}
+                >
                   about
                 </Link>
-                <Link className="homeMenu__link" to="/work">
+                <Link
+                  id={"work"}
+                  className="homeMenu__link"
+                  to="/work"
+                  onMouseEnter={() => {
+                    setCurrentHover("work");
+                  }}
+                  onMouseLeave={() => {
+                    currentPage == "home"
+                      ? setCurrentHover("home")
+                      : setCurrentHover(currentPage);
+                  }}
+                >
                   work
                 </Link>
-                <Link className="homeMenu__link" to="/contact">
+                <Link
+                  id={"contact"}
+                  className="homeMenu__link"
+                  to="/contact"
+                  onMouseEnter={() => {
+                    setCurrentHover("contact");
+                  }}
+                  onMouseLeave={() => {
+                    currentPage == "home"
+                      ? setCurrentHover("home")
+                      : setCurrentHover(currentPage);
+                  }}
+                >
                   contact
                 </Link>
                 <Link
+                  id={"play"}
                   className="homeMenu__link"
                   to="/play"
+                  onMouseEnter={() => {
+                    setCurrentHover("play");
+                  }}
                   onClick={() => {
                     const pointerLockDiv = document.getElementById(
                       "pointerLockDiv"
@@ -66,6 +196,11 @@ function App() {
                       pointerLockDiv.mozRequestPointerLock;
 
                     pointerLockDiv.requestPointerLock();
+                  }}
+                  onMouseLeave={() => {
+                    currentPage == "home"
+                      ? setCurrentHover("home")
+                      : setCurrentHover(currentPage);
                   }}
                 >
                   play
@@ -106,7 +241,11 @@ function App() {
                   exact
                   path="/play"
                   render={(props) => (
-                    <Play {...props} currentPage={setCurrentPage} />
+                    <Play
+                      {...props}
+                      currentPage={setCurrentPage}
+                      yellowDotPos={yellowDotPos}
+                    />
                   )}
                 />
               </Switch>

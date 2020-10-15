@@ -8,12 +8,12 @@ import "../css/play.sass";
 
 const Play = (props) => {
   const [mouseOrigin, setMouseOrigin] = useState({
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2,
+    x: null,
+    y: null,
   });
   const [mousePos, setMousePos] = useState({
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2,
+    x: 0,
+    y: 0,
   });
   const [newPos, setNewPos] = useState({
     x: window.innerWidth / 2,
@@ -69,7 +69,6 @@ const Play = (props) => {
     /*Pointerlock API to keep mouse inside gamescene
     //           
     */
-    console.log(document.pointerLockElement);
     document.exitPointerLock =
       document.exitPointerLock || document.mozExitPointerLock;
 
@@ -81,6 +80,8 @@ const Play = (props) => {
         document.addEventListener("mousemove", mouseMove, false);
       } else {
         document.removeEventListener("mousemove", mouseMove, false);
+        //Filthy
+        window.location = "http://torbencs.github.io/portfolio";
       }
     }
 
@@ -104,8 +105,8 @@ const Play = (props) => {
       setStaticBallPos({ x: newPos.x, y: newPos.y });
       //Save new static velocity in state.
       setStaticBallVel({
-        x: e.movementX * 0.6,
-        y: e.movementY * 0.6,
+        x: e.movementX * 0.5,
+        y: e.movementY * 0.5,
       });
     };
 
@@ -140,10 +141,23 @@ const Play = (props) => {
 
     //Objects
     //-Balls
-    const movingBall = Bodies.circle(800, 100, 50, { restitution: 0.65 });
-    const staticBall = Bodies.circle(staticBallPos.x, staticBallPos.y, 700, {
+    const movingBall = Bodies.circle(
+      props.yellowDotPos.x,
+      props.yellowDotPos.y,
+      50,
+      {
+        restitution: 0.65,
+        render: {
+          fillStyle: "#f8d619",
+        },
+      }
+    );
+    const staticBall = Bodies.circle(staticBallPos.x, staticBallPos.y, 600, {
       restitution: 0.2,
       isStatic: true,
+      render: {
+        fillStyle: "#f8d619",
+      },
     });
     //-Walls
     const wallTop = Bodies.rectangle(
@@ -200,6 +214,15 @@ const Play = (props) => {
     //Run
     Engine.run(engine);
     Render.run(render);
+
+    //Component unmount cleanup
+    return () => {
+      console.log("unmount");
+      rotate.style.transform = "none";
+      render.canvas.remove();
+      gameScene.remove();
+      props.currentPage("home");
+    };
   }, []);
 
   //Change static ball position
@@ -208,8 +231,6 @@ const Play = (props) => {
       let body = scene.engine.world.bodies[5];
       Matter.Body.setVelocity(body, { x: staticBallVel.x, y: staticBallVel.y });
       Matter.Body.setPosition(body, { x: staticBallPos.x, y: staticBallPos.y });
-
-      console.log(`x: ${staticBallVel.x},y: ${staticBallVel.y}`);
     }
   }, [staticBallPos, staticBallVel]);
 
