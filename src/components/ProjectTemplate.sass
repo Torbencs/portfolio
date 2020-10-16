@@ -1,0 +1,50 @@
+$fontColor: #f3f3f3
+.sub__section
+    max-width: 900px
+    margin-bottom: 150px
+.sub__header
+    position: absolute
+    font-family: 'Poppins'
+    background-color: #253030
+    overflow: hidden
+    padding: 3em
+    margin-top: -3em
+    margin-right: 5em
+    -webkit-box-shadow: 6px 4px 40px -3px rgba(53,53,56,0.5)
+    -moz-box-shadow: 6px 4px 40px -3px rgba(53,53,56,0.5)
+    box-shadow: 6px 4px 40px -3px rgba(53,53,56,0.5)
+    z-index: 1
+    animation: slideDown 1.2s ease-out 1 normal forwards
+
+    h1
+        font-size: 2.6em
+        font-weight: 600
+        color: $fontColor
+        -webkit-font-smoothing: antialiased
+        -moz-osx-font-smoothing: grayscale
+        margin: 0
+        line-height: 1em
+
+    h2
+        font-family: 'Poppins'
+        font-size: 1.2em
+        font-weight: 200
+        color: #f3f3f3a6
+        margin-top: 0.4em
+
+.sub__article
+    width: 100%
+    max-width: 900px
+    height: 500px
+    margin-left: 3em
+    background-color: #fff
+    -webkit-box-shadow: 6px 4px 35px -3px rgba(53,53,56,0.5)
+    -moz-box-shadow: 6px 4px 35px -3px rgba(53,53,56,0.5)
+    box-shadow: -6px -4px 35px -3px rgba(53,53,56,0.5)
+    z-index: -1
+
+    /** Animations **/
+    @keyframes slideDown
+        0%
+            margin-top: -8em
+        100%

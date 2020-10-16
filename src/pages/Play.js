@@ -141,24 +141,24 @@ const Play = (props) => {
 
     //Objects
     //-Balls
-    const movingBall = Bodies.circle(
-      props.yellowDotPos.x,
-      props.yellowDotPos.y,
-      50,
+    const movingBall = Bodies.circle(props.yellowDot.x, props.yellowDot.y, 30, {
+      restitution: 0.65,
+      render: {
+        fillStyle: "#f8d619",
+      },
+    });
+    const staticBall = Bodies.circle(
+      staticBallPos.x,
+      staticBallPos.y,
+      window.innerHeight / 1.7,
       {
-        restitution: 0.65,
+        restitution: 0.2,
+        isStatic: true,
         render: {
           fillStyle: "#f8d619",
         },
       }
     );
-    const staticBall = Bodies.circle(staticBallPos.x, staticBallPos.y, 600, {
-      restitution: 0.2,
-      isStatic: true,
-      render: {
-        fillStyle: "#f8d619",
-      },
-    });
     //-Walls
     const wallTop = Bodies.rectangle(
       window.innerWidth / 2,
@@ -214,6 +214,9 @@ const Play = (props) => {
     //Run
     Engine.run(engine);
     Render.run(render);
+
+    //Hide yellow dot
+    props.yellowDot.el.remove();
 
     //Component unmount cleanup
     return () => {

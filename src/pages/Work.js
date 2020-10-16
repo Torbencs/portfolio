@@ -1,81 +1,51 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+
+//Sub components
+import ProjectTemplate from "../components/ProjectTemplate";
 
 //Css
 import "../css/layout.sass";
+import "../css/work.sass";
 
 const Work = (props) => {
+  const navArrow = useRef(null);
+
   useEffect(() => {
     props.currentPage("work");
+
+    //Add onscroll eventhandler to check if navigation arrow needs to be displayed
+    window.onscroll = function () {
+      if (
+        document.body.scrollTop > 100 ||
+        document.documentElement.scrollTop > 100
+      ) {
+        navArrow.current.style.display = "block";
+      } else {
+        navArrow.current.style.display = "none";
+      }
+    };
   }, []);
+
+  const handleNavArrowClick = () => {
+    const c = document.documentElement.scrollTop || document.body.scrollTop;
+    if (c > 0) {
+      window.requestAnimationFrame(handleNavArrowClick);
+      window.scrollTo(0, c - c / 8);
+    }
+  };
 
   return (
     <div>
-      <section>
-        <article>
-          {" "}
-          <p>
-            sed commodo urna <br></br>
-            vestibulum. Nulla purus neque, lobortis at fermentum sed, rutrum nec
-            mi. Sed mauris ex, pellentesque quis tincidunt ac, sagittis a
-            sapien. Sed a massa et sapien feugiat pharetra sed eu tortor.
-            Curabitur vehicula, dui et ph <br></br> <br></br>aretra auctor, dui
-            purus tincidunt arcu, eu tristique nibh purus eu erat. Donec ac
-            sapien neque. Sed ac mauris gravida, vulputate lacus at, placerat
-            magna. Fusce tincidunt tellus odio. Maecenas facilisis congue sem,
-            in semper <br></br> <br></br>risus. Maecenas rutrum aliq <br></br>
-            uam nisl, nec ultrices augue bibendum sed. Sed malesuada eros
-            ligula, at volutpat sem lobortis vitae. Vivamus ut lorem <br></br>{" "}
-            <br></br> vel nibh auctor mollis non vel odio. Donec quis enim sit
-            amet metus pulvinar feugiat. Nullam ut bibendum diam, a dignissim
-            sapien. Donec nec elementum lorem, sit amet luctus odio. Aliquam id
-            mi augue. Morbi et tincidunt nisl, nec egestas enim. sed commodo
-            urna <br></br>
-            vestibulum. Nulla purus neque, lobortis at fermentum sed, rutrum nec
-            mi. Sed mauris ex, pellentesque quis tincidunt ac, sagittis a
-            sapien. Sed a massa et sapien feugiat pharetra sed eu tortor.
-            Curabitur vehicula, dui et ph <br></br> <br></br>aretra auctor, dui
-            purus tincidunt arcu, eu tristique nibh purus eu erat. Donec ac
-            sapien neque. Sed ac mauris gravida, vulputate lacus at, placerat
-            magna. Fusce tincidunt tellus odio. Maecenas facilisis congue sem,
-            in semper <br></br> <br></br>risus. Maecenas rutrum aliq <br></br>
-            uam nisl, nec ultrices augue bibendum sed. Sed malesuada eros
-            ligula, at volutpat sem lobortis vitae. Vivamus ut lorem <br></br>{" "}
-            <br></br> vel nibh auctor mollis non vel odio. Donec quis enim sit
-            amet metus pulvinar feugiat. Nullam ut bibendum diam, a dignissim
-            sapien. Donec nec elementum lorem, sit amet luctus odio. Aliquam id
-            mi augue. Morbi et tincidunt nisl, nec egestas enim. <br></br>
-            vestibulum. Nulla purus neque, lobortis at fermentum sed, rutrum nec
-            mi. Sed mauris ex, pellentesque quis tincidunt ac, sagittis a
-            sapien. Sed a massa et sapien feugiat pharetra sed eu tortor.
-            Curabitur vehicula, dui et ph <br></br> <br></br>aretra auctor, dui
-            purus tincidunt arcu, eu tristique nibh purus eu erat. Donec ac
-            sapien neque. Sed ac mauris gravida, vulputate lacus at, placerat
-            magna. Fusce tincidunt tellus odio. Maecenas facilisis congue sem,
-            in semper <br></br> <br></br>risus. Maecenas rutrum aliq <br></br>
-            uam nisl, nec ultrices augue bibendum sed. Sed malesuada eros
-            ligula, at volutpat sem lobortis vitae. Vivamus ut lorem <br></br>{" "}
-            <br></br> vel nibh auctor mollis non vel odio. Donec quis enim sit
-            amet metus pulvinar feugiat. Nullam ut bibendum diam, a dignissim
-            sapien. Donec nec elementum lorem, sit amet luctus odio. Aliquam id
-            mi augue. Morbi et tincidunt nisl, nec egestas enim.
-            <br></br>
-            vestibulum. Nulla purus neque, lobortis at fermentum sed, rutrum nec
-            mi. Sed mauris ex, pellentesque quis tincidunt ac, sagittis a
-            sapien. Sed a massa et sapien feugiat pharetra sed eu tortor.
-            Curabitur vehicula, dui et ph <br></br> <br></br>aretra auctor, dui
-            purus tincidunt arcu, eu tristique nibh purus eu erat. Donec ac
-            sapien neque. Sed ac mauris gravida, vulputate lacus at, placerat
-            magna. Fusce tincidunt tellus odio. Maecenas facilisis congue sem,
-            in semper <br></br> <br></br>risus. Maecenas rutrum aliq <br></br>
-            uam nisl, nec ultrices augue bibendum sed. Sed malesuada eros
-            ligula, at volutpat sem lobortis vitae. Vivamus ut lorem <br></br>{" "}
-            <br></br> vel nibh auctor mollis non vel odio. Donec quis enim sit
-            amet metus pulvinar feugiat. Nullam ut bibendum diam, a dignissim
-            sapien. Donec nec elementum lorem, sit amet luctus odio. Aliquam id
-            mi augue. Morbi et tincidunt nisl, nec egestas enim.
-          </p>
+      <nav ref={navArrow} className={"work__nav"} onClick={handleNavArrowClick}>
+        <div className={"work__nav__arrow"}></div>
+      </nav>
+      <section className={"main__section"}>
+        <article className={"main__article"}>
+          <ProjectTemplate body={""} />
+          <ProjectTemplate />
         </article>
+
         <div className={"--circle"}></div>
       </section>
     </div>

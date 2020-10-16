@@ -23,7 +23,7 @@ function App() {
   //The current or most recent hover target (used to move the yellow dot in the nav)
   const [currentHover, setCurrentHover] = useState("home");
   //The current position of the yellow dot. Saved in state so it can be used as starting point for play ball
-  const [yellowDotPos, setYellowDotPos] = useState({ x: 0, y: 0 });
+  const [yellowDot, setYellowDot] = useState({ el: null, x: 0, y: 0 });
 
   //Save reference to the yellow dot span tag
   const refYellowDot = useRef(null);
@@ -32,21 +32,23 @@ function App() {
   //
   */
   useEffect(() => {
-    // - Save the current hovered elements bounding rectangle to the 'currentHoverEl' variable
+    // - Save the current hovered element to the 'currentHoverEl' variable
     let currentHoverEl = document.getElementById(`${currentHover}`);
-    currentHoverEl = getAbsoluteBoundingRect(currentHoverEl);
 
     // - Change the line height of the yellow dot span tag if it is not over the home header. Keeps the dot aligned with the different font sizes
     currentHover == "home"
       ? (refYellowDot.current.style.lineHeight = "1.05em")
       : (refYellowDot.current.style.lineHeight = "0.2em");
 
-    // - Set yellow dot's top distance equal to the current hover target
-    refYellowDot.current.style.top = currentHoverEl.top + "px";
+    // - Set yellow dot's top distance equal to the current hover target with absolute position helper function
+    refYellowDot.current.style.top =
+      getAbsoluteBoundingRect(currentHoverEl).top + "px";
 
-    setYellowDotPos({
-      x: currentHoverEl.top,
-      y: currentHoverEl.left,
+    // - Save yellow dot position to state to pass as prop to Play page
+    setYellowDot({
+      el: refYellowDot.current,
+      x: refYellowDot.current.getBoundingClientRect().left,
+      y: getAbsoluteBoundingRect(currentHoverEl).top,
     });
 
     // - Re-run every time 'currentHover' changes
@@ -108,7 +110,7 @@ function App() {
                 : "wrapper--left"
             }
           >
-            <header>
+            <header className={"main__header"}>
               <h1>
                 <Link
                   id={"home"}
@@ -123,7 +125,14 @@ function App() {
                   }}
                 >
                   torben
-                  <span id={"nav__yellow-dot"} ref={refYellowDot}>
+                  <span
+                    id={"nav__yellow-dot"}
+                    ref={refYellowDot}
+                    onMouseEnter={(e) => {
+                      console.log(yellowDot.x, yellowDot.y);
+                      console.log(`mouse: x: ${e.clientX}, y: ${e.clientY}`);
+                    }}
+                  >
                     .
                   </span>
                 </Link>
@@ -244,7 +253,7 @@ function App() {
                     <Play
                       {...props}
                       currentPage={setCurrentPage}
-                      yellowDotPos={yellowDotPos}
+                      yellowDot={yellowDot}
                     />
                   )}
                 />

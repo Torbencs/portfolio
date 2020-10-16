@@ -11,8 +11,8 @@ const About = (props) => {
 
   return (
     <div>
-      <section>
-        <article>
+      <section className={"main__section"}>
+        <article className={"main__article"}>
           <p>
             sed commodo urna <br></br>
             vestibulum. Nulla purus neque, lobortis at fermentum sed, rutrum nec
