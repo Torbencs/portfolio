@@ -1,23 +1,26 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.5c109fea.chunk.css",
-    "main.js": "/portfolio/static/js/main.7e44a0b9.chunk.js",
-    "main.js.map": "/portfolio/static/js/main.7e44a0b9.chunk.js.map",
+    "main.css": "/portfolio/static/css/main.e94f70c6.chunk.css",
+    "main.js": "/portfolio/static/js/main.65596a52.chunk.js",
+    "main.js.map": "/portfolio/static/js/main.65596a52.chunk.js.map",
     "runtime-main.js": "/portfolio/static/js/runtime-main.209c2d7e.js",
     "runtime-main.js.map": "/portfolio/static/js/runtime-main.209c2d7e.js.map",
-    "static/js/2.be3713f3.chunk.js": "/portfolio/static/js/2.be3713f3.chunk.js",
-    "static/js/2.be3713f3.chunk.js.map": "/portfolio/static/js/2.be3713f3.chunk.js.map",
+    "static/css/2.78bd8d87.chunk.css": "/portfolio/static/css/2.78bd8d87.chunk.css",
+    "static/js/2.79e1bb48.chunk.js": "/portfolio/static/js/2.79e1bb48.chunk.js",
+    "static/js/2.79e1bb48.chunk.js.map": "/portfolio/static/js/2.79e1bb48.chunk.js.map",
     "index.html": "/portfolio/index.html",
-    "precache-manifest.f830ecdf8813d19030b10dbf8583bca0.js": "/portfolio/precache-manifest.f830ecdf8813d19030b10dbf8583bca0.js",
+    "precache-manifest.0c128db1536f79e609415c4239fcad11.js": "/portfolio/precache-manifest.0c128db1536f79e609415c4239fcad11.js",
     "service-worker.js": "/portfolio/service-worker.js",
-    "static/css/main.5c109fea.chunk.css.map": "/portfolio/static/css/main.5c109fea.chunk.css.map",
-    "static/js/2.be3713f3.chunk.js.LICENSE.txt": "/portfolio/static/js/2.be3713f3.chunk.js.LICENSE.txt",
-    "static/media/fonts.css": "/portfolio/static/media/secular-one-v5-latin-regular.f7ae2adb.eot"
+    "static/css/2.78bd8d87.chunk.css.map": "/portfolio/static/css/2.78bd8d87.chunk.css.map",
+    "static/css/main.e94f70c6.chunk.css.map": "/portfolio/static/css/main.e94f70c6.chunk.css.map",
+    "static/js/2.79e1bb48.chunk.js.LICENSE.txt": "/portfolio/static/js/2.79e1bb48.chunk.js.LICENSE.txt",
+    "static/media/fonts.css": "/portfolio/static/media/source-sans-pro-v14-latin-regular.8ddcafb9.eot"
   },
   "entrypoints": [
     "static/js/runtime-main.209c2d7e.js",
-    "static/js/2.be3713f3.chunk.js",
-    "static/css/main.5c109fea.chunk.css",
-    "static/js/main.7e44a0b9.chunk.js"
+    "static/css/2.78bd8d87.chunk.css",
+    "static/js/2.79e1bb48.chunk.js",
+    "static/css/main.e94f70c6.chunk.css",
+    "static/js/main.65596a52.chunk.js"
   ]
 }
