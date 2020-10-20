@@ -144,7 +144,7 @@ const Play = (props) => {
     const movingBall = Bodies.circle(props.yellowDot.x, props.yellowDot.y, 30, {
       restitution: 0.65,
       render: {
-        fillStyle: "#f8d619",
+        fillStyle: "#f3c41a",
       },
     });
     const staticBall = Bodies.circle(
@@ -155,7 +155,7 @@ const Play = (props) => {
         restitution: 0.2,
         isStatic: true,
         render: {
-          fillStyle: "#f8d619",
+          fillStyle: "#f3c41a",
         },
       }
     );
@@ -217,6 +217,9 @@ const Play = (props) => {
 
     //Hide yellow dot
     props.yellowDot.el.remove();
+
+    //Add checkered end flag
+    document.getElementById("home").classList.add("checkered");
 
     //Component unmount cleanup
     return () => {

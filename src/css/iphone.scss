@@ -1,0 +1,237 @@
+.darken {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  animation: fadeIn 0.3s ease-in 1 normal forwards;
+}
+.lighten {
+  animation: fadeOut 0.5s ease-out 1 normal forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.title {
+  color: rgba(255, 255, 255, 0.07);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  transition: opacity 0.4s;
+}
+.title p {
+  font-size: 14vw;
+}
+.title .title__svg {
+  width: 17vw;
+  height: 34vw;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title .title__svg video {
+  width: 95%;
+  height: 95%;
+  object-fit: cover;
+}
+.title .title__svg svg {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+.title .title__svg svg text {
+  font-family: "Major Mono Display", monospace;
+  text-transform: uppercase;
+  transform-origin: center center;
+  font-size: 3em;
+}
+
+.title .title__svg svg > rect {
+  -webkit-mask: url(#mask);
+  mask: url(#mask);
+  fill: #000;
+}
+.iphonex {
+  width: 35vh;
+  height: 70vh;
+  max-width: 400px;
+  max-height: 800px;
+  margin-right: 4em;
+  display: flex;
+  position: relative;
+  transform: rotate(0deg);
+  transition: all cubic-bezier(0.36, 0.41, 0.38, 1) 0.4s;
+  z-index: 10;
+}
+.iphonex:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+.iphonex:hover ~ .title {
+  opacity: 0;
+}
+
+.iphonex .front {
+  display: flex;
+  flex: 1;
+  background-color: #292c2d;
+  border-radius: 3.5em;
+  margin: 0.2em;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0.1em 0.4em rgba(255, 255, 255, 0.1) inset;
+  z-index: 10;
+
+  -webkit-box-shadow: 6px 6px 30px -3px rgba(53, 53, 56, 0.6);
+  -moz-box-shadow: 6px 6px 30px -3px rgba(53, 53, 56, 0.6);
+  box-shadow: 6px 6px 30px -3px rgba(53, 53, 56, 0.6);
+}
+.iphonex .screen {
+  display: flex;
+  flex: 1;
+  background-color: #191b1c;
+  margin: 0.4em;
+  border-radius: 3.2em;
+  border: solid 0.2em #121415;
+  position: relative;
+  z-index: 10;
+}
+.iphonex .front__line {
+  background: linear-gradient(to right, #515455, #454748, #515455);
+  position: absolute;
+  z-index: 8;
+  width: 100%;
+  height: 0.5em;
+  top: 10%;
+}
+.iphonex .front__line-second {
+  top: 90%;
+}
+.iphonex .screen .screen__view {
+  display: flex;
+  flex: 1;
+  margin: 0.6em;
+  background-color: #fff;
+  border-radius: 3em;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.iphonex .screen .screen__front {
+  position: absolute;
+  width: 50%;
+  background-color: #191b1c;
+  height: 1.8em;
+  border-radius: 0 0 0.8vw 0.8vw;
+  right: 25%;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0.3em;
+  box-sizing: border-box;
+  margin-top: 0.5em;
+  z-index: 999;
+}
+.iphonex .screen .screen__front::after,
+.iphonex .screen .screen__front::before {
+  content: "";
+  width: 10%;
+  height: 50%;
+  position: absolute;
+  background: transparent;
+  top: -0.3em;
+  border: solid 0.4em #191b1c;
+  border-bottom: 0;
+}
+.iphonex .screen .screen__front::after {
+  left: 0.4em;
+  transform: translateX(-100%);
+  border-left: 0;
+  border-radius: 0 0.7em 0 0;
+}
+.iphonex .screen .screen__front::before {
+  right: 0.4em;
+  transform: translateX(100%);
+  border-right: 0;
+  border-radius: 0.7em 0 0 0;
+}
+.iphonex .screen .screen__front-speaker {
+  background: #070808;
+  border-radius: 0.2em;
+  height: 0.35em;
+  width: 28%;
+}
+.iphonex .screen .screen__front-camera {
+  height: 0.35em;
+  width: 0.35em;
+  background: #272727;
+  margin-left: 0.5em;
+  border-radius: 50%;
+  margin-right: -0.8em;
+}
+.iphonex .phoneButtons {
+  width: 1em;
+  height: 6em;
+  position: absolute;
+  z-index: 2;
+  background: linear-gradient(to bottom, #212324, #2b2e31, #212324);
+  box-shadow: 0 0 0.4em rgba(255, 255, 255, 0.1) inset;
+  border-radius: 2px;
+}
+.iphonex .phoneButtons-right {
+  right: 0;
+  top: 30%;
+}
+.iphonex .phoneButtons-left {
+  left: 0;
+  top: 15%;
+  height: 3em;
+}
+.iphonex .phoneButtons-left2 {
+  left: 0;
+  top: 25%;
+  height: 5em;
+}
+.iphonex .phoneButtons-left3 {
+  left: 0;
+  top: calc(25% + 6em);
+  height: 5em;
+}
+
+@media (max-height: 40em) {
+  body {
+    font-size: 70%;
+  }
+  .iphonex {
+    width: 48vh;
+    height: 94vh;
+  }
+  .title .title__svg svg text {
+    font-size: 4em;
+  }
+}

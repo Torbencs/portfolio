@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import ProjectTemplate from "../components/ProjectTemplate";
+
 //Css
 import "../css/layout.sass";
+import "../css/about.sass";
 
 const About = (props) => {
   useEffect(() => {
@@ -13,67 +16,26 @@ const About = (props) => {
     <div>
       <section className={"main__section"}>
         <article className={"main__article"}>
-          <p>
-            sed commodo urna <br></br>
-            vestibulum. Nulla purus neque, lobortis at fermentum sed, rutrum nec
-            mi. Sed mauris ex, pellentesque quis tincidunt ac, sagittis a
-            sapien. Sed a massa et sapien feugiat pharetra sed eu tortor.
-            Curabitur vehicula, dui et ph <br></br> <br></br>aretra auctor, dui
-            purus tincidunt arcu, eu tristique nibh purus eu erat. Donec ac
-            sapien neque. Sed ac mauris gravida, vulputate lacus at, placerat
-            magna. Fusce tincidunt tellus odio. Maecenas facilisis congue sem,
-            in semper <br></br> <br></br>risus. Maecenas rutrum aliq <br></br>
-            uam nisl, nec ultrices augue bibendum sed. Sed malesuada eros
-            ligula, at volutpat sem lobortis vitae. Vivamus ut lorem <br></br>{" "}
-            <br></br> vel nibh auctor mollis non vel odio. Donec quis enim sit
-            amet metus pulvinar feugiat. Nullam ut bibendum diam, a dignissim
-            sapien. Donec nec elementum lorem, sit amet luctus odio. Aliquam id
-            mi augue. Morbi et tincidunt nisl, nec egestas enim. sed commodo
-            urna <br></br>
-            vestibulum. Nulla purus neque, lobortis at fermentum sed, rutrum nec
-            mi. Sed mauris ex, pellentesque quis tincidunt ac, sagittis a
-            sapien. Sed a massa et sapien feugiat pharetra sed eu tortor.
-            Curabitur vehicula, dui et ph <br></br> <br></br>aretra auctor, dui
-            purus tincidunt arcu, eu tristique nibh purus eu erat. Donec ac
-            sapien neque. Sed ac mauris gravida, vulputate lacus at, placerat
-            magna. Fusce tincidunt tellus odio. Maecenas facilisis congue sem,
-            in semper <br></br> <br></br>risus. Maecenas rutrum aliq <br></br>
-            uam nisl, nec ultrices augue bibendum sed. Sed malesuada eros
-            ligula, at volutpat sem lobortis vitae. Vivamus ut lorem <br></br>{" "}
-            <br></br> vel nibh auctor mollis non vel odio. Donec quis enim sit
-            amet metus pulvinar feugiat. Nullam ut bibendum diam, a dignissim
-            sapien. Donec nec elementum lorem, sit amet luctus odio. Aliquam id
-            mi augue. Morbi et tincidunt nisl, nec egestas enim. <br></br>
-            vestibulum. Nulla purus neque, lobortis at fermentum sed, rutrum nec
-            mi. Sed mauris ex, pellentesque quis tincidunt ac, sagittis a
-            sapien. Sed a massa et sapien feugiat pharetra sed eu tortor.
-            Curabitur vehicula, dui et ph <br></br> <br></br>aretra auctor, dui
-            purus tincidunt arcu, eu tristique nibh purus eu erat. Donec ac
-            sapien neque. Sed ac mauris gravida, vulputate lacus at, placerat
-            magna. Fusce tincidunt tellus odio. Maecenas facilisis congue sem,
-            in semper <br></br> <br></br>risus. Maecenas rutrum aliq <br></br>
-            uam nisl, nec ultrices augue bibendum sed. Sed malesuada eros
-            ligula, at volutpat sem lobortis vitae. Vivamus ut lorem <br></br>{" "}
-            <br></br> vel nibh auctor mollis non vel odio. Donec quis enim sit
-            amet metus pulvinar feugiat. Nullam ut bibendum diam, a dignissim
-            sapien. Donec nec elementum lorem, sit amet luctus odio. Aliquam id
-            mi augue. Morbi et tincidunt nisl, nec egestas enim.
-            <br></br>
-            vestibulum. Nulla purus neque, lobortis at fermentum sed, rutrum nec
-            mi. Sed mauris ex, pellentesque quis tincidunt ac, sagittis a
-            sapien. Sed a massa et sapien feugiat pharetra sed eu tortor.
-            Curabitur vehicula, dui et ph <br></br> <br></br>aretra auctor, dui
-            purus tincidunt arcu, eu tristique nibh purus eu erat. Donec ac
-            sapien neque. Sed ac mauris gravida, vulputate lacus at, placerat
-            magna. Fusce tincidunt tellus odio. Maecenas facilisis congue sem,
-            in semper <br></br> <br></br>risus. Maecenas rutrum aliq <br></br>
-            uam nisl, nec ultrices augue bibendum sed. Sed malesuada eros
-            ligula, at volutpat sem lobortis vitae. Vivamus ut lorem <br></br>{" "}
-            <br></br> vel nibh auctor mollis non vel odio. Donec quis enim sit
-            amet metus pulvinar feugiat. Nullam ut bibendum diam, a dignissim
-            sapien. Donec nec elementum lorem, sit amet luctus odio. Aliquam id
-            mi augue. Morbi et tincidunt nisl, nec egestas enim.
-          </p>
+          <div className={"about__content"}>
+            <h1>
+              Having recently completed a Bachelor of Business, and finding the
+              financial world without the colour and vitality that feeds
+              creativity, I set out to develop my entrepreneurial side and
+              follow my creative instincts into the world of web development.
+            </h1>
+          </div>
+          <div className={"about__content"}>
+            <h1>
+              Something about the internet being a medium or ‘canvas’ on which I
+              can create interesting user experiences. With the knowledge that
+              my new medium would be the internet I began learning everything
+              there was to know about Javascript. My programming skills are
+              largely self-taught through curiosity, experimentation, failure,
+              and countless ongoing projects. Armed with creativity, business
+              acumen, and endless curiosity I hope to land somewhere that will
+              allow me to provide ways of doing things,
+            </h1>
+          </div>
         </article>
         <div className={"--circle"}></div>
       </section>

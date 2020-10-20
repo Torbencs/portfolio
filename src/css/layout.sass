@@ -1,3 +1,5 @@
+*:focus
+    outline: 0
 
 a
     text-decoration: none
@@ -11,21 +13,26 @@ body
     scrollbar-width: none
 
 section.main__section
-    margin: -11em auto auto 13.5em
+    position: absolute
+    margin-top: 10em
+    margin-left: 14em
 
 article.main__article
-    width: 54vw
+    display: flex
+    flex-wrap: wrap
+    max-width: 900px
     animation: fadeIn 1s ease-in 1 normal forwards
 
 .--circle
-    position: relative
-    float: right
-    margin: -9em -4em
-    width: 23em
-    height: 23em
+    position: fixed
+    bottom: -35em
+    right: -35em
+    width: 70em
+    height: 70em
     border-radius: 50%
     background-color: #f3c41a
-    animation: slideIn--circle 1s cubic-bezier(.18,1.01,.71,.95) 1 normal forwards
+    animation: slideIn--circle 1.5s cubic-bezier(.18,1.01,.71,.95)
+
     z-index: -1
 
 @keyframes fadeIn

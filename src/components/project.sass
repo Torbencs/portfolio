@@ -1,0 +1,124 @@
+$fontColor: #f3f3f3
+.sub__section
+    margin-top: 4em
+.sub__header
+    font-family: 'Poppins'
+    background-color: #292c2d
+    overflow: hidden
+    padding: 1em
+    margin-top: -3em
+    margin-right: 5em
+    -webkit-box-shadow: 6px 4px 40px -3px rgba(53,53,56,0.5)
+    -moz-box-shadow: 6px 4px 40px -3px rgba(53,53,56,0.5)
+    box-shadow: 6px 4px 40px -3px rgba(53,53,56,0.5)
+    z-index: 1
+    animation: slideDown 0.8s ease-out 1 normal forwards
+    transition: transform 0.5s
+
+    h1
+        font-size: 2em
+        font-weight: 600
+        color: $fontColor
+        -webkit-font-smoothing: antialiased
+        -moz-osx-font-smoothing: grayscale
+        margin: 0
+        line-height: 1em
+
+    h2
+        font-family: 'Poppins'
+        font-size: 1.2em
+        font-weight: 200
+        color: #f3f3f3a6
+        margin-top: 0.4em
+
+    &:hover
+        transform: scale(1.2)
+        cursor: pointer
+
+.sub__article--fullScreen
+    display: none
+    width: 100vw
+    height: 100vh
+    background-color: #121313
+    top: 0
+    left: 0
+    position: fixed
+    z-index: -1
+    animation: fadeIn 0.7s ease 1 normal forwards
+.sub__article__content
+    display: flex
+    justify-content: center
+    position: relative
+    margin: 2em 6em
+    color: white
+
+    &--right
+        flex-direction: column
+
+.sub__article__content__blurb
+    font-family: 'Poppins'
+    line-height: 1.2em
+    font-size: 1.1em
+    font-weight: 100
+    color: #f3f3f3d7
+    letter-spacing: 0.03em
+    width: 25em
+    padding: 1em
+    border-radius: 0.5em
+    margin: 2em 0 5em 2em
+    background-color: #ffffff10
+
+.sub__article__header
+    font-family: 'Poppins'
+    overflow: hidden
+    padding: 3em
+    z-index: 1
+
+    h1
+        font-size: 2.6em
+        font-weight: 600
+        color: $fontColor
+        -webkit-font-smoothing: antialiased
+        -moz-osx-font-smoothing: grayscale
+        margin: 0
+        line-height: 1em
+
+    h2
+        font-family: 'Poppins'
+        font-size: 1.2em
+        font-weight: 200
+        color: #f3f3f3a6
+        margin-top: 0.4em
+.sub__article__exit
+    position: absolute
+    top: 0
+    right: 0
+    margin: 3em 3em
+    width: 2.4em
+    height: 2.4em
+
+    &::after
+        position: absolute
+        transform: translateY(1.2em) rotate(45deg)
+        content: ''
+        width: 2.4em
+        height: 0.3em
+        background-color: white
+    &::before
+        position: absolute
+        transform: translateY(1.2em) rotate(-45deg)
+        content: ''
+        width: 2.4em
+        height: 0.3em
+        background-color: white
+    &:hover
+        cursor: pointer
+.--progress
+    position: fixed
+    bottom: 1em
+    right: 1em
+    font-size: 2em
+    font-weight: 600
+    color: #ffffff23
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale

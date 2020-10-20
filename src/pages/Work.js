@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 //Sub components
+import Project from "../components/Project";
 import ProjectTemplate from "../components/ProjectTemplate";
-
 //Css
 import "../css/layout.sass";
 import "../css/work.sass";
@@ -15,7 +15,7 @@ const Work = (props) => {
     props.currentPage("work");
 
     //Add onscroll eventhandler to check if navigation arrow needs to be displayed
-    window.onscroll = function () {
+    const scrollHandler = () => {
       if (
         document.body.scrollTop > 100 ||
         document.documentElement.scrollTop > 100
@@ -24,6 +24,11 @@ const Work = (props) => {
       } else {
         navArrow.current.style.display = "none";
       }
+    };
+
+    window.addEventListener("scroll", scrollHandler);
+    return () => {
+      window.removeEventListener("scroll", scrollHandler);
     };
   }, []);
 
@@ -42,12 +47,14 @@ const Work = (props) => {
       </nav>
       <section className={"main__section"}>
         <article className={"main__article"}>
-          <ProjectTemplate body={""} />
-          <ProjectTemplate />
+          <Project title={"Booking UI/UX"} />
+          <Project title={"Inspection Reporting UI/UX"} />
+          <Project body={""} />
+          <Project body={""} />
+          <Project title={"Booking UI/UX"} />
         </article>
-
-        <div className={"--circle"}></div>
       </section>
+      <div className={"--circle"}></div>
     </div>
   );
 };

@@ -1,0 +1,23 @@
+.slideIn {
+  animation: 0.5s cubic-bezier(0.4, 0.99, 0.76, 1) slideInFromLeft;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-1000%);
+  }
+  100% {
+  }
+}
+
+.slideOut {
+  animation: 8s cubic-bezier(0.24, 0, 0.6, 0.01) slideOutToRight;
+}
+
+@keyframes slideOutToRight {
+  0% {
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

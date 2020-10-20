@@ -14,13 +14,28 @@ a
     margin: 0 auto
     animation: wrapper__slideToRight 1s cubic-bezier(.5,.73,.57,.8) 1 normal forwards
     &--left
-
         width: 45vw
         margin: 0 auto
         animation: wrapper__slideToLeft 1s cubic-bezier(.5,.73,.57,.8) 1 normal forwards
 
 header.main__header
     padding-top: 5em
+    height: 400px
+
+    h1
+        font-family: 'Poppins'
+        font-size: 2.6em
+        font-weight: 700
+        color: $fontColor
+        -webkit-font-smoothing: antialiased
+        -moz-osx-font-smoothing: grayscale
+        line-height: 0.8em
+        letter-spacing: 0.0em
+
+header.main__header--left
+    padding-top: 5em
+    height: 400px
+    position: fixed
 
     h1
         font-family: 'Poppins'

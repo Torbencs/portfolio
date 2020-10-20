@@ -42,58 +42,17 @@ function App() {
 
     // - Set yellow dot's top distance equal to the current hover target with absolute position helper function
     refYellowDot.current.style.top =
-      getAbsoluteBoundingRect(currentHoverEl).top + "px";
+      currentHoverEl.getBoundingClientRect().top + "px";
 
     // - Save yellow dot position to state to pass as prop to Play page
     setYellowDot({
       el: refYellowDot.current,
       x: refYellowDot.current.getBoundingClientRect().left,
-      y: getAbsoluteBoundingRect(currentHoverEl).top,
+      y: currentHoverEl.getBoundingClientRect().top,
     });
 
     // - Re-run every time 'currentHover' changes
   }, [currentHover]);
-
-  /* Helper function to get absolute positioned bounding rectangle
-  //
-  */
-  const getAbsoluteBoundingRect = (el) => {
-    var doc = document,
-      win = window,
-      body = doc.body,
-      // pageXOffset and pageYOffset work everywhere except IE <9.
-      offsetX =
-        win.pageXOffset !== undefined
-          ? win.pageXOffset
-          : (doc.documentElement || body.parentNode || body).scrollLeft,
-      offsetY =
-        win.pageYOffset !== undefined
-          ? win.pageYOffset
-          : (doc.documentElement || body.parentNode || body).scrollTop,
-      rect = el.getBoundingClientRect();
-
-    if (el !== body) {
-      var parent = el.parentNode;
-
-      // The element's rect will be affected by the scroll positions of
-      // *all* of its scrollable parents, not just the window, so we have
-      // to walk up the tree and collect every scroll offset. Good times.
-      while (parent !== body) {
-        offsetX += parent.scrollLeft;
-        offsetY += parent.scrollTop;
-        parent = parent.parentNode;
-      }
-    }
-
-    return {
-      bottom: rect.bottom + offsetY,
-      height: rect.height,
-      left: rect.left + offsetX,
-      right: rect.right + offsetX,
-      top: rect.top + offsetY,
-      width: rect.width,
-    };
-  };
 
   /* Render
   //
@@ -110,7 +69,13 @@ function App() {
                 : "wrapper--left"
             }
           >
-            <header className={"main__header"}>
+            <header
+              className={
+                currentPage == "home" || currentPage == "play"
+                  ? "main__header"
+                  : "main__header--left"
+              }
+            >
               <h1>
                 <Link
                   id={"home"}
