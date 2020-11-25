@@ -218,9 +218,6 @@ const Play = (props) => {
     //Hide yellow dot
     props.yellowDot.el.remove();
 
-    //Add checkered end flag
-    document.getElementById("home").classList.add("checkered");
-
     //Component unmount cleanup
     return () => {
       console.log("unmount");

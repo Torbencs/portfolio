@@ -4,48 +4,51 @@ body
     margin: 0
     font-family: "Roboto"
     font-weight: 400
-    background-color: #f3f3f3
+    background-color: #e2e2dd
+    /** background-color: #f3f3f3 **/
 
 a
     color: $fontColor
 
 .wrapper
-    width: 70vw
+    width: 90vw
     margin: 0 auto
     animation: wrapper__slideToRight 1s cubic-bezier(.5,.73,.57,.8) 1 normal forwards
     &--left
-        width: 45vw
+        width: 55vw
         margin: 0 auto
         animation: wrapper__slideToLeft 1s cubic-bezier(.5,.73,.57,.8) 1 normal forwards
 
 header.main__header
-    padding-top: 5em
+    padding-top: 4.1em
     height: 400px
 
     h1
         font-family: 'Poppins'
-        font-size: 2.6em
+        font-size: 2.7em
         font-weight: 700
         color: $fontColor
         -webkit-font-smoothing: antialiased
         -moz-osx-font-smoothing: grayscale
         line-height: 0.8em
         letter-spacing: 0.0em
+        margin-bottom: 1.4em
 
 header.main__header--left
-    padding-top: 5em
+    padding-top: 4.1em
     height: 400px
     position: fixed
 
     h1
         font-family: 'Poppins'
-        font-size: 2.6em
+        font-size: 2.7em
         font-weight: 700
         color: $fontColor
         -webkit-font-smoothing: antialiased
         -moz-osx-font-smoothing: grayscale
         line-height: 0.8em
         letter-spacing: 0.0em
+        margin-bottom: 1.4em
 
 #nav__yellow-dot
     position: absolute
@@ -53,10 +56,16 @@ header.main__header--left
     color: #f8d619
     margin-left: 0.05em
     transition: 0.5s 0.06s
+    &--left
+        position: absolute
+        font-size: 1.2em
+        color: #f8d619
+        margin-left: 3em
+        transition: 0.5s 0.06s
 
 .homeMenu
     text-align: center
-    margin-top: 7em
+    margin-top: 5em
     animation: slideToRight 1s cubic-bezier(.18,1.01,.71,.95) 1 normal forwards
 
     &__link
@@ -73,7 +82,7 @@ header.main__header--left
 
     &--left
         text-align: center
-        margin-top: 7em
+        margin-top: 5em
         animation: slideToLeft 1s cubic-bezier(.18,1.01,.71,.95) 1 normal forwards
 
         a:hover
@@ -97,9 +106,9 @@ header.main__header--left
     0%
 
     100%
-        width: 70vw
+        width: 90vw
 @keyframes wrapper__slideToRight
     0%
 
     100%
-        width: 45vw
+        width: 55vw

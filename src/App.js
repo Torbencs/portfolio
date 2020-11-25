@@ -11,6 +11,7 @@ import {
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Work from "./pages/Work";
+import Contact from "./pages/Contact";
 
 import Play from "./pages/Play";
 
@@ -38,13 +39,13 @@ function App() {
     // - Change the line height of the yellow dot span tag if it is not over the home header. Keeps the dot aligned with the different font sizes
     currentHover == "home"
       ? (refYellowDot.current.style.lineHeight = "1.05em")
-      : (refYellowDot.current.style.lineHeight = "0.2em");
+      : (refYellowDot.current.style.lineHeight = "0.15em");
 
     // - Set yellow dot's top distance equal to the current hover target with absolute position helper function
     refYellowDot.current.style.top =
       currentHoverEl.getBoundingClientRect().top + "px";
 
-    // - Save yellow dot position to state to pass as prop to Play page
+    // - Save yellow dot position to state to pass as prop to Play page and use for the play ball starting position
     setYellowDot({
       el: refYellowDot.current,
       x: refYellowDot.current.getBoundingClientRect().left,
@@ -76,32 +77,6 @@ function App() {
                   : "main__header--left"
               }
             >
-              <h1>
-                <Link
-                  id={"home"}
-                  to="/portfolio"
-                  onMouseEnter={() => {
-                    currentPage == "home"
-                      ? setCurrentHover("home")
-                      : setCurrentHover(currentPage);
-                  }}
-                  onClick={() => {
-                    setCurrentHover("home");
-                  }}
-                >
-                  torben
-                  <span
-                    id={"nav__yellow-dot"}
-                    ref={refYellowDot}
-                    onMouseEnter={(e) => {
-                      console.log(yellowDot.x, yellowDot.y);
-                      console.log(`mouse: x: ${e.clientX}, y: ${e.clientY}`);
-                    }}
-                  >
-                    .
-                  </span>
-                </Link>
-              </h1>
               <nav
                 className={
                   currentPage == "home" || currentPage == "play"
@@ -109,6 +84,33 @@ function App() {
                     : "homeMenu--left"
                 }
               >
+                <h1>
+                  <Link
+                    id={"home"}
+                    to="/portfolio"
+                    onMouseEnter={() => {
+                      currentPage == "home"
+                        ? setCurrentHover("home")
+                        : setCurrentHover(currentPage);
+                    }}
+                    onClick={() => {
+                      setCurrentHover("home");
+                    }}
+                  >
+                    torben
+                    <span
+                      id={
+                        currentPage == "home" || currentPage == "play"
+                          ? "nav__yellow-dot"
+                          : "nav__yellow-dot--left"
+                      }
+                      ref={refYellowDot}
+                    >
+                      .
+                    </span>
+                  </Link>
+                </h1>
+
                 <Link
                   id={"about"}
                   className="homeMenu__link"
@@ -204,13 +206,13 @@ function App() {
                     <Work {...props} currentPage={setCurrentPage} />
                   )}
                 />
-                {/* <Route
-              exact
-              path="/contact"
-              render={(props) => (
-                <Contact {...props} currentPage={setCurrentPage} />
-              )}
-            /> */}
+                <Route
+                  exact
+                  path="/contact"
+                  render={(props) => (
+                    <Contact {...props} currentPage={setCurrentPage} />
+                  )}
+                />
                 <Route
                   exact
                   path="/play"
@@ -224,6 +226,15 @@ function App() {
                 />
               </Switch>
             </main>
+          </div>
+          <div id={"circle"}>
+            <div id={"circle--outline"}></div>
+          </div>
+          <div id={"square"}>
+            <div id={"square--outline"}></div>
+          </div>
+          <div id={"triangle"}>
+            <div id={"triangle--outline"}></div>
           </div>
         </div>
       </div>

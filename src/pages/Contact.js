@@ -6,39 +6,13 @@ import Project from "../components/Project";
 import ProjectTemplate from "../components/ProjectTemplate";
 //Css
 import "../css/layout.sass";
-import "../css/work.sass";
+import "../css/contact.sass";
 
-const Work = (props) => {
+const Contact = (props) => {
   const navArrow = useRef(null);
 
   useEffect(() => {
-    props.currentPage("work");
-
-    //Move UI elements to edge of page to make room for content
-    //-- Circle
-    let circle = document.getElementById("circle");
-    circle.style.bottom = 8 + "%";
-    circle.style.right = 8 + "%";
-    //-- Square
-    let square = document.getElementById("square");
-    square.style.top = 15 + "%";
-    square.style.right = 5 + "%";
-    //-- Triangle
-    let triangle = document.getElementById("triangle");
-    triangle.style.bottom = 11 + "%";
-    triangle.style.left = 6 + "%";
-
-    const UIparallax = (e) => {
-      /* triangle.style.top = triangle.offsetTop + e.movementY * 0.05 + "px";
-      triangle.style.left = triangle.offsetLeft + e.movementX * 0.03 + "px";
-
-      square.style.top = square.offsetTop + e.movementY * 0.05 + "px";
-      square.style.left = square.offsetLeft + e.movementX * 0.03 + "px";
-
-      circle.style.top = circle.offsetTop + e.movementY * 0.05 + "px";
-      circle.style.left = circle.offsetLeft + e.movementX * 0.03 + "px"; */
-    };
-    window.addEventListener("mousemove", UIparallax);
+    props.currentPage("contact");
 
     //Add onscroll eventhandler to check if navigation arrow needs to be displayed
     const scrollHandler = () => {
@@ -73,15 +47,31 @@ const Work = (props) => {
       </nav>
       <section className={"main__section"}>
         <article className={"main__article"}>
-          <Project title={"Booking UI/UX"} />
-          <Project title={"Inspection Reporting UI/UX"} />
-          <Project body={""} />
-          <Project body={""} />
-          <Project title={"Booking UI/UX"} />
+          <a href={""}>
+            <img
+              className={"contact__links"}
+              src={process.env.PUBLIC_URL + "/images/github.png"}
+              alt={"Link to Torbens github profile"}
+            ></img>
+          </a>
+          <a href={""}>
+            <img
+              className={"contact__links"}
+              src={process.env.PUBLIC_URL + "/images/email.png"}
+              alt={"Link to Torbens email"}
+            ></img>
+          </a>
+          <a href={""}>
+            <img
+              className={"contact__links"}
+              src={process.env.PUBLIC_URL + "/images/linkedin.png"}
+              alt={"Link to Torbens linkedIn profile"}
+            ></img>
+          </a>
         </article>
       </section>
     </div>
   );
 };
 
-export default Work;
+export default Contact;

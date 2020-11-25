@@ -15,7 +15,7 @@ body
 section.main__section
     position: absolute
     margin-top: 10em
-    margin-left: 14em
+    margin-left: 20em
 
 article.main__article
     display: flex
@@ -23,17 +23,69 @@ article.main__article
     max-width: 900px
     animation: fadeIn 1s ease-in 1 normal forwards
 
-.--circle
+#circle
     position: fixed
-    bottom: -35em
-    right: -35em
-    width: 70em
-    height: 70em
+    width: 13em
+    height: 13em
     border-radius: 50%
     background-color: #f3c41a
     animation: slideIn--circle 1.5s cubic-bezier(.18,1.01,.71,.95)
-
     z-index: -1
+
+    &--outline
+        content: ""
+        position: relative
+        bottom: 1.3em
+        right: 1.3em
+        width: 13em
+        height: 13em
+        border-radius: 50%
+        animation: slideIn--circle 1.5s cubic-bezier(.18,1.01,.71,.95)
+        box-shadow: inset 0 0 0 0.15em #2f7cb9
+
+#square
+    position: fixed
+    width: 2em
+    height: 10em
+    background-color: #373536
+    animation: slideIn--circle 1.5s cubic-bezier(.18,1.01,.71,.95)
+    z-index: -1
+
+    &--outline
+        content: ""
+        position: relative
+        bottom: 1em
+        left: 0.8em
+        width: 2em
+        height: 10em
+        animation: slideIn--circle 1.5s cubic-bezier(.18,1.01,.71,.95)
+        box-shadow: inset 0 0 0 0.15em #2f7cb9
+
+#triangle
+    position: fixed
+    box-sizing: border-box
+    width: 4.5em
+    height: 4.5em
+    border-bottom: solid 4.5em #2f7cb9
+    border-left: solid 4.5em #2f7cb9
+    border-right: solid 4.5em transparent
+    border-top: solid 4.5em transparent
+    animation: slideIn--circle 1.5s cubic-bezier(.18,1.01,.71,.95)
+    z-index: -1
+
+    &--outline
+        content: ""
+        position: relative
+        box-sizing: border-box
+        bottom: 3.4em
+        right: 5.6em
+        border-bottom: solid 4.5em #373536
+        border-left: solid 4.5em #373536
+        border-right: solid 4.5em transparent
+        border-top: solid 4.5em transparent
+        stroke: black
+        animation: slideIn--circle 1.5s cubic-bezier(.18,1.01,.71,.95)
+        clip-path: polygon(0% 0%, 0% 100%, 2% 100%, 2% 5%, 47% 50%, 95% 98%, 2% 98%, 0 100%, 100% 100%, 50% 50%)
 
 @keyframes fadeIn
     0%
@@ -43,5 +95,5 @@ article.main__article
 
 @keyframes slideIn--circle
     0%
-        right: -100em
+
     100%
