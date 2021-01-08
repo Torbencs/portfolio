@@ -13,7 +13,7 @@ import About from "./pages/About";
 import Work from "./pages/Work";
 import Contact from "./pages/Contact";
 
-import Play from "./pages/Play";
+import Pong from "./pages/Pong";
 
 import "./css/fonts.css";
 import "./App.css";
@@ -28,6 +28,9 @@ function App() {
 
   //Save reference to the yellow dot span tag
   const refYellowDot = useRef(null);
+  //Save reference to UI shapes
+  const refSquare = useRef(null);
+  const refTriangle = useRef(null);
 
   /* Yellow navigation dot move effect
   //
@@ -159,10 +162,11 @@ function App() {
                 <Link
                   id={"play"}
                   className="homeMenu__link"
-                  to="/play"
+                  to="/pong"
                   onMouseEnter={() => {
                     setCurrentHover("play");
                   }}
+                  /*
                   onClick={() => {
                     const pointerLockDiv = document.getElementById(
                       "pointerLockDiv"
@@ -172,7 +176,7 @@ function App() {
                       pointerLockDiv.mozRequestPointerLock;
 
                     pointerLockDiv.requestPointerLock();
-                  }}
+                  }}*/
                   onMouseLeave={() => {
                     currentPage == "home"
                       ? setCurrentHover("home")
@@ -183,50 +187,55 @@ function App() {
                 </Link>
               </nav>
             </header>
-            <main>
-              <Switch>
-                <Route
-                  exact
-                  path="/portfolio"
-                  render={(props) => (
-                    <Home {...props} currentPage={setCurrentPage} />
-                  )}
-                />
-                <Route
-                  exact
-                  path="/about"
-                  render={(props) => (
-                    <About {...props} currentPage={setCurrentPage} />
-                  )}
-                />
-                <Route
-                  exact
-                  path="/work"
-                  render={(props) => (
-                    <Work {...props} currentPage={setCurrentPage} />
-                  )}
-                />
-                <Route
-                  exact
-                  path="/contact"
-                  render={(props) => (
-                    <Contact {...props} currentPage={setCurrentPage} />
-                  )}
-                />
-                <Route
-                  exact
-                  path="/play"
-                  render={(props) => (
-                    <Play
-                      {...props}
-                      currentPage={setCurrentPage}
-                      yellowDot={yellowDot}
-                    />
-                  )}
-                />
-              </Switch>
-            </main>
           </div>
+          <main>
+            <Switch>
+              <Route
+                exact
+                path="/portfolio"
+                render={(props) => (
+                  <Home
+                    {...props}
+                    currentPage={setCurrentPage}
+                    currentHover={setCurrentHover}
+                  />
+                )}
+              />
+              <Route
+                exact
+                path="/about"
+                render={(props) => (
+                  <About {...props} currentPage={setCurrentPage} />
+                )}
+              />
+              <Route
+                exact
+                path="/work"
+                render={(props) => (
+                  <Work {...props} currentPage={setCurrentPage} />
+                )}
+              />
+              <Route
+                exact
+                path="/contact"
+                render={(props) => (
+                  <Contact {...props} currentPage={setCurrentPage} />
+                )}
+              />
+              <Route
+                exact
+                path="/pong"
+                render={(props) => (
+                  <Pong
+                    {...props}
+                    currentPage={setCurrentPage}
+                    currentHover={setCurrentHover}
+                  />
+                )}
+              />
+            </Switch>
+          </main>
+
           <div id={"circle"}>
             <div id={"circle--outline"}></div>
           </div>
@@ -236,6 +245,11 @@ function App() {
           <div id={"triangle"}>
             <div id={"triangle--outline"}></div>
           </div>
+          <canvas
+            id="canvas"
+            height={window.innerHeight - 140}
+            width={window.innerWidth - 80}
+          ></canvas>
         </div>
       </div>
     </Router>

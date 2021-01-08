@@ -135,7 +135,7 @@ const Play = (props) => {
       },
     });
 
-    engine.world.gravity = { x: 0, y: 1.5 };
+    engine.world.gravity = { x: 0, y: 0 };
     //Save render object in state for later use
     setScene(render);
 

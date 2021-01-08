@@ -14,6 +14,18 @@ const Work = (props) => {
   useEffect(() => {
     props.currentPage("work");
 
+    //
+    // http://easings.net/#easeInOutQuart
+    //  t: current time
+    //  b: beginning value
+    //  c: change in value
+    //  d: duration
+    //
+    function easeInOutQuart(t, b, c, d) {
+      if ((t /= d / 2) < 1) return (c / 2) * t * t * t * t + b;
+      return (-c / 2) * ((t -= 2) * t * t * t - 2) + b;
+    }
+
     //Move UI elements to edge of page to make room for content
     //-- Circle
     let circle = document.getElementById("circle");
@@ -25,7 +37,7 @@ const Work = (props) => {
     square.style.right = 5 + "%";
     //-- Triangle
     let triangle = document.getElementById("triangle");
-    triangle.style.bottom = 11 + "%";
+    triangle.style.bottom = 13 + "%";
     triangle.style.left = 6 + "%";
 
     const UIparallax = (e) => {

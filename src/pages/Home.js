@@ -5,6 +5,7 @@ import "../css/home.sass";
 const Home = (props) => {
   useEffect(() => {
     props.currentPage("home");
+    props.currentHover("home");
 
     ////Move UI elements
     let circle = document.getElementById("circle");
@@ -18,6 +19,7 @@ const Home = (props) => {
     let triangle = document.getElementById("triangle");
     triangle.style.bottom = 21 + "em";
     triangle.style.left = 36 + "em";
+    triangle.style.top = "";
   }, []);
 
   return null;
