@@ -1,11 +1,20 @@
-$fontColor: #373536
+$fontColor: #2f2042
 
 body
     margin: 0
-    font-family: "Roboto"
+    font-family: "Poppins"
     font-weight: 400
-    background-color: #e2e2dd
+    background-color: #f8f8f8
     /** background-color: #f3f3f3 **/
+    position: fixed
+    top: 0
+    left: 0
+    border: 40px solid #ffffff
+    width: 100%
+    height: 100%
+    margin: 0
+    padding: 0
+    box-sizing: border-box
 
 a
     color: $fontColor
@@ -19,67 +28,6 @@ a
         margin: 0 auto
         animation: wrapper__slideToLeft 1s cubic-bezier(.5,.73,.57,.8) 1 normal forwards
 
-header.main__header
-    padding-top: 4.1em
-    height: 400px
-
-    h1
-        font-family: 'Poppins'
-        font-size: 2.7em
-        font-weight: 700
-        color: $fontColor
-        -webkit-font-smoothing: antialiased
-        -moz-osx-font-smoothing: grayscale
-        line-height: 0.8em
-        letter-spacing: 0.0em
-        margin-bottom: 1.4em
-
-header.main__header--left
-    padding-top: 4.1em
-    height: 400px
-    position: fixed
-
-    h1
-        font-family: 'Poppins'
-        font-size: 2.7em
-        font-weight: 700
-        color: $fontColor
-        -webkit-font-smoothing: antialiased
-        -moz-osx-font-smoothing: grayscale
-        line-height: 0.8em
-        letter-spacing: 0.0em
-        margin-bottom: 1.4em
-
-#nav__yellow-dot
-    position: absolute
-    font-size: 1.2em
-    color: #f8d619
-    margin-left: 0.05em
-    transition: 0.5s 0.06s
-    &--left
-        position: absolute
-        font-size: 1.2em
-        color: #f8d619
-        margin-left: 3em
-        transition: 0.5s 0.06s
-
-.homeMenu
-    text-align: center
-    margin-top: 5em
-    animation: slideToRight 1s cubic-bezier(.18,1.01,.71,.95) 1 normal forwards
-
-    &__link
-        font-size: 1.1em
-        display: block
-        letter-spacing: 0.08em
-        line-height: 2em
-        color: #373536c1
-    a
-        width: 7em
-        margin: auto
-    a:hover
-        color: #f3c41a
-
     &--left
         text-align: center
         margin-top: 5em
@@ -87,28 +35,3 @@ header.main__header--left
 
         a:hover
             color: #f3c41a
-
-@keyframes slideToLeft
-    0%
-        width: 100%
-    100%
-        width: 0%
-        margin-left: 2em
-
-@keyframes slideToRight
-    0%
-        width: 0%
-        margin-left: 2em
-    100%
-        width: 100%
-
-@keyframes wrapper__slideToLeft
-    0%
-
-    100%
-        width: 90vw
-@keyframes wrapper__slideToRight
-    0%
-
-    100%
-        width: 55vw

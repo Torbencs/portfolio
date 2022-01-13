@@ -1,256 +1,59 @@
-import React, { useState, useEffect, useRef } from "react";
-import {
-  Route,
-  BrowserRouter as Router,
-  Switch,
-  Redirect,
-  Link,
-} from "react-router-dom";
+import React, { useState, useEffect, useLayoutEffect } from "react";
+
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 //Pages
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Work from "./pages/Work";
-import Contact from "./pages/Contact";
+import About from "./components/About";
+import Work from "./components/Work";
+import Ski from "./components/Ski";
+import Score from "./components/Score";
+import ClimbWest from "./pages/ClimbWest/ClimbWest";
+//import URL from "./pages/URL";
 
-import Pong from "./pages/Pong";
+//Components
+import HomeNav from "./components/HomeNav";
+import SideNav from "./components/SideNav";
+import Project from "./components/Project";
 
 import "./css/fonts.css";
-import "./App.css";
+import "./App.sass";
 
 function App() {
-  //The page the user is currently on
-  const [currentPage, setCurrentPage] = useState("home");
-  //The current or most recent hover target (used to move the yellow dot in the nav)
-  const [currentHover, setCurrentHover] = useState("home");
-  //The current position of the yellow dot. Saved in state so it can be used as starting point for play ball
-  const [yellowDot, setYellowDot] = useState({ el: null, x: 0, y: 0 });
-
-  //Save reference to the yellow dot span tag
-  const refYellowDot = useRef(null);
-  //Save reference to UI shapes
-  const refSquare = useRef(null);
-  const refTriangle = useRef(null);
-
-  /* Yellow navigation dot move effect
-  //
-  */
-  useEffect(() => {
-    // - Save the current hovered element to the 'currentHoverEl' variable
-    let currentHoverEl = document.getElementById(`${currentHover}`);
-
-    // - Change the line height of the yellow dot span tag if it is not over the home header. Keeps the dot aligned with the different font sizes
-    currentHover == "home"
-      ? (refYellowDot.current.style.lineHeight = "1.05em")
-      : (refYellowDot.current.style.lineHeight = "0.15em");
-
-    // - Set yellow dot's top distance equal to the current hover target with absolute position helper function
-    refYellowDot.current.style.top =
-      currentHoverEl.getBoundingClientRect().top + "px";
-
-    // - Save yellow dot position to state to pass as prop to Play page and use for the play ball starting position
-    setYellowDot({
-      el: refYellowDot.current,
-      x: refYellowDot.current.getBoundingClientRect().left,
-      y: currentHoverEl.getBoundingClientRect().top,
-    });
-
-    // - Re-run every time 'currentHover' changes
-  }, [currentHover]);
-
   /* Render
   //
   */
   return (
     <Router>
-      <div id={"pointerLockDiv"}>
-        <div id="appWrapper">
-          <div
-            id={"navWrapper"}
-            className={
-              currentPage == "home" || currentPage == "play"
-                ? "wrapper"
-                : "wrapper--left"
-            }
-          >
-            <header
-              className={
-                currentPage == "home" || currentPage == "play"
-                  ? "main__header"
-                  : "main__header--left"
-              }
-            >
-              <nav
-                className={
-                  currentPage == "home" || currentPage == "play"
-                    ? "homeMenu"
-                    : "homeMenu--left"
-                }
-              >
-                <h1>
-                  <Link
-                    id={"home"}
-                    to="/portfolio"
-                    onMouseEnter={() => {
-                      currentPage == "home"
-                        ? setCurrentHover("home")
-                        : setCurrentHover(currentPage);
-                    }}
-                    onClick={() => {
-                      setCurrentHover("home");
-                    }}
-                  >
-                    torben
-                    <span
-                      id={
-                        currentPage == "home" || currentPage == "play"
-                          ? "nav__yellow-dot"
-                          : "nav__yellow-dot--left"
-                      }
-                      ref={refYellowDot}
-                    >
-                      .
-                    </span>
-                  </Link>
-                </h1>
+      <Route
+        exact
+        path="/portfolio"
+        render={(props) => <HomeNav {...props} />}
+      />
+      <div className={"flex-container"}>
+        <Route exact path={["/about", "/work", "/play", "/score"]}>
+          <SideNav />
+        </Route>
 
-                <Link
-                  id={"about"}
-                  className="homeMenu__link"
-                  to="/about"
-                  onMouseEnter={() => {
-                    setCurrentHover("about");
-                  }}
-                  onMouseLeave={() => {
-                    currentPage == "home"
-                      ? setCurrentHover("home")
-                      : setCurrentHover(currentPage);
-                  }}
-                >
-                  about
-                </Link>
-                <Link
-                  id={"work"}
-                  className="homeMenu__link"
-                  to="/work"
-                  onMouseEnter={() => {
-                    setCurrentHover("work");
-                  }}
-                  onMouseLeave={() => {
-                    currentPage == "home"
-                      ? setCurrentHover("home")
-                      : setCurrentHover(currentPage);
-                  }}
-                >
-                  work
-                </Link>
-                <Link
-                  id={"contact"}
-                  className="homeMenu__link"
-                  to="/contact"
-                  onMouseEnter={() => {
-                    setCurrentHover("contact");
-                  }}
-                  onMouseLeave={() => {
-                    currentPage == "home"
-                      ? setCurrentHover("home")
-                      : setCurrentHover(currentPage);
-                  }}
-                >
-                  contact
-                </Link>
-                <Link
-                  id={"play"}
-                  className="homeMenu__link"
-                  to="/pong"
-                  onMouseEnter={() => {
-                    setCurrentHover("play");
-                  }}
-                  /*
-                  onClick={() => {
-                    const pointerLockDiv = document.getElementById(
-                      "pointerLockDiv"
-                    );
-                    pointerLockDiv.requestPointerLock =
-                      pointerLockDiv.requestPointerLock ||
-                      pointerLockDiv.mozRequestPointerLock;
+        <main>
+          <Switch>
+            <Route
+              exact
+              path="/about"
+              render={(props) => <About {...props} />}
+            />
 
-                    pointerLockDiv.requestPointerLock();
-                  }}*/
-                  onMouseLeave={() => {
-                    currentPage == "home"
-                      ? setCurrentHover("home")
-                      : setCurrentHover(currentPage);
-                  }}
-                >
-                  play
-                </Link>
-              </nav>
-            </header>
-          </div>
-          <main>
-            <Switch>
-              <Route
-                exact
-                path="/portfolio"
-                render={(props) => (
-                  <Home
-                    {...props}
-                    currentPage={setCurrentPage}
-                    currentHover={setCurrentHover}
-                  />
-                )}
-              />
-              <Route
-                exact
-                path="/about"
-                render={(props) => (
-                  <About {...props} currentPage={setCurrentPage} />
-                )}
-              />
-              <Route
-                exact
-                path="/work"
-                render={(props) => (
-                  <Work {...props} currentPage={setCurrentPage} />
-                )}
-              />
-              <Route
-                exact
-                path="/contact"
-                render={(props) => (
-                  <Contact {...props} currentPage={setCurrentPage} />
-                )}
-              />
-              <Route
-                exact
-                path="/pong"
-                render={(props) => (
-                  <Pong
-                    {...props}
-                    currentPage={setCurrentPage}
-                    currentHover={setCurrentHover}
-                  />
-                )}
-              />
-            </Switch>
-          </main>
-
-          <div id={"circle"}>
-            <div id={"circle--outline"}></div>
-          </div>
-          <div id={"square"}>
-            <div id={"square--outline"}></div>
-          </div>
-          <div id={"triangle"}>
-            <div id={"triangle--outline"}></div>
-          </div>
-          <canvas
-            id="canvas"
-            height={window.innerHeight - 140}
-            width={window.innerWidth - 80}
-          ></canvas>
-        </div>
+            <Route path="/work" render={(props) => <ClimbWest {...props} />} />
+            <Route exact path="/play">
+              <Ski />
+            </Route>
+            <Route
+              exact
+              path="/score"
+              render={(props) => <Score {...props} />}
+            />
+            {/* <Route path="/url" render={(props) => <URL />} /> */}
+          </Switch>
+        </main>
       </div>
     </Router>
   );
