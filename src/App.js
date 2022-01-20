@@ -4,10 +4,9 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 //Pages
 import About from "./components/About";
-import Work from "./components/Work";
 import Ski from "./components/Ski";
 import Score from "./components/Score";
-import ClimbWest from "./pages/ClimbWest/ClimbWest";
+import Work from "./pages/Work/Work";
 //import URL from "./pages/URL";
 
 //Components
@@ -42,7 +41,7 @@ function App() {
               render={(props) => <About {...props} />}
             />
 
-            <Route path="/work" render={(props) => <ClimbWest {...props} />} />
+            <Route path="/work" render={(props) => <Work {...props} />} />
             <Route exact path="/play">
               <Ski />
             </Route>

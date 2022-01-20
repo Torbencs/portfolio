@@ -9,7 +9,10 @@ const Gallery = (props) => {
       style={{ backgroundColor: props.bgColor }}
     >
       <aside className="work__gallery">
-        <img src={`${process.env.PUBLIC_URL}/images/${props.img}`} />
+        <img
+          src={`${process.env.PUBLIC_URL}/images/${props.img}`}
+          className="gallery__img"
+        />
       </aside>
       <article className="work__article">
         <h1
@@ -31,11 +34,10 @@ const Gallery = (props) => {
         >
           {props.text}
         </p>
-        <div class="arrow" onClick={props.handleNext}>
-          <div class="arrow-top"></div>
-          <div class="arrow-bottom"></div>
+
+        <div className="gallery__triangle">
+          <div className="close" onClick={() => props.handleOpen(false)}></div>
         </div>
-        <div className="gallery__triangle"></div>
       </article>
     </section>
   );

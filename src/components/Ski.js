@@ -12,18 +12,60 @@ const Ski = (props) => {
   let gameOver,
     gameStarted = false;
   useEffect(() => {
-    const canvas = document.getElementById("play__canvas");
-    //Hide mouse when over canvas
-    canvas.style.cursor = "none";
-    const canvasRect = canvas.parentNode.getBoundingClientRect();
+    //World object
+    const world = {
+      canvas: document.getElementById("play__canvas"),
+      time: new Date(),
+      boundaries: {
+        left: 0,
+        right: null,
+      },
+      step: function () {
+        //Update elapsed time
+        world.elapsedTime = new Date() - world.time;
 
-    canvas.width = canvasRect.width;
-    //Window height minus the white border in app.sass
-    canvas.height = window.innerHeight - 80;
+        //Generate new tree obstacles
+        console.log(Math.floor(Math.random() * 10));
+        //trees.push(tree());
+
+        //Move side boundaries closer together over time
+        // world.boundaries.left += 0.1;
+        // world.boundaries.right -= 0.1;
+      },
+      clear: function () {
+        //Clear previous screen
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      },
+      draw: function () {
+        //Draw left side boundary
+        this.ctx.fillStyle = "#fff";
+        this.ctx.beginPath();
+        this.ctx.moveTo(0, 0);
+        this.ctx.lineTo(this.boundaries.left, 0);
+        this.ctx.lineTo(this.boundaries.left, this.canvas.height);
+        this.ctx.lineTo(0, this.canvas.height);
+        this.ctx.fill();
+        //Right boundry
+        this.ctx.beginPath();
+        this.ctx.moveTo(this.canvas.width, 0);
+        this.ctx.lineTo(this.boundaries.right, 0);
+        this.ctx.lineTo(this.boundaries.right, this.canvas.height);
+        this.ctx.lineTo(this.canvas.width, this.canvas.height);
+        this.ctx.fill();
+      },
+    };
+
     //Get context
-    const ctx = canvas.getContext("2d");
-    //Get time for timer
-    const time = new Date();
+    world.ctx = world.canvas.getContext("2d");
+    //Hide mouse when over canvas
+    world.canvas.style.cursor = "none";
+    world.position = world.canvas.parentNode.getBoundingClientRect();
+    //Set canvas size equal to parent bounding size
+    world.canvas.width = world.position.width;
+    //Set player right wall boundary to width
+    world.boundaries.right = world.canvas.width;
+    //Window height minus the white border in app.sass
+    world.canvas.height = window.innerHeight - 80;
 
     //Player movement
     // -- Keyboard Controls
@@ -59,12 +101,12 @@ const Ski = (props) => {
     );
 
     //Object arrays
-    const boxes = [];
+    const trees = [];
     const circles = [];
 
     const player = {
-      y: canvas.height / 3,
-      x: canvas.width / 2,
+      y: world.position.height / 3,
+      x: world.position.width / 2,
       width: 10,
       height: 10,
       radius: 7,
@@ -77,11 +119,8 @@ const Ski = (props) => {
       spacePressed: false,
       color: "#f3c41a",
       score: 0,
-      points: [{ x: canvas.width / 2, y: canvas.height / 3 }],
+      points: [{ x: world.position.width / 2, y: world.position.height / 3 }],
 
-      jump: function () {
-        console.log(this.y);
-      },
       step: function () {
         //Movement
         if (this.rightPressed) {
@@ -94,18 +133,14 @@ const Ski = (props) => {
         this.velocityX *= this.friction;
         this.x += this.velocityX;
 
-        console.log(this.velocityX);
-
         //Constrain player to canvas boundary
         //--Right side
-        if (this.x >= canvasRect.width - player.radius) {
-          this.x = canvasRect.width - player.radius;
-          this.velocityX = 0;
+        if (this.x >= world.boundaries.right - player.radius) {
+          this.x = world.boundaries.right - player.radius;
         }
         //--Left side
-        if (this.x <= player.radius) {
-          this.velocityX = 0;
-          this.x = player.radius;
+        if (this.x <= world.boundaries.left + player.radius) {
+          this.x = world.boundaries.left + player.radius;
         }
 
         //Player tail points
@@ -119,27 +154,32 @@ const Ski = (props) => {
         this.points.push({ x: midPointX, y: midPointY });
         this.points.push({ x: this.x, y: this.y });
 
-        //Update player score
-        let timeDiff = new Date() - time;
-        player.score = Math.round((timeDiff /= 1000));
+        //Update player scores
+        player.score = Math.round((world.elapsedTime /= 1000));
       },
       draw: function () {
-        ctx.fillStyle = player.color;
-        ctx.beginPath();
-        ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2, true); // π * 2 Radians = 360 degrees
-        ctx.closePath();
-        ctx.fill();
+        world.ctx.fillStyle = player.color;
+        world.ctx.beginPath();
+        world.ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2, true); // π * 2 Radians = 360 degrees
+        world.ctx.closePath();
+        world.ctx.fill();
       },
       drawTail: function () {
         for (let i = 0; i < this.points.length; i++) {
           let inverted = this.points.length - i;
           let scaled = inverted ** 1.34 * 0.01 + 3;
 
-          ctx.beginPath();
-          ctx.arc(this.points[i].x, this.points[i].y, scaled, 0, Math.PI * 2);
-          ctx.closePath();
-          ctx.fillStyle = "#e0e0e0";
-          ctx.fill();
+          world.ctx.beginPath();
+          world.ctx.arc(
+            this.points[i].x,
+            this.points[i].y,
+            scaled,
+            0,
+            Math.PI * 2
+          );
+          world.ctx.closePath();
+          world.ctx.fillStyle = "#e0e0e0";
+          world.ctx.fill();
         }
       },
       stepTail: function () {
@@ -154,8 +194,8 @@ const Ski = (props) => {
         }
       },
       drawShadow: function () {
-        ctx.beginPath();
-        ctx.ellipse(
+        world.ctx.beginPath();
+        world.ctx.ellipse(
           player.x + 5,
           player.y + 1,
           player.radius - 2,
@@ -164,9 +204,9 @@ const Ski = (props) => {
           0,
           2 * Math.PI
         );
-        ctx.closePath();
-        ctx.fillStyle = "#e5e8e8";
-        ctx.fill();
+        world.ctx.closePath();
+        world.ctx.fillStyle = "#e5e8e8";
+        world.ctx.fill();
       },
     };
 
@@ -174,8 +214,11 @@ const Ski = (props) => {
     const tree = () => {
       let width = randomNum(25, 40);
       let height = width * 2.3;
-      let startX = randomNum(canvasRect.left, canvas.width - canvasRect.left);
-      let startY = canvas.height + 100;
+      let startX = randomNum(
+        world.boundaries.left + 50,
+        world.boundaries.right - 50
+      );
+      let startY = world.position.height + 100;
       return {
         //Generate random starting X pos between canvas sides
         points: {
@@ -189,6 +232,9 @@ const Ski = (props) => {
           3: { x: startX + width / 2, y: startY + height },
         },
         step: function () {
+          if (this.points[2].y < -10) {
+            return;
+          }
           for (const property in this.points) {
             //If the player is moving sideways slow the trees down
             let moveDistance =
@@ -201,53 +247,43 @@ const Ski = (props) => {
           }
         },
         draw: function () {
+          if (this.points[2].y < -10) {
+            return;
+          }
           //Draw shadow
-          ctx.fillStyle = "#e0e4e4";
-          ctx.beginPath();
-          ctx.moveTo(this.pointsShadow[1]["x"], this.pointsShadow[1]["y"]);
-          ctx.lineTo(this.pointsShadow[2]["x"], this.pointsShadow[2]["y"]);
-          ctx.lineTo(this.pointsShadow[3]["x"], this.pointsShadow[3]["y"]);
-          ctx.lineTo(this.pointsShadow[1]["x"], this.points[1]["y"]);
-          ctx.fill();
+          world.ctx.fillStyle = "#e0e4e4";
+          world.ctx.beginPath();
+          world.ctx.moveTo(
+            this.pointsShadow[1]["x"],
+            this.pointsShadow[1]["y"]
+          );
+          world.ctx.lineTo(
+            this.pointsShadow[2]["x"],
+            this.pointsShadow[2]["y"]
+          );
+          world.ctx.lineTo(
+            this.pointsShadow[3]["x"],
+            this.pointsShadow[3]["y"]
+          );
+          world.ctx.lineTo(this.pointsShadow[1]["x"], this.points[1]["y"]);
+          world.ctx.fill();
 
           //Draw tree
-          ctx.fillStyle = "#274f45";
-          ctx.beginPath();
-          ctx.moveTo(this.points[1]["x"], this.points[1]["y"]);
-          ctx.lineTo(this.points[2]["x"], this.points[2]["y"]);
-          ctx.lineTo(this.points[3]["x"], this.points[3]["y"]);
-          ctx.lineTo(this.points[1]["x"], this.points[1]["y"]);
-          ctx.fill();
+          world.ctx.fillStyle = "#274f45";
+          world.ctx.beginPath();
+          world.ctx.moveTo(this.points[1]["x"], this.points[1]["y"]);
+          world.ctx.lineTo(this.points[2]["x"], this.points[2]["y"]);
+          world.ctx.lineTo(this.points[3]["x"], this.points[3]["y"]);
+          world.ctx.lineTo(this.points[1]["x"], this.points[1]["y"]);
+          world.ctx.fill();
         },
       };
     };
-
-    const ObjSpawner = () => {
-      let boxInterval,
-        numBoxes = 1;
-      return {
-        start: function () {
-          boxInterval = setInterval(() => {
-            numBoxes += 0.01;
-            for (let i = 1; i <= Math.floor(numBoxes); i++) {
-              boxes.push(tree());
-            }
-          }, 500);
-        },
-        reset: function () {
-          this.startTime = new Date();
-        },
-        stop: () => {
-          clearInterval(boxInterval);
-        },
-      };
-    };
-    const spawnObjects = ObjSpawner();
 
     function drawScore() {
-      ctx.font = "800 76px Poppins";
-      ctx.fillStyle = "#2f2042";
-      ctx.fillText(`${player.score}`, canvas.width / 2 - 20, 100);
+      world.ctx.font = "800 76px Poppins";
+      world.ctx.fillStyle = "#2f2042";
+      world.ctx.fillText(`${player.score}`, world.position.width / 2 - 20, 100);
     }
 
     //Helper random function
@@ -292,14 +328,15 @@ const Ski = (props) => {
 
     // update function, to update positions
     function update() {
+      world.step();
       player.step();
       //This should be a step method on the boxes class
-      boxes.forEach((el, i) => {
+      trees.forEach((el, i) => {
+        //Remove trees outside the canvas top edge
+        //el.points[2].y < -50 && trees.splice(i, 1);
         el.step();
-        //Remove trees that are outside the canvas
-        el.points[2].y < -50 && boxes.splice(i, 1);
 
-        //Check collision with boxes
+        //Check collision with trees
         //Need to fix this. Right now it doesn't check the last line of the square
         //because the for loop can't loop back to the start of the obj to get point 1
         for (let i = 1; i < 3; i++) {
@@ -318,14 +355,17 @@ const Ski = (props) => {
     // render function draws everything on to canvas
     function render() {
       //Clear previous screen
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      world.clear();
+
       //Render objects in array
       player.drawShadow();
-      boxes.forEach((el) => el.draw());
+      trees.forEach((el) => el.draw());
       player.drawTail();
       //Draw player shadow
-
       player.draw();
+
+      //Draw world boundaries
+      world.draw();
 
       drawScore(player.score);
     }
@@ -333,7 +373,6 @@ const Ski = (props) => {
     // gameLoop
     function gameLoop() {
       if (!gameStarted) {
-        spawnObjects.start();
         gameStarted = true;
       } else {
         update();
@@ -345,7 +384,6 @@ const Ski = (props) => {
         gameLoop();
         window.requestAnimationFrame(step);
       } else if (gameOver) {
-        spawnObjects.stop();
         history.replace({
           pathname: "/score",
           state: { score: player.score },
