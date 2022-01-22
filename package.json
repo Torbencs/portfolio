@@ -10,6 +10,7 @@
     "axios": "^0.24.0",
     "canvas-sketch": "^0.7.4",
     "chart.js": "^3.5.1",
+    "flat-carousel": "0.0.1",
     "goober": "^2.0.8",
     "masonry-layout": "^4.2.2",
     "matter-js": "^0.14.2",

@@ -1,4 +1,4 @@
-let data = [
+let designData = [
   {
     title: "ClimbWest",
     text: "text",
@@ -18,19 +18,28 @@ let data = [
   {
     title: "ClimbWest",
     text: "New text",
-    imgSrc: "businesscard.png",
-    bgColor: "#1C1D20",
-    textTheme: "light",
+    imgSrc: "climb.png",
+    bgColor: "#fff",
+    textTheme: "dark",
+    size: "tall",
+  },
+  {
+    title: "ClimbWest",
+    text: "New text",
+    imgSrc: "instagram.png",
+    bgColor: "#efefef",
+    textTheme: "dark",
     size: "wide",
   },
   {
     title: "ClimbWest",
     text: "New text",
-    imgSrc: "logo.png",
+    imgSrc: "recycle.png",
     bgColor: "#EEEEEE",
     textTheme: "dark",
-    size: "wide",
+    size: "tall",
   },
+
   {
     title: "Ninja",
     text: "New text",
@@ -42,11 +51,19 @@ let data = [
   {
     title: "ClimbWest",
     text: "New text",
-    imgSrc: "campus.png",
+    imgSrc: "climb_2.png",
     bgColor: "#EEEEEE",
     textTheme: "dark",
-    size: "tall",
+    size: "wide",
+  },
+  {
+    title: "ClimbWest",
+    text: "New text",
+    imgSrc: "cert.jpg",
+    bgColor: "#e1ebf0",
+    textTheme: "dark",
+    size: "wide",
   },
 ];
 
-export default data;
+export default designData;

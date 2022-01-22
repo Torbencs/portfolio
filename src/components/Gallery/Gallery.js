@@ -10,7 +10,7 @@ const Gallery = (props) => {
     >
       <aside className="work__gallery">
         <img
-          src={`${process.env.PUBLIC_URL}/images/${props.img}`}
+          src={`${process.env.PUBLIC_URL}/images/design/${props.imgSrc}`}
           className="gallery__img"
         />
       </aside>

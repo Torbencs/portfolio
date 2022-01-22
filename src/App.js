@@ -3,16 +3,16 @@ import React, { useState, useEffect, useLayoutEffect } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 //Pages
-import About from "./components/About";
+import About from "./pages/About/About";
 import Ski from "./components/Ski";
 import Score from "./components/Score";
-import Work from "./pages/Work/Work";
+import Design from "./pages/Design/Design";
+import Web from "./pages/Web/Web";
 //import URL from "./pages/URL";
 
 //Components
 import HomeNav from "./components/HomeNav";
 import SideNav from "./components/SideNav";
-import Project from "./components/Project";
 
 import "./css/fonts.css";
 import "./App.sass";
@@ -29,7 +29,7 @@ function App() {
         render={(props) => <HomeNav {...props} />}
       />
       <div className={"flex-container"}>
-        <Route exact path={["/about", "/work", "/play", "/score"]}>
+        <Route exact path={["/about", "/design", "/web", "/play", "/score"]}>
           <SideNav />
         </Route>
 
@@ -41,7 +41,8 @@ function App() {
               render={(props) => <About {...props} />}
             />
 
-            <Route path="/work" render={(props) => <Work {...props} />} />
+            <Route path="/design" render={(props) => <Design {...props} />} />
+            <Route path="/web" render={(props) => <Web {...props} />} />
             <Route exact path="/play">
               <Ski />
             </Route>

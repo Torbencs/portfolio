@@ -25,12 +25,14 @@ const Ski = (props) => {
         world.elapsedTime = new Date() - world.time;
 
         //Generate new tree obstacles
-        console.log(Math.floor(Math.random() * 10));
-        //trees.push(tree());
+        Math.random() > 0.96 && trees.push(tree());
 
         //Move side boundaries closer together over time
-        // world.boundaries.left += 0.1;
-        // world.boundaries.right -= 0.1;
+        world.boundaries.left += 0.6;
+        world.boundaries.right -= 0.6;
+
+        //Spawn time circles
+        Math.random() > 0.9 && coins.push(coin());
       },
       clear: function () {
         //Clear previous screen
@@ -102,7 +104,7 @@ const Ski = (props) => {
 
     //Object arrays
     const trees = [];
-    const circles = [];
+    const coins = [];
 
     const player = {
       y: world.position.height / 3,
@@ -279,6 +281,36 @@ const Ski = (props) => {
         },
       };
     };
+    //Coin factory function
+    const coin = () => {
+      let startX = randomNum(
+        world.boundaries.left + 50,
+        world.boundaries.right - 50
+      );
+      return {
+        x: startX,
+        y: world.position.height + 100,
+        step: function () {
+          let moveDistance = player.maxSpeed - Math.abs(player.velocityX * 0.2);
+          this.y -= moveDistance;
+        },
+        draw: function () {
+          //Shadow
+          world.ctx.fillStyle = "#f9efcb";
+          world.ctx.beginPath();
+          //world.ctx.arc(this.x, this.y, 20, 0, Math.PI * 2, true); // π * 2 Radians = 360 degrees
+          world.ctx.ellipse(this.x + 2, this.y, 15, 25, 1, 0, Math.PI * 2);
+          world.ctx.closePath();
+          world.ctx.fill();
+
+          world.ctx.fillStyle = "#f3c41a";
+          world.ctx.beginPath();
+          world.ctx.arc(this.x, this.y, 20, 0, Math.PI * 2, true); // π * 2 Radians = 360 degrees
+          world.ctx.closePath();
+          world.ctx.fill();
+        },
+      };
+    };
 
     function drawScore() {
       world.ctx.font = "800 76px Poppins";
@@ -330,7 +362,11 @@ const Ski = (props) => {
     function update() {
       world.step();
       player.step();
-      //This should be a step method on the boxes class
+      coins.forEach((el, i) => {
+        console.log(el);
+        el.step();
+      });
+      //This should be a step method on the tree class
       trees.forEach((el, i) => {
         //Remove trees outside the canvas top edge
         //el.points[2].y < -50 && trees.splice(i, 1);
@@ -361,6 +397,11 @@ const Ski = (props) => {
       player.drawShadow();
       trees.forEach((el) => el.draw());
       player.drawTail();
+
+      //Draw coin
+      /*  coins.forEach((el, i) => {
+        el.draw();
+      }); */
       //Draw player shadow
       player.draw();
 

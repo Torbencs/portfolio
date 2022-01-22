@@ -1,12 +1,12 @@
 $fontColor: #2f2042
 
 header.main__header
-    padding-top: 7.6em
+    padding-top: 9em
     height: 400px
 
     h1
         font-family: 'Poppins'
-        font-size: 4.6em
+        font-size: 5.2em
         font-weight: 800
         color: $fontColor
         -webkit-font-smoothing: antialiased
@@ -14,34 +14,112 @@ header.main__header
         letter-spacing: 0.0em
         padding-bottom: 0.3em
 
-#nav__yellow-dot
-    position: fixed
+.dot--yellow
     margin-left: 5px
-    width: 16px
-    height: 16px
-    background-color: #f3c41a
-    border-radius: 50%
-    display: inline-block
+    color: #f3c41a
 
 .homeMenu
     font-family: 'Poppins'
     text-align: center
-    margin-top: 0em
+    margin-top: 15vh
     font-weight: 600
 
     &__link
-        font-size: 1.7em
+        font-size: 2.4em
+        cursor: pointer
         display: block
         color: #342647
         text-rendering: optimizeLegibility !important
         -webkit-font-smoothing: auto !important
         &--yellow
             color: #f3c41a
-            font-size: 1.7em
+    &__link--option
+        font-size: 2.4em
+        display: block
+        color: #342647
+        text-rendering: optimizeLegibility !important
+        -webkit-font-smoothing: auto !important
 
     a
-        width: 7em
-        margin: auto
+        cursor: default
 
-    a:hover
-        color: #f3c41a
+.highlight--yellow:hover
+    color: #f3c41a
+    cursor: pointer
+.hidden
+    opacity: 0
+    cursor: default
+
+.fadeIn-enter
+    opacity: 0.01
+
+.fadeIn-enter.fadeIn-enter-active
+    opacity: 1
+    transition: opacity 800ms ease-in
+
+.fadeIn-leave
+    opacity: 1
+    &.fadeIn-leave-active
+        opacity: 0.01
+        transition: opacity 800ms ease-in
+.fadeIn-appear
+    opacity: 0.01
+    &.fadeIn-appear-active
+        opacity: 1
+        transition: opacity .8s ease-in
+
+.slideInUp
+    -webkit-animation-name: slideInUp
+    animation-name: slideInUp
+    -webkit-animation-duration: 0.3s
+    animation-duration: 0.3s
+    -webkit-animation-fill-mode: both
+    animation-fill-mode: both
+
+@-webkit-keyframes slideInUp
+  0% 
+    -webkit-transform: translateY(80%)
+    transform: translateY(80%)
+    visibility: visible
+
+  100% 
+    -webkit-transform: translateY(10%)
+    transform: translateY(10%)
+
+@keyframes slideInUp
+    0%
+        -webkit-transform: translateY(80%)
+        transform: translateY(80%)
+        visibility: visible
+
+    100%
+        -webkit-transform: translateY(10%)
+        transform: translateY(10%)
+
+.slideInDown
+    -webkit-animation-name: slideInDown
+    animation-name: slideInDown
+    -webkit-animation-duration: 0.3s
+    animation-duration: 0.3s
+    -webkit-animation-fill-mode: both
+    animation-fill-mode: both
+
+@-webkit-keyframes slideInDown
+  0% 
+    -webkit-transform: translateY(-80%)
+    transform: translateY(-80%)
+    visibility: visible
+
+  100% 
+    -webkit-transform: translateY(-10%)
+    transform: translateY(-10%)
+
+@keyframes slideInDown
+    0%
+        -webkit-transform: translateY(-80%)
+        transform: translateY(-80%)
+        visibility: visible
+
+    100%
+        -webkit-transform: translateY(-10%)
+        transform: translateY(-10%)

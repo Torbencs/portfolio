@@ -1,0 +1,45 @@
+.grid-wrapper > div
+    display: flex
+    justify-content: center
+    align-items: center
+
+    & > img
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+.grid-wrapper
+    height: 85vh
+    overflow-y: scroll
+    overflow-x: hidden
+    display: grid
+    margin: 3em 3em
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr))
+    grid-template-rows: repeat(auto-fill, minmax(150px, 1fr))
+    gap: 0px
+    grid-auto-flow: dense
+    & .wide
+        grid-column: span 2
+        grid-row: span 2
+
+    & .tall
+        grid-row: span 3
+
+    & .normal
+        grid-row: span 2
+
+    & .big
+        grid-column: span 2
+        grid-row: span 3
+
+.masonry-div:hover
+    cursor: pointer
+    transition: 0.3s ease-in-out
+    transform: scale(1.015)
+
+    img
+        border-radius: 5px
+
+//Scroll custom
+.grid-wrapper::-webkit-scrollbar
+    width: 0px

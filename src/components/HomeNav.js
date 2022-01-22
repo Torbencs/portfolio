@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { CSSTransitionGroup } from "react-transition-group";
 
 import { Route, BrowserRouter as Router, Link } from "react-router-dom";
 import { animate } from "motion";
@@ -7,76 +8,83 @@ import "../css/fonts.css";
 import "./HomeNav.sass";
 
 function HomeNav() {
-  /* Yellow navigation dot move effect
-  //
-  */
-  useEffect(() => {
-    //Set inital yellow dot fixed position
-    document.getElementById("nav__yellow-dot").style.top =
-      document.getElementById("home").getBoundingClientRect().bottom -
-      20 +
-      "px";
-  }, []);
+  const [showMenu, setShowMenu] = useState(false);
+  const [showSubMenu, setShowSubMenu] = useState(false);
 
-  const handleDot = (event) => {
-    let element = event.target.getBoundingClientRect();
-    let middle = element.top + (element.bottom - element.top) / 2 - 8; //8 = circle size
-    //Change yellow dot position to absolute
+  setTimeout(() => {
+    setShowMenu(true);
+  }, 3000);
 
-    animate(`#nav__yellow-dot`, {
-      top: middle + "px",
-    });
-    //document.getElementById("nav__yellow-dot").style.position = "fixed";
+  const Torben = () => {
+    return (
+      <h1>
+        <a
+          id={"home"}
+          onMouseOver={() => {
+            setTimeout(() => {
+              setShowMenu(true);
+            }, 800);
+          }}
+        >
+          Torben<span className="dot--yellow">.</span>
+        </a>
+      </h1>
+    );
   };
 
-  const handleDotLeave = () => {
-    animate(`#nav__yellow-dot`, {
-      top:
-        document.getElementById("home").getBoundingClientRect().bottom -
-        43 +
-        "px",
-    });
-  };
+  const NavLinks = () => {
+    const SubMenu = () => {
+      return (
+        <>
+          <Link
+            id={"design"}
+            className="homeMenu__link--option slideInUp"
+            to="/design"
+          >
+            <span className="highlight--yellow">design</span>
+          </Link>
+          <div className="homeMenu__link--option hidden">.</div>
+          <Link
+            id={"web"}
+            className="homeMenu__link--option slideInDown"
+            to="/web"
+          >
+            <span className="highlight--yellow">web</span>
+          </Link>
+        </>
+      );
+    };
+    const Menu = () => {
+      return (
+        <CSSTransitionGroup
+          transitionName="fadeIn"
+          transitionAppear={true}
+          transitionAppearTimeout={900}
+          transitionEnter={false}
+          transitionLeave={false}
+        >
+          <Link id={"about"} className="homeMenu__link" to="/about">
+            <span className="highlight--yellow">about</span>
+          </Link>
+          <a className="homeMenu__link" onClick={() => setShowSubMenu(true)}>
+            <span className="highlight--yellow">work</span>
+          </a>
+          <Link id={"play"} className="homeMenu__link " to="/play">
+            <span className="highlight--yellow">play</span>
+          </Link>
+        </CSSTransitionGroup>
+      );
+    };
 
+    return showSubMenu ? <SubMenu /> : <Menu />;
+  };
   /* Render
   //
   */
   return (
     <header className={"main__header"}>
-      <nav className={"homeMenu"}>
-        <h1>
-          <a id={"home"}>Torben</a>
-          <div id={"nav__yellow-dot"}></div>
-        </h1>
-
-        <Link
-          id={"about"}
-          className="homeMenu__link"
-          to="/about"
-          onMouseEnter={handleDot}
-          onMouseLeave={handleDotLeave}
-        >
-          about
-        </Link>
-        <Link
-          id={"work"}
-          onMouseEnter={handleDot}
-          onMouseLeave={handleDotLeave}
-          className="homeMenu__link"
-          to="/work"
-        >
-          work
-        </Link>
-
-        <Link
-          id={"play"}
-          onMouseEnter={handleDot}
-          onMouseLeave={handleDotLeave}
-          className="homeMenu__link--yellow"
-          to="/play"
-        >
-          play
-        </Link>
+      <nav className={"homeMenu"} onMouseLeave={() => setShowSubMenu(false)}>
+        {showMenu ? <NavLinks /> : <Torben />}
       </nav>
     </header>
   );
