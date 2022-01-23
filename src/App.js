@@ -8,7 +8,6 @@ import Ski from "./components/Ski";
 import Score from "./components/Score";
 import Design from "./pages/Design/Design";
 import Web from "./pages/Web/Web";
-//import URL from "./pages/URL";
 
 //Components
 import HomeNav from "./components/HomeNav";
@@ -23,11 +22,7 @@ function App() {
   */
   return (
     <Router>
-      <Route
-        exact
-        path="/portfolio"
-        render={(props) => <HomeNav {...props} />}
-      />
+      <Route exact path="/" render={(props) => <HomeNav {...props} />} />
       <div className={"flex-container"}>
         <Route exact path={["/about", "/design", "/web", "/play", "/score"]}>
           <SideNav />
@@ -40,7 +35,6 @@ function App() {
               path="/about"
               render={(props) => <About {...props} />}
             />
-
             <Route path="/design" render={(props) => <Design {...props} />} />
             <Route path="/web" render={(props) => <Web {...props} />} />
             <Route exact path="/play">
@@ -51,7 +45,7 @@ function App() {
               path="/score"
               render={(props) => <Score {...props} />}
             />
-            {/* <Route path="/url" render={(props) => <URL />} /> */}
+            {/* <Route path="/tetris" render={(props) => <Play />} /> */}
           </Switch>
         </main>
       </div>

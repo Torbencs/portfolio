@@ -33,12 +33,7 @@ const WebGallery = (props) => {
         ))}
       </div>
       <div className="webgallery__triangle">
-        <div
-          className="close"
-          onClick={() => {
-            isActive ? setIsActive(false) : props.handleOpen(false);
-          }}
-        ></div>
+        <div className="close" onClick={() => props.handleOpen(false)}></div>
       </div>
     </section>
   );

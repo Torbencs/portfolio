@@ -1,5 +1,12 @@
 const webData = [
   {
+    title: "Inspection Reporting App",
+    tech: "HTML, Javascript, CSS",
+    text: "text",
+    images: ["web/inspect/inspect_1.jpg", "web/inspect/inspect_2.jpg"],
+    bgColor: "#EEEFF1",
+  },
+  {
     title: "Real Estate Image",
     tech: "Wordpress, SEO, JS",
     text: "text",
@@ -16,6 +23,13 @@ const webData = [
       "web/sjm/sjm_3.png",
       "web/sjm/sjm_4.png",
     ],
+    bgColor: "#EEEFF1",
+  },
+  {
+    title: "A Tree",
+    tech: "Adobe XD, Squarespace",
+    text: "text",
+    images: ["web/atree/atree.png"],
     bgColor: "#EEEFF1",
   },
 ];

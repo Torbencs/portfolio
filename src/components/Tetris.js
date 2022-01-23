@@ -65,7 +65,7 @@ function Tetris() {
   };
   this.print = () => {
     let board = this.board.join("");
-    history.replace(`/URL/${board}Score:${this.score}`);
+    history.replace(`/tetris/${board}Score:${this.score}`);
   };
 
   this.run = (tickRate = 80) => {
