@@ -1,0 +1,245 @@
+Exporter version: 6.3.0, Blender version: 2.82 (sub 7)
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used :
+		Inline textures     :  false
+		Material Type       :  PBR
+		Positions Precision :  4
+		Normals Precision   :  3
+		UVs Precision       :  3
+		Vert Color Precision:  3
+		Mat Weight Precision:  2
+		Keep Z-up r-handed  :  no
+		Texture directory   :  C:\Users\Torben\Desktop\The Vault\url-ninja\portfolio\models\
+	Python World class constructor completed
+	WARNING: No active camera has been assigned, or is not in a currently selected Blender layer
+	processing begun of mesh:  0
+		WARNING: No materials have been assigned: 
+		num positions      :  48
+		num normals        :  48
+		num tangents       :  0
+		num uvs            :  96
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  60
+	processing begun of mesh:  1
+		WARNING: No materials have been assigned: 
+		num positions      :  814
+		num normals        :  814
+		num tangents       :  0
+		num uvs            :  1628
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1212
+	processing begun of mesh:  2
+		WARNING: No materials have been assigned: 
+		num positions      :  465
+		num normals        :  465
+		num tangents       :  0
+		num uvs            :  930
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  660
+	processing begun of mesh:  3
+		WARNING: No materials have been assigned: 
+		num positions      :  814
+		num normals        :  814
+		num tangents       :  0
+		num uvs            :  1628
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1212
+	processing begun of mesh:  4
+		WARNING: No materials have been assigned: 
+		num positions      :  312
+		num normals        :  312
+		num tangents       :  0
+		num uvs            :  624
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  444
+	processing begun of mesh:  5
+		WARNING: No materials have been assigned: 
+		num positions      :  453
+		num normals        :  453
+		num tangents       :  0
+		num uvs            :  906
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  660
+	processing begun of mesh:  6
+		WARNING: No materials have been assigned: 
+		num positions      :  926
+		num normals        :  926
+		num tangents       :  0
+		num uvs            :  1852
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1332
+	processing begun of mesh:  7
+		WARNING: No materials have been assigned: 
+		num positions      :  453
+		num normals        :  453
+		num tangents       :  0
+		num uvs            :  906
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  660
+	processing begun of mesh:  8
+		WARNING: No materials have been assigned: 
+		num positions      :  926
+		num normals        :  926
+		num tangents       :  0
+		num uvs            :  1852
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1332
+	processing begun of mesh:  9
+		WARNING: No materials have been assigned: 
+		num positions      :  32
+		num normals        :  32
+		num tangents       :  0
+		num uvs            :  64
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  36
+	processing begun of mesh:  10
+		WARNING: No materials have been assigned: 
+		num positions      :  420
+		num normals        :  420
+		num tangents       :  0
+		num uvs            :  840
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  600
+	processing begun of mesh:  11
+		WARNING: No materials have been assigned: 
+		num positions      :  420
+		num normals        :  420
+		num tangents       :  0
+		num uvs            :  840
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  600
+	processing begun of mesh:  12
+		WARNING: No materials have been assigned: 
+		num positions      :  814
+		num normals        :  814
+		num tangents       :  0
+		num uvs            :  1628
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1164
+	processing begun of mesh:  13
+		WARNING: No materials have been assigned: 
+		num positions      :  776
+		num normals        :  776
+		num tangents       :  0
+		num uvs            :  1552
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1152
+	processing begun of mesh:  14
+		WARNING: No materials have been assigned: 
+		num positions      :  834
+		num normals        :  834
+		num tangents       :  0
+		num uvs            :  1668
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1212
+	processing begun of mesh:  15
+		WARNING: No materials have been assigned: 
+		num positions      :  312
+		num normals        :  312
+		num tangents       :  0
+		num uvs            :  624
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  444
+	processing begun of mesh:  16
+		WARNING: No materials have been assigned: 
+		num positions      :  926
+		num normals        :  926
+		num tangents       :  0
+		num uvs            :  1852
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  1332
+	processing begun of mesh:  17
+		WARNING: No materials have been assigned: 
+		num positions      :  251
+		num normals        :  251
+		num tangents       :  0
+		num uvs            :  502
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  360
+	processing begun of mesh:  18
+		WARNING: No materials have been assigned: 
+		num positions      :  437
+		num normals        :  437
+		num tangents       :  0
+		num uvs            :  874
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  600
+	processing begun of mesh:  Mountain
+		processing begun of material:  snow
+		processing begun of material:  mountain base rock
+		processing begun of material:  snow shadow
+		processing begun of material:  text
+		processing begun of material:  snow.001
+		processing begun of material:  mountain base rock.001
+		processing begun of material:  snow shadow.001
+		processing begun of material:  text.001
+		processing begun of multimaterial:  mountain_merged_scene_41.Multimaterial#0
+		num positions      :  5027
+		num normals        :  5027
+		num tangents       :  0
+		num uvs            :  10054
+		num uvs2           :  0
+		num colors         :  0
+		num indices        :  5463
+	processing begun of mesh:  house
+		processing begun of material:  cable
+		processing begun of material:  Material.002
+		processing begun of material:  house
+		processing begun of material:  snow shadow
+		processing begun of material:  house shadow
+		processing begun of material:  door
+		processing begun of material:  House beams shadow
+		processing begun of material:  glass
+		processing begun of material:  post
+		processing begun of material:  landingpadmat
+		processing begun of material:  Material.003
+		processing begun of material:  wood
+		processing begun of material:  wood light
+		processing begun of material:  water
+========= An error was encountered =========
+  File "C:\Users\Torben\AppData\Roaming\Blender Foundation\Blender\2.82\scripts\addons\babylon_js\json_exporter.py", line 112, in execute
+    mesh = Mesh(object, scene, self)
+  File "C:\Users\Torben\AppData\Roaming\Blender Foundation\Blender\2.82\scripts\addons\babylon_js\mesh.py", line 146, in __init__
+    recipe = BakingRecipe(bpyMesh, exporter)
+  File "C:\Users\Torben\AppData\Roaming\Blender Foundation\Blender\2.82\scripts\addons\babylon_js\materials\baking_recipe.py", line 42, in __init__
+    bjsMaterial = BJSMaterial(bpyMaterial, exporter)
+  File "C:\Users\Torben\AppData\Roaming\Blender Foundation\Blender\2.82\scripts\addons\babylon_js\materials\material.py", line 62, in __init__
+    self.bjsNodeTree = AbstractBJSNode.readMaterialNodeTree(bpyMaterial.node_tree)
+  File "C:\Users\Torben\AppData\Roaming\Blender Foundation\Blender\2.82\scripts\addons\babylon_js\materials\nodes\abstract.py", line 254, in readMaterialNodeTree
+    return AbstractBJSNode.readNodeTree(node_tree, 'ShaderNodeOutputMaterial')
+  File "C:\Users\Torben\AppData\Roaming\Blender Foundation\Blender\2.82\scripts\addons\babylon_js\materials\nodes\abstract.py", line 274, in readNodeTree
+    return AbstractBJSNode(output, topLevelId, True)
+  File "C:\Users\Torben\AppData\Roaming\Blender Foundation\Blender\2.82\scripts\addons\babylon_js\materials\nodes\abstract.py", line 78, in __init__
+    bjsWrapperNode = AbstractBJSNode.GetBJSWrapperNode(nodeSocket.links[0].from_node, nodeSocket.name)
+  File "C:\Users\Torben\AppData\Roaming\Blender Foundation\Blender\2.82\scripts\addons\babylon_js\materials\nodes\abstract.py", line 328, in GetBJSWrapperNode
+    return PrincipledBJSNode(bpyNode, socketName)
+  File "C:\Users\Torben\AppData\Roaming\Blender Foundation\Blender\2.82\scripts\addons\babylon_js\materials\nodes\principled.py", line 11, in __init__
+    super().__init__(bpyNode, socketName)
+  File "C:\Users\Torben\AppData\Roaming\Blender Foundation\Blender\2.82\scripts\addons\babylon_js\materials\nodes\abstract.py", line 78, in __init__
+    bjsWrapperNode = AbstractBJSNode.GetBJSWrapperNode(nodeSocket.links[0].from_node, nodeSocket.name)
+  File "C:\Users\Torben\AppData\Roaming\Blender Foundation\Blender\2.82\scripts\addons\babylon_js\materials\nodes\abstract.py", line 340, in GetBJSWrapperNode
+    return TextureImageBJSNode(bpyNode, socketName)
+  File "C:\Users\Torben\AppData\Roaming\Blender Foundation\Blender\2.82\scripts\addons\babylon_js\materials\nodes\tex_image.py", line 13, in __init__
+    self.alpha = bpyNode.image.file_format not in NON_ALPHA_FORMATS
+ERROR:  'NoneType' object has no attribute 'file_format'
+========= end of processing =========
+elapsed time:  0 min, 1.7194 secs

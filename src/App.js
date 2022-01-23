@@ -22,7 +22,11 @@ function App() {
   */
   return (
     <Router>
-      <Route exact path="/" render={(props) => <HomeNav {...props} />} />
+      <Route
+        exact
+        path="/portfolio"
+        render={(props) => <HomeNav {...props} />}
+      />
       <div className={"flex-container"}>
         <Route exact path={["/about", "/design", "/web", "/play", "/score"]}>
           <SideNav />
