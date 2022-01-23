@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.9eabfb5a.chunk.css",
+    "main.js": "/portfolio/static/js/main.f3586eb8.chunk.js",
+    "main.js.map": "/portfolio/static/js/main.f3586eb8.chunk.js.map",
+    "runtime-main.js": "/portfolio/static/js/runtime-main.209c2d7e.js",
+    "runtime-main.js.map": "/portfolio/static/js/runtime-main.209c2d7e.js.map",
+    "static/js/2.1c64f6ce.chunk.js": "/portfolio/static/js/2.1c64f6ce.chunk.js",
+    "static/js/2.1c64f6ce.chunk.js.map": "/portfolio/static/js/2.1c64f6ce.chunk.js.map",
+    "index.html": "/portfolio/index.html",
+    "precache-manifest.75c2bb78ee276c76e473811fa2fb0fe1.js": "/portfolio/precache-manifest.75c2bb78ee276c76e473811fa2fb0fe1.js",
+    "service-worker.js": "/portfolio/service-worker.js",
+    "static/css/main.9eabfb5a.chunk.css.map": "/portfolio/static/css/main.9eabfb5a.chunk.css.map",
+    "static/js/2.1c64f6ce.chunk.js.LICENSE.txt": "/portfolio/static/js/2.1c64f6ce.chunk.js.LICENSE.txt",
+    "static/media/fonts.css": "/portfolio/static/media/source-sans-pro-v14-latin-regular.8ddcafb9.eot"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.209c2d7e.js",
+    "static/js/2.1c64f6ce.chunk.js",
+    "static/css/main.9eabfb5a.chunk.css",
+    "static/js/main.f3586eb8.chunk.js"
+  ]
+}
