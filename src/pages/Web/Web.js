@@ -18,6 +18,7 @@ const Web = (props) => {
       transitionName="example"
       transitionAppear={true}
       transitionAppearTimeout={500}
+      transitionEnterTimeout={500}
       transitionEnter={true}
       transitionLeave={false}
     >
@@ -48,6 +49,7 @@ const Web = (props) => {
     <CSSTransitionGroup
       transitionName="example"
       transitionAppear={true}
+      transitionEnterTimeout={500}
       transitionAppearTimeout={500}
       transitionEnter={true}
       transitionLeave={false}
@@ -55,6 +57,8 @@ const Web = (props) => {
       <WebGallery
         bgColor={webData[index].bgColor}
         images={webData[index].images}
+        isApp={webData[index].isApp}
+        component={webData[index].component}
         handleOpen={setIsShowing}
       />
     </CSSTransitionGroup>

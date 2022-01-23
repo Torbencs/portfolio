@@ -1,4 +1,14 @@
+import React from "react";
+import MovieQuiz from "../MovieQuiz/MovieQuiz";
 const webData = [
+  {
+    title: "Movie Quiz Game",
+    tech: "REST API, React, Adobe XD",
+    text: "text",
+    isApp: true,
+    component: <MovieQuiz />,
+    bgColor: "#EEEFF1",
+  },
   {
     title: "Inspection Reporting App",
     tech: "HTML, Javascript, CSS",
@@ -11,6 +21,19 @@ const webData = [
     tech: "Wordpress, SEO, JS",
     text: "text",
     images: ["web/rei/rei_1.jpg", "web/rei/rei_2.jpg", "web/rei/rei_3.jpg"],
+    bgColor: "#EEEFF1",
+  },
+  {
+    title: "Low Poly Game",
+    tech: "Babylon.js, Blender 3D, JS",
+    text: "text",
+    isApp: true,
+    component: (
+      <iframe
+        src="https://torbencs.github.io/portfolio/snowboard/game.html"
+        scrolling="no"
+      ></iframe>
+    ),
     bgColor: "#EEEFF1",
   },
   {

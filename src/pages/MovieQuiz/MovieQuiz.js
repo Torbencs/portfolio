@@ -8,8 +8,10 @@ import QuizButtons from "./components/QuizButtons/QuizButtons";
 import "./MovieQuiz.sass";
 //Images
 import MovieQuizLogo from "./assets/logo.png";
+import MovieQuizLogoSmall from "./assets/logo_small.png";
 
 const MovieQuiz = () => {
+  const [isActive, setIsActive] = useState(false);
   const [score, setScore] = useState(1001);
   const [loading, setLoading] = useState(true);
   const [movieResults, setMovieResults] = useState(null);
@@ -42,28 +44,38 @@ const MovieQuiz = () => {
   }, []);
 
   return (
-    <div className="quiz__container">
-      <img className="quiz__logo" src={MovieQuizLogo} />
-      {!loading && (
-        <QuizImage
-          id={movieResults[currentMovie]}
-          handleScore={setScore}
-          handleLoading={setLoading}
+    <>
+      <div
+        className={`quiz__container ${isActive && "quiz__container--active"}`}
+      >
+        <img
+          className={`quiz__bg ${isActive && "quiz__bg--hide"}`}
+          src={MovieQuizLogo}
+          onClick={() => setIsActive(true)}
         />
-      )}
-      <div className="quiz__score">
-        <h2>
-          Score <br></br>
-          <span className="quiz__score--yellow">{Math.floor(score)}</span>
-        </h2>
+        <img className="quiz__logo" src={MovieQuizLogoSmall} />
+
+        {!loading && isActive && (
+          <QuizImage
+            id={movieResults[currentMovie]}
+            handleScore={setScore}
+            handleLoading={setLoading}
+          />
+        )}
+        <div className="quiz__score">
+          <h2>
+            Score <br />
+            <span className="quiz__score--yellow">{Math.floor(score)}</span>
+          </h2>
+        </div>
+        {!loading && (
+          <QuizButtons
+            titles={movieResults}
+            correctTitle={movieResults[currentMovie]}
+          />
+        )}
       </div>
-      {!loading && (
-        <QuizButtons
-          titles={movieResults}
-          correctTitle={movieResults[currentMovie]}
-        />
-      )}
-    </div>
+    </>
   );
 };
 export default MovieQuiz;

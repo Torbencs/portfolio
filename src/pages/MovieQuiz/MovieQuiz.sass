@@ -1,19 +1,31 @@
 .quiz__container
-    display: grid
-    padding-top: 4em
-    grid-template-columns: 1fr 1fr 1fr
-    height: 100vh
-    background: linear-gradient(to top, #DCE6FC 0%, #F4F6FC 100%)
+    margin-top: 8em
+    padding-top: 1.5em
+    text-align: center
+    height: 100%
+    width: 100%
+    background-color: #f9f9f9
+    //background: linear-gradient(to top, #720dc6 0%, #6320c8 100%)
     justify-items: center
+    border-radius: 20px
+
+    &--active
+        position: absolute
+        top: 0
+        left: 0
+        margin: 0
+.quiz__bg
+    grid-column: 1 / 4
+    &--hide
+        display: none
 
 .quiz__logo
-    width: 100%
-    max-width: 200px
-    min-width: 100px
-    grid-column: 1 / 2
+    max-width: 500px
+    min-width: 200px
+    grid-column: 2 / 3
+    border-radius: 0 !important
 .quiz__score
-    font-size: 1.8em
-    grid-column: 3 / 4
-
+    font-size: 1em
     &--yellow
-        color: #FFC800
+        font-size: 1em
+        color: #720dc6

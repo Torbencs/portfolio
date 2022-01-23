@@ -25,12 +25,16 @@ const WebGallery = (props) => {
       </p>
 
       <div
-        className={`web__webgallery ${isActive && "web__webgallery--active"}`}
-        onClick={() => setIsActive(true)}
+        className={`web__webgallery ${isActive && "web__webgallery--active"} ${
+          props.isApp && "web__webgallery--app"
+        }`}
+        onClick={() => !props.isApp && setIsActive(true)}
       >
-        {props.images.map((image, index) => (
-          <img src={`${process.env.PUBLIC_URL}/images/${image}`} />
-        ))}
+        {props.images
+          ? props.images.map((image, index) => (
+              <img src={`${process.env.PUBLIC_URL}/images/${image}`} />
+            ))
+          : props.component}
       </div>
       <div className="webgallery__triangle">
         <div className="close" onClick={() => props.handleOpen(false)}></div>
