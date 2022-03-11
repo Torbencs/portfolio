@@ -28,8 +28,8 @@ const Ski = (props) => {
         Math.random() > 0.96 && trees.push(tree());
 
         //Move side boundaries closer together over time
-        world.boundaries.left += 0.6;
-        world.boundaries.right -= 0.6;
+        world.boundaries.left += 0.01;
+        world.boundaries.right -= 0.01;
 
         //Spawn time circles
         Math.random() > 0.9 && coins.push(coin());

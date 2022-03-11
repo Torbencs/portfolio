@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 //Css
 import "./QuizButtons.sass";
 
-const QuizButtons = ({ titles, correctTitle }) => {
+const QuizButtons = ({ titles, correctTitle, handleClick }) => {
   const [shuffledTitles, setShuffledTitles] = useState([]);
 
   useEffect(() => {
@@ -31,6 +31,7 @@ const QuizButtons = ({ titles, correctTitle }) => {
           href="javascript:void(0);"
           key={i}
           className="quiz__buttons btn "
+          onClick={() => handleClick(item.title)}
         >
           {item.title}
         </button>

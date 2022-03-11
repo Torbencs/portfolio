@@ -22,16 +22,18 @@
 .--yellow
     color: #f3c41a
 .web__list
-    border-top: 5px solid #2F2042
+    border-top: 1px solid #2F2042
 
     & li
-        border-bottom: 3px solid #2F2042
-        height: 2em
+        border-bottom: 1px solid #2F2042
+        height: 2.8em
+        line-height: 2.8em
+        vertical-align: middle
 
         &:hover
             cursor: pointer
-            margin-left: 0.3em
-            transition: 0.2s eas
+            background-color: #e7e7e7
+            transition: 0.2s ease
     &--left
         display: inline
         font-size: 1.3em
@@ -45,3 +47,17 @@
         font-weight: 200
         margin: 0
         float: right
+
+.scale-enter
+    transform: scale(0)
+
+    &.scale-enter-active
+        transform: scale(2)
+        transition: 1000ms ease-in
+
+.scale-leave
+    opacity: 1
+
+    &.scale-leave-active
+        opacity: 0.01
+        transition: opacity 300ms ease-in

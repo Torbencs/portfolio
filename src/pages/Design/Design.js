@@ -41,6 +41,7 @@ const Design = () => {
               imgSrc={designData[index].imgSrc}
               bgColor={designData[index].bgColor}
               textTheme={designData[index].textTheme}
+              altImg={designData[index].altImg}
               handleOpen={setIsOpen}
             />
           </CSSTransitionGroup>

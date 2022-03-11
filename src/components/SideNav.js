@@ -40,8 +40,8 @@ function SideNav() {
   );
   const SubMenu = () => (
     <>
-      <NavLink id={"design"} className="sideMenu__link slideInUp" to="/design">
-        design
+      <NavLink id={"design"} className="sideMenu__link slideInUp" to="/graphic">
+        graphic
       </NavLink>
       <a className="sideMenu__link hidden" style={{ cursor: "default" }}>
         .

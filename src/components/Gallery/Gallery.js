@@ -34,9 +34,18 @@ const Gallery = (props) => {
         >
           {props.text}
         </p>
+        {props.altImg && (
+          <img
+            className="gallery__img--alt"
+            src={`${process.env.PUBLIC_URL}/images/design/${props.altImg}`}
+          />
+        )}
 
         <div className="gallery__triangle">
-          <div className="close" onClick={() => props.handleOpen(false)}></div>
+          <div
+            className="gallery__close"
+            onClick={() => props.handleOpen(false)}
+          ></div>
         </div>
       </article>
     </section>

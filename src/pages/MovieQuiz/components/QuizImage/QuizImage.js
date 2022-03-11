@@ -4,13 +4,13 @@ import axios from "axios";
 //Css
 import "./QuizImage.sass";
 
-const QuizImage = ({ handleScore, id, handleLoading }) => {
+const QuizImage = ({ handleScore, id, handleLoading, onCorrectAnswer }) => {
   const [pressed, setPressed] = useState(false);
   const [moveCount, setMoveCount] = useState(0);
   const [posterData, setPosterData] = useState(null);
 
   useEffect(() => {
-    handleScore((prev) => prev - 0.4);
+    handleScore((prev) => prev - 0.05);
   }, [moveCount]);
 
   useEffect(() => {
@@ -28,11 +28,13 @@ const QuizImage = ({ handleScore, id, handleLoading }) => {
       .request(options)
       .then(function (response) {
         setPosterData(response.data.poster);
-        handleLoading(false);
       })
       .catch(function (error) {
         console.error(error);
       });
+
+    //Bring mask back when next image is loaded
+    reset();
   }, [id]);
 
   const unMask = (event) => {
@@ -56,6 +58,35 @@ const QuizImage = ({ handleScore, id, handleLoading }) => {
     mask.appendChild(circle);
   };
 
+  const reset = () => {
+    let mask = document.getElementById("mask1");
+
+    while (mask.firstChild) {
+      mask.removeChild(mask.firstChild);
+    }
+  };
+
+  const CorrectAnimation = () => (
+    <svg
+      className="checkmark"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 52 52"
+    >
+      <circle
+        className="checkmark__circle"
+        cx="26"
+        cy="26"
+        r="25"
+        fill="none"
+      />
+      <path
+        className="checkmark__check"
+        fill="none"
+        d="M14.1 27.2l7.1 7.2 16.7-16.8"
+      />
+    </svg>
+  );
+
   const handleMouseDown = (event) => {
     setPressed(true);
     setMoveCount((prevCount) => prevCount + 1);
@@ -69,6 +100,7 @@ const QuizImage = ({ handleScore, id, handleLoading }) => {
   };
   return (
     <div id="quiz__image__wrapper">
+      {onCorrectAnswer && <CorrectAnimation />}
       <svg
         id="quiz__svg"
         xmlns="http://www.w3.org/2000/svg"
@@ -85,15 +117,7 @@ const QuizImage = ({ handleScore, id, handleLoading }) => {
         <filter id="filter2">
           <feGaussianBlur stdDeviation="5" />
         </filter>
-        <mask id="mask1">
-          <circle
-            cx="-50%"
-            cy="-50%"
-            r="0"
-            fill="white"
-            filter="url(#filter2)"
-          />
-        </mask>
+        <mask id="mask1"></mask>
         <image
           className="quiz__image"
           xlinkHref={posterData}

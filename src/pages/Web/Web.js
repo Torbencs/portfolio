@@ -7,13 +7,14 @@ import WebGallery from "../../components/WebGallery/WebGallery";
 import "./Web.sass";
 
 //Data
-import webData from "./webData";
+import webData from "./webData.js";
 
 const Web = (props) => {
   const [isShowing, setIsShowing] = useState(false);
   const [index, setIndex] = useState(null);
 
   const List = () => (
+    //This should be framer motion animate presence
     <CSSTransitionGroup
       transitionName="example"
       transitionAppear={true}
@@ -46,22 +47,15 @@ const Web = (props) => {
   return !isShowing ? (
     <List />
   ) : (
-    <CSSTransitionGroup
-      transitionName="example"
-      transitionAppear={true}
-      transitionEnterTimeout={500}
-      transitionAppearTimeout={500}
-      transitionEnter={true}
-      transitionLeave={false}
-    >
-      <WebGallery
-        bgColor={webData[index].bgColor}
-        images={webData[index].images}
-        isApp={webData[index].isApp}
-        component={webData[index].component}
-        handleOpen={setIsShowing}
-      />
-    </CSSTransitionGroup>
+    <WebGallery
+      bgColor={webData[index].bgColor}
+      images={webData[index].images}
+      isApp={webData[index].isApp}
+      component={webData[index].component}
+      text={webData[index].text}
+      title={webData[index].title}
+      handleOpen={setIsShowing}
+    />
   );
 };
 

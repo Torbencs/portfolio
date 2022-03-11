@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React from "react";
 
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 //Pages
 import About from "./pages/About/About";
 import Ski from "./components/Ski";
+import Play from "./pages/Play/Play";
 import Score from "./components/Score";
 import Design from "./pages/Design/Design";
 import Web from "./pages/Web/Web";
@@ -28,7 +29,7 @@ function App() {
         render={(props) => <HomeNav {...props} />}
       />
       <div className={"flex-container"}>
-        <Route exact path={["/about", "/design", "/web", "/play", "/score"]}>
+        <Route exact path={["/about", "/graphic", "/web", "/play", "/score"]}>
           <SideNav />
         </Route>
 
@@ -39,10 +40,10 @@ function App() {
               path="/about"
               render={(props) => <About {...props} />}
             />
-            <Route path="/design" render={(props) => <Design {...props} />} />
+            <Route path="/graphic" render={(props) => <Design {...props} />} />
             <Route path="/web" render={(props) => <Web {...props} />} />
             <Route exact path="/play">
-              <Ski />
+              <Play />
             </Route>
             <Route
               exact

@@ -4,6 +4,8 @@ import { CSSTransitionGroup } from "react-transition-group";
 import { Route, BrowserRouter as Router, Link } from "react-router-dom";
 import { animate } from "motion";
 
+import Typist from "react-typist";
+
 import "../css/fonts.css";
 import "./HomeNav.sass";
 
@@ -13,20 +15,17 @@ function HomeNav() {
 
   setTimeout(() => {
     setShowMenu(true);
-  }, 3000);
+  }, 3400);
 
   const Torben = () => {
     return (
       <h1>
-        <a
-          id={"home"}
-          onMouseOver={() => {
-            setTimeout(() => {
-              setShowMenu(true);
-            }, 800);
-          }}
-        >
-          Torben<span className="dot--yellow">.</span>
+        <a id={"home"}>
+          <Typist avgTypingDelay={150} cursor={{ show: false }}>
+            Torben
+            <Typist.Delay ms={1000} />
+            <span className="dot--yellow">.</span>
+          </Typist>
         </a>
       </h1>
     );
@@ -39,9 +38,9 @@ function HomeNav() {
           <Link
             id={"design"}
             className="homeMenu__link--option slideInUp"
-            to="/design"
+            to="/graphic"
           >
-            <span className="highlight--yellow">design</span>
+            <span className="highlight--yellow">graphic</span>
           </Link>
           <div className="homeMenu__link--option hidden">.</div>
           <Link
