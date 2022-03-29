@@ -1,0 +1,104 @@
+#side__header
+    height: 100%
+    background-color: white
+    opacity: 0
+
+.sideMenu
+    margin-top: 20em
+    width: 190px
+    text-align: center
+    a
+        font-size: 1.5em
+        letter-spacing: 0.5px
+        font-weight: 600
+        display: block
+        color: #342647
+        text-rendering: optimizeLegibility !important
+        -webkit-font-smoothing: auto !important
+
+    a:hover
+        letter-spacing: 1px
+        transition: letter-spacing 100ms ease-in
+        cursor: pointer
+        color: #f3c41a
+
+.sideMenu__link--active
+    color: #f3c41a !important
+
+.slideInUp
+    -webkit-animation-name: slideInUp
+    animation-name: slideInUp
+    -webkit-animation-duration: 0.3s
+    animation-duration: 0.3s
+    -webkit-animation-fill-mode: both
+    animation-fill-mode: both
+
+@-webkit-keyframes slideInUp
+  0% 
+    -webkit-transform: translateY(80%)
+    transform: translateY(80%)
+    visibility: visible
+
+  100% 
+    -webkit-transform: translateY(10%)
+    transform: translateY(10%)
+
+@keyframes slideInUp
+    0%
+        -webkit-transform: translateY(80%)
+        transform: translateY(80%)
+        visibility: visible
+
+    100%
+        -webkit-transform: translateY(10%)
+        transform: translateY(10%)
+
+.slideInDown
+    -webkit-animation-name: slideInDown
+    animation-name: slideInDown
+    -webkit-animation-duration: 0.3s
+    animation-duration: 0.3s
+    -webkit-animation-fill-mode: both
+    animation-fill-mode: both
+
+@-webkit-keyframes slideInDown
+  0% 
+    -webkit-transform: translateY(-80%)
+    transform: translateY(-80%)
+    visibility: visible
+
+  100% 
+    -webkit-transform: translateY(-10%)
+    transform: translateY(-10%)
+
+@keyframes slideInDown
+    0%
+        -webkit-transform: translateY(-80%)
+        transform: translateY(-80%)
+        visibility: visible
+
+    100%
+        -webkit-transform: translateY(-10%)
+        transform: translateY(-10%)
+
+.fadeIn
+    -webkit-animation-name: fadeIn
+    animation-name: fadeIn
+    -webkit-animation-duration: 1s
+    animation-duration: 1s
+    -webkit-animation-fill-mode: both
+    animation-fill-mode: both
+
+@-webkit-keyframes fadeIn
+  0% 
+    opacity: 0
+
+  100% 
+    opacity: 1
+
+@keyframes fadeIn
+    0%
+        opacity: 0
+
+    100%
+        opacity: 1

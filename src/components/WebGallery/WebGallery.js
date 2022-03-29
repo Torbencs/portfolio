@@ -11,6 +11,7 @@ const WebGallery = (props) => {
 
     return () => window.removeEventListener("wheel", scroll);
   }, []);
+
   return (
     <section
       className={"web__container--gallery"}
@@ -41,7 +42,10 @@ const WebGallery = (props) => {
       </div>
 
       <div className="webgallery__triangle">
-        <div className="close" onClick={() => props.handleOpen(false)}></div>
+        <div
+          className="webgallery__close"
+          onClick={() => props.history.push("/web")}
+        ></div>
       </div>
     </section>
   );

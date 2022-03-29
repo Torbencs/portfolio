@@ -2,6 +2,9 @@ import React from "react";
 
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
+//Responsive
+import { useMediaQuery } from "react-responsive";
+
 //Pages
 import About from "./pages/About/About";
 import Ski from "./components/Ski";
@@ -9,15 +12,18 @@ import Play from "./pages/Play/Play";
 import Score from "./components/Score";
 import Design from "./pages/Design/Design";
 import Web from "./pages/Web/Web";
+import Tetris from "./pages/Tetris";
 
 //Components
-import HomeNav from "./components/HomeNav";
-import SideNav from "./components/SideNav";
+import HomeNav from "./components/HomeNav/HomeNav";
+import SideNav from "./components/SideNav/SideNav";
+import HamburgerNav from "./components/HamburgerNav/HamburgerNav";
 
 import "./css/fonts.css";
 import "./App.sass";
 
 function App() {
+  const isMobile = useMediaQuery({ query: "(max-width: 960px)" });
   /* Render
   //
   */
@@ -30,7 +36,7 @@ function App() {
       />
       <div className={"flex-container"}>
         <Route exact path={["/about", "/graphic", "/web", "/play", "/score"]}>
-          <SideNav />
+          {isMobile ? <HamburgerNav /> : <SideNav />}
         </Route>
 
         <main>
@@ -50,7 +56,7 @@ function App() {
               path="/score"
               render={(props) => <Score {...props} />}
             />
-            {/* <Route path="/tetris" render={(props) => <Play />} /> */}
+            <Route path="/tetris" render={(props) => <Tetris />} />
           </Switch>
         </main>
       </div>

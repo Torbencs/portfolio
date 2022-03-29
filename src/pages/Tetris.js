@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 
 import { default as loadTetris } from "../components/Tetris";
 
+import "./Tetris.scss";
+
 const Tetris = (props) => {
   const [game] = useState(new loadTetris());
 
@@ -15,11 +17,12 @@ const Tetris = (props) => {
   };
 
   return (
-    <div>
-      <h1 onClick={handleClick}>URL Page</h1>
-
-      <button onClick={() => alert("Pause")}>Pause Button</button>
-    </div>
+    <>
+      <div className="tetris__button__container">
+        <button className="push--skeuo" onClick={handleClick}></button>
+        <div className="tetris__close">Close</div>
+      </div>
+    </>
   );
 };
 

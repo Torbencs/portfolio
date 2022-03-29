@@ -73,7 +73,7 @@
     border-top: 7em solid #fff
     border-left: 8em solid transparent
 
-.close
+.webgallery__close
     position: absolute
     right: 20px
     top: -94px
@@ -82,12 +82,12 @@
     opacity: .3
     cursor: pointer
 
-.close:hover
+.webgallery__close:hover
     opacity: 1
     transform: scale(1.2)
     transition: 0.1s ease-in-out
 
-.close:before, .close:after
+.webgallery__close:before, .webgallery__close:after
     position: absolute
     left: 15px
     content: " "
@@ -95,12 +95,28 @@
     width: 4px
     background-color: #333
 
-.close:before
+.webgallery__close:before
     transform: rotate(45deg)
 
-.close:after
+.webgallery__close:after
     transform: rotate(-45deg)
 
 //Scroll custom
 .web__webgallery::-webkit-scrollbar
     width: 0px
+
+@media (max-width: 650px)
+    .web__container--gallery
+        width: 100%
+        padding: 0
+        p
+            padding: 1em
+            font-size: 1em
+    .webgallery__header
+        display: none
+    .webgallery__triangle
+        border-top: 75px solid white
+        border-left: 75px solid transparent
+    .webgallery__close
+        top: -74px
+        right: 0px

@@ -1,0 +1,81 @@
+.hamburger__container
+    position: absolute
+    bottom: 0
+    z-index: 100
+    background-color: white
+    opacity: 0
+
+    &--wide
+        height: 200px
+        background-color: transparent
+
+.hamburger__triangle
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 0
+    height: 0
+    border-bottom: 100px solid #fff
+    border-right: 100px solid transparent
+    z-index: -100
+    &--wide
+        border-bottom: 100vw solid #fff
+        border-right: 100vw solid transparent
+        transition: 0.4s cubic-bezier(0.68, -0.3, 0.32, 1)
+
+.hamburger__label
+    position: absolute
+    bottom: 0
+    display: flex
+    flex-direction: column
+    width: 40px
+    cursor: pointer
+
+.hamburger__label > *
+    background: #4e425b
+    border-radius: 10px
+    height: 5px
+    margin: 4px 0
+    transition: .4s cubic-bezier(0.68, -0.6, 0.32, 1.6)
+
+.hamburger__div--1
+    width: 33%
+
+.hamburger__div--2
+    width: 66%
+
+.hamburger__div--3
+    width: 100%
+
+input[type="checkbox"]
+    display: none
+
+input[type="checkbox"]:checked ~ .hamburger__div--1
+    transform-origin: bottom
+    transform: rotatez(45deg) translate(7px,4px)
+
+input[type="checkbox"]:checked ~ .hamburger__div--2
+
+    transform-origin: top
+    transform: rotatez(-45deg)
+
+input[type="checkbox"]:checked ~ .hamburger__div--3
+
+    transform-origin: bottom
+    width: 50%
+    transform: translate(5px,-12px) rotatez(45deg)
+
+.hamburger__list
+    position: absolute
+    opacity: 0
+    bottom: 40px
+    width: calc(100vw - 80px)
+    text-align: center
+    a
+        font-size: 1.5em
+        letter-spacing: 0.5px
+        font-weight: 600
+        display: block
+        color: #342647
+        text-rendering: optimizeLegibility !important
+        -webkit-font-smoothing: auto !important

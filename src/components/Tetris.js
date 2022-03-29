@@ -10,26 +10,28 @@ function Tetris() {
 
   const noCollision = {
     "▟": { "▟": true, "▜": true, "▘": true, "▖": true, "▚": true, "▞": true },
-    "▙": { "▟": true, "▙": true, "▛": true, "▖": true, "▞": true },
+    "▙": { "▟": true, "▙": true, "▛": true, "▖": true, "▞": true, "▖": true },
     "▛": { "▙": true, "▛": true, "▜": true, "▘": true, "▚": true },
-    "▜": { "▟": true, "▜": true, "▘": true, "▖": true, "▚": true, "▚": true },
+    "▜": { "▟": true, "▜": true, "▘": true, "▖": true, "▚": true, "▞": true },
     "▘": { "▙": true, "▛": true, "▜": true, "▘": true, "▚": true },
     "▖": { "▟": true, "▙": true, "▛": true, "▖": true, "▞": true },
     "▚": { "▟": true, "▙": true, "▛": true, "▖": true, "▞": true },
     "▞": { "▙": true, "▛": true, "▜": true, "▘": true, "▚": true },
     "▖▖": { "▙": true, "▛": true, "▟": true, "▞": true, "▖": true },
+    "▘▘": { "▙": true, "▛": true, "▜": true, "▘": true, "▚": true },
   };
 
   const collidesOutcome = {
     "▚": { "▜": "▘", "▘": "▘", "▚": "." },
     "▞": { "▟": "▖", "▖": "▖", "▞": "." },
-    "▟": { "▙": "▖▖", "▛": "▖▘" },
+    "▟": { "▙": "▖" + "▖", "▛": "▞" },
     "▙": { "▜": ".", "▘": ".", "▚": "▙" },
     "▛": { "▟": ".", "▖": ".", "▞": "▛" },
-    "▜": { "▙": "▘" + "▖", "▛": "▘▘" },
+    "▜": { "▙": "▚", "▛": "▘▘" },
     "▘": { "▟": ".", "▖": ".", "▞": "▘" },
     "▖": { "▜": ".", "▘": ".", "▚": "▖" },
     "▖▖": { "▜": "▖", "▘": "▖", "▚": "▖▖" },
+    "▘▘": { "▟": "▘", "▖": "▘", "▞": "▘▘" },
   };
 
   //Setup
@@ -47,8 +49,9 @@ function Tetris() {
     //Generate random number between index values of pieces array then push to game board array
     this.currentBlockIndex[0] = randomNumber(-1, 2);
     this.currentBlockIndex[1] = randomNumber(-1, 1);
-    this.currentBlock = pieces[[0]][[1]];
-    //pieces[this.currentBlockIndex[0]][this.currentBlockIndex[1]];
+    // this.currentBlock = pieces[[0]][[2]];
+    this.currentBlock =
+      pieces[this.currentBlockIndex[0]][this.currentBlockIndex[1]];
     this.board.push(this.currentBlock);
   };
 
@@ -76,7 +79,13 @@ function Tetris() {
   };
 
   this.step = () => {
+    //Check if player has won - the stack index has reached -1 and there are no more blocks on the stack
     this.stackIndex == -1 && alert("You won!");
+    //Check if player has lost
+    if (this.board.length <= 3 || this.stackIndex >= 10) {
+      alert("My code must have a bug because there's no way you just lost...");
+    }
+
     if (this.started == false) {
       //Board uses periods to avoid URL encoding. The pieces take up about four period spaces and must be removed to keep board length roughly the same same size
       this.board = this.board.slice(0, this.board.length - 4);
@@ -85,14 +94,6 @@ function Tetris() {
       this.generateNewBlock();
       //Check if new piece has reached the stack
     } else if (this.stackIndex + 1 == this.currentIndex) {
-      //Debug
-      console.log(
-        `Stack Index ${this.stackIndex}, Stack Block: ${
-          this.board[this.stackIndex]
-        }, Current Block: ${this.currentBlock} Current Index: ${
-          this.currentIndex
-        }`
-      );
       //Check if piece 'fits' or whether we need to calculate the outcome of a two blocks colliding
       if (noCollision[this.board[this.stackIndex]][this.currentBlock]) {
         ++this.stackIndex;

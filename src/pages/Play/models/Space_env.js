@@ -11,7 +11,7 @@ export default function SpaceEnv({ ...props }) {
     `${process.env.PUBLIC_URL}/models/baked_floor_small.png`
   );
   const bakedMountains = useTexture(
-    `${process.env.PUBLIC_URL}/models/baked_mountains.png`
+    `${process.env.PUBLIC_URL}/models/baked_4k.jpg`
   );
 
   const { nodes, materials } = useGLTF(

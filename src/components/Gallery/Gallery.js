@@ -1,8 +1,16 @@
 import React, { useEffect } from "react";
+import { animate, spring } from "motion";
 //Css
 import "./Gallery.sass";
 
 const Gallery = (props) => {
+  useEffect(() => {
+    animate(
+      ".work__container--gallery",
+      { scale: [0, 1], opacity: 1 },
+      { duration: 0.3, easing: [0.37, 1.09, 0.71, 1] }
+    );
+  });
   return (
     <section
       className={"work__container--gallery"}
@@ -44,7 +52,7 @@ const Gallery = (props) => {
         <div className="gallery__triangle">
           <div
             className="gallery__close"
-            onClick={() => props.handleOpen(false)}
+            onClick={() => props.history.push("/graphic")}
           ></div>
         </div>
       </article>
