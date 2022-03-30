@@ -106,6 +106,9 @@
     width: 0px
 
 @media (max-width: 650px)
+    .web__article
+        height: calc( 100vh - 40px)
+        overflow: scroll
     .web__container--gallery
         width: 100%
         padding: 0
@@ -114,6 +117,9 @@
             font-size: 1em
     .webgallery__header
         display: none
+    .web__list
+        li:last-child
+            margin-bottom: 100px
     .webgallery__triangle
         border-top: 75px solid white
         border-left: 75px solid transparent
