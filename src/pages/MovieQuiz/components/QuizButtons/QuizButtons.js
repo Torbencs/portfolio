@@ -14,7 +14,7 @@ const QuizButtons = ({ titles, correctTitle, handleClick }) => {
     for (let i = 0; i < 3; i++) {
       let randomTitle = titles[Math.floor(Math.random() * titles.length)];
       //If the random title is the same as the correct title break one iteration of loop and pick another title to avoid duplicate
-      if (randomTitle == correctTitle) {
+      if (randomTitle.title == correctTitle.title) {
         i -= 1;
         continue;
       }

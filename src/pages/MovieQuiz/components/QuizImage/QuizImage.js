@@ -4,7 +4,7 @@ import axios from "axios";
 //Css
 import "./QuizImage.sass";
 
-const QuizImage = ({ handleScore, id, handleLoading, onCorrectAnswer }) => {
+const QuizImage = ({ handleScore, title, handleLoading, onCorrectAnswer }) => {
   const [pressed, setPressed] = useState(false);
   const [moveCount, setMoveCount] = useState(0);
   const [posterData, setPosterData] = useState(null);
@@ -14,20 +14,15 @@ const QuizImage = ({ handleScore, id, handleLoading, onCorrectAnswer }) => {
   }, [moveCount]);
 
   useEffect(() => {
-    let options = {
+    const options = {
       method: "GET",
-      url: "https://movies-tvshows-data-imdb.p.rapidapi.com/",
-      params: { type: "get-movies-images-by-imdb", imdb: id.imdb_id },
-      headers: {
-        "x-rapidapi-host": "movies-tvshows-data-imdb.p.rapidapi.com",
-        "x-rapidapi-key": "f586acb3f2msh3c251997a0eed75p1e62a8jsn022c62e388a7",
-      },
+      url: `https://imdb-api.com/en/API/Posters/k_bzwgpl46/${title}`,
     };
 
     axios
       .request(options)
       .then(function (response) {
-        setPosterData(response.data.poster);
+        setPosterData(response.data.posters[0].link);
       })
       .catch(function (error) {
         console.error(error);
@@ -35,7 +30,7 @@ const QuizImage = ({ handleScore, id, handleLoading, onCorrectAnswer }) => {
 
     //Bring mask back when next image is loaded
     reset();
-  }, [id]);
+  }, [title]);
 
   const unMask = (event) => {
     event.preventDefault();

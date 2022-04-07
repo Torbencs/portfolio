@@ -20,6 +20,25 @@ const MovieQuiz = () => {
   const [correctAnimation, setCorrectAnimation] = useState(false);
   const [showOverlay, setShowOverlay] = useState("instructions");
 
+  useEffect(() => {
+    setLoading(true);
+
+    const options = {
+      method: "GET",
+      url: "https://imdb-api.com/en/API/MostPopularMovies/k_bzwgpl46",
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        setMovieResults(response.data.items.slice(0, 10));
+        setLoading(false);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, []);
+
   const handleChoice = (selectedTitle) => {
     //Handle a correct choice
     if (selectedTitle === movieResults[currentMovie].title) {
@@ -86,29 +105,6 @@ const MovieQuiz = () => {
     }
   };
 
-  useEffect(() => {
-    setLoading(true);
-    let options = {
-      method: "GET",
-      url: "https://movies-tvshows-data-imdb.p.rapidapi.com/",
-      params: { type: "get-popular-movies", page: "1", year: "2019" },
-      headers: {
-        "x-rapidapi-host": "movies-tvshows-data-imdb.p.rapidapi.com",
-        "x-rapidapi-key": "f586acb3f2msh3c251997a0eed75p1e62a8jsn022c62e388a7",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        setMovieResults(response.data.movie_results);
-        setLoading(false);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  }, []);
-
   return (
     <>
       <link rel="preload" as="image" href={MovieQuizLogo} />
@@ -126,7 +122,7 @@ const MovieQuiz = () => {
           <img className="quiz__logo" src={MovieQuizLogoSmall} />
           {isActive && (
             <QuizImage
-              id={movieResults[currentMovie]}
+              title={movieResults[currentMovie].id}
               handleScore={setScore}
               handleLoading={setLoading}
               onCorrectAnswer={correctAnimation}
