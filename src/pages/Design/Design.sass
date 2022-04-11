@@ -9,11 +9,10 @@
         object-fit: cover
 
 .design__grid
-    height: calc(86vh - 40px)
+    height: calc(100vh - 80px)
     overflow-y: scroll
     overflow-x: hidden
     display: grid
-    margin: 3em 3em
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr))
     grid-template-rows: repeat(auto-fill, minmax(150px, 1fr))
     gap: 0px
@@ -43,3 +42,4 @@
 @media (max-width: 650px)
     .design__grid
         margin: 0
+        height: calc(86vh - 40px)

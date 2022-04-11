@@ -87,7 +87,7 @@ const MovieQuiz = () => {
             Use your {isMobile ? "finger" : "mouse"} to swipe away hidden parts
             of the film poster!
           </p>
-          <p>Be careful, the more you swipe the lower your score will go!</p>
+          <p>Be careful, the more you swipe the lower your score will be!</p>
           <button onClick={() => setShowOverlay(false)}>Start</button>
         </div>
       );
