@@ -36,6 +36,9 @@ const WebGallery = (props) => {
               <img
                 key={index}
                 src={`${process.env.PUBLIC_URL}/images/${image}`}
+                onClick={() =>
+                  props.link && window.open(`https://torbens.me${props.link}`)
+                }
               />
             ))
           : props.component}

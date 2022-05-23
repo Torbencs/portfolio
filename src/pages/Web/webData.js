@@ -1,5 +1,6 @@
 import React from "react";
 import MovieQuiz from "../MovieQuiz/MovieQuiz";
+import Home from "../../components/SayIt/pages/home";
 const webData = [
   {
     title: "Movie Quiz Game",
@@ -13,7 +14,9 @@ const webData = [
     title: "Anonymouse Feedback App",
     tech: "React, QR Codes, UI",
     text: "A project I built with the intention of creating the 'easiest way to provide anonymous feedback'. It uses QR codes which can be placed in physical locations to give easy feedback on topics set by managers.",
-    images: ["web/inspect/inspect_1.jpg", "web/inspect/inspect_2.jpg"],
+    images: ["web/inspect/inspect_1.jpg"],
+    isApp: true,
+    link: "/sayit",
     bgColor: "#f8f8f8",
   },
   {

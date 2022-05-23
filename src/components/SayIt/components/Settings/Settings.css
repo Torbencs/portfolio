@@ -1,0 +1,7 @@
+.settings__card__container {
+  display: flex;
+  height: 70vh;
+  padding: 0 0 0 3em;
+  align-content: flex-start;
+  flex-wrap: wrap;
+}

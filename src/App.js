@@ -19,6 +19,9 @@ import HomeNav from "./components/HomeNav/HomeNav";
 import SideNav from "./components/SideNav/SideNav";
 import HamburgerNav from "./components/HamburgerNav/HamburgerNav";
 
+//Apps
+import Home from "./components/SayIt/pages/home";
+
 import "./css/fonts.css";
 import "./App.sass";
 
@@ -48,6 +51,7 @@ function App() {
             />
             <Route path="/graphic" render={(props) => <Design {...props} />} />
             <Route path="/web" render={(props) => <Web {...props} />} />
+            <Route path="/sayit" render={(props) => <Home {...props} />} />
             <Route exact path="/play">
               <Play />
             </Route>

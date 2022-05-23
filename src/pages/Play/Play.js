@@ -1,61 +1,144 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { useLoader } from "@react-three/fiber";
-import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader";
-import { Suspense } from "react";
 import {
-  Environment,
-  OrbitControls,
-  useHelper,
-  PerspectiveCamera,
-  OrthographicCamera,
-  Plane,
-  softShadows,
-} from "@react-three/drei";
-import { PointLightHelper } from "three";
+  Engine,
+  Render,
+  Bodies,
+  Composite,
+  Body,
+  Runner,
+  Events,
+  Mouse,
+  MouseConstraint,
+} from "matter-js";
+import { Position } from "@react-three/drei/helpers/Position";
 
-import SpaceEnv from "./models/Space_env";
+function Play(props) {
+  const scene = useRef();
+  const isPressed = useRef(false);
+  const engine = useRef(Engine.create());
+  const runner = useRef(Runner.create());
 
-//Models
-import { DirectionalLightHelper } from "three";
+  //Mouse state
+  const [mouseDown, setMouseDown] = useState(null);
+  const [mouseUp, setMouseUp] = useState(null);
 
-const Play = (props) => {
-  const Light = () => {
-    const ref = useRef();
+  //Object of levels
+  const levels = [
+    {
+      player: {
+        label: "Player",
+        body: () =>
+          Bodies.circle(800, 300, 30, {
+            label: "player",
+            mass: 10,
+            restitution: 0.9,
+            friction: 0.003,
+            render: {
+              fillStyle: "#0000ff",
+            },
+          }),
+      },
+      goal: {
+        position: {
+          x: 200,
+          y: 200,
+        },
+        body: () =>
+          Bodies.circle(40, 300, 30, {
+            label: "goal",
+            mass: 10,
+            restitution: 0.9,
+            friction: 0.003,
+            render: {
+              fillStyle: "#000000",
+            },
+          }),
+      },
+      // line: {
+      //   position: {
+      //     start: {
+      //       x: 2,
+      //       y: 23,
+      //     },
+      //     end: {
+      //       x: 30,
+      //       y: 30,
+      //     },
+      //   },
+      // },
+    },
+  ];
 
-    useHelper(ref, DirectionalLightHelper, 1, "black");
-    return (
-      <>
-        <directionalLight
-          color="white"
-          castShadow
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
-          shadow-camera-far={50}
-          shadow-camera-left={-10}
-          shadow-camera-right={10}
-          shadow-camera-top={10}
-          shadow-camera-bottom={-10}
-          intensity={1}
-          position={[1, 10, 20]}
-          ref={ref}
-        />
-      </>
+  useEffect(() => {
+    const cw = document.body.clientWidth;
+    const ch = document.body.clientHeight;
+
+    const render = Render.create({
+      element: scene.current,
+      engine: engine.current,
+      options: {
+        width: cw,
+        height: ch,
+        wireframes: false,
+        background: "transparent",
+      },
+    });
+
+    engine.current.world.gravity.scale = 0;
+
+    //Add all the bodies from the 'levels' object
+    for (let key in levels[0]) {
+      let body = levels[0][key].body();
+      Composite.add(engine.current.world, [body]);
+    }
+
+    //Walls
+    Composite.add(engine.current.world, [
+      Bodies.rectangle(cw / 2, -10, cw, 20, { isStatic: true }),
+      Bodies.rectangle(-10, ch / 2, 20, ch, { isStatic: true }),
+      Bodies.rectangle(cw / 2, ch + 10, cw, 20, { isStatic: true }),
+      Bodies.rectangle(cw + 10, ch / 2, 20, ch, { isStatic: true }),
+    ]);
+
+    Render.run(render);
+    Runner.run(runner.current, engine.current);
+
+    return () => {
+      Render.stop(render);
+      render.canvas.remove();
+      render.canvas = null;
+      render.context = null;
+      render.textures = {};
+    };
+  }, []);
+
+  function handleMouseUp() {
+    let force;
+    let body = engine.current.world.bodies.find(
+      (bodies) => bodies.label == "player"
     );
+    body &&
+      Body.applyForce(body, body.position, {
+        x: (mouseDown[0] - mouseUp[0]) / 100,
+        y: 0,
+      });
+  }
+
+  const handleClick = (e) => {
+    let body = engine.current.world.bodies.find(
+      (bodies) => bodies.label == "torbs"
+    );
+    body && Body.applyForce(body, body.position, { x: 1, y: 0 });
   };
 
   return (
-    <Canvas shadows colorManagement>
-      <Suspense fallback={null}>
-        <OrthographicCamera makeDefault position={[0, 10, 4]} zoom={100} />
-        <ambientLight intensity={1} />
-        <OrbitControls />
-        <Light />
-        <SpaceEnv />
-      </Suspense>
-    </Canvas>
+    <div
+      ref={scene}
+      style={{ width: "100%", height: "100%" }}
+      onMouseDown={(e) => setMouseDown([e.clientX, e.clientY])}
+      onMouseUp={(e) => handleMouseUp([e.clientX, e.clientY])}
+    ></div>
   );
-};
+}
 
 export default Play;

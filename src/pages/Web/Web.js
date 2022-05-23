@@ -45,6 +45,7 @@ const Web = (props) => {
             images={webData[index].images}
             isApp={webData[index].isApp}
             component={webData[index].component}
+            link={webData[index].link}
             text={webData[index].text}
             title={webData[index].title}
           />
