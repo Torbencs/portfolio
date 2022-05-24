@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.24.0",
     "axios-rate-limit": "^1.3.0",
+    "bfg": "^0.3.0",
     "chart.js": "^3.5.1",
     "dayjs": "^1.11.0",
     "flat-carousel": "0.0.1",
