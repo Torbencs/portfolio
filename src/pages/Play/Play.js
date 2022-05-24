@@ -112,31 +112,24 @@ function Play(props) {
     };
   }, []);
 
-  function handleMouseUp() {
-    let force;
-    let body = engine.current.world.bodies.find(
-      (bodies) => bodies.label == "player"
-    );
-    body &&
-      Body.applyForce(body, body.position, {
-        x: (mouseDown[0] - mouseUp[0]) / 100,
-        y: 0,
-      });
+  function handleMouseUp({ x, y }) {
+    console.log(x);
+    //   let force = {
+    //     x: 0,
+    //     y: 0,
+    //   };
+    //   let body = engine.current.world.bodies.find(
+    //     (bodies) => bodies.label == "player"
+    //   );
+    //   body && Body.applyForce(body, body.position, force);
   }
-
-  const handleClick = (e) => {
-    let body = engine.current.world.bodies.find(
-      (bodies) => bodies.label == "torbs"
-    );
-    body && Body.applyForce(body, body.position, { x: 1, y: 0 });
-  };
 
   return (
     <div
       ref={scene}
       style={{ width: "100%", height: "100%" }}
       onMouseDown={(e) => setMouseDown([e.clientX, e.clientY])}
-      onMouseUp={(e) => handleMouseUp([e.clientX, e.clientY])}
+      onMouseUp={(e) => handleMouseUp({ x: e.clientX, y: e.clientY })}
     ></div>
   );
 }
