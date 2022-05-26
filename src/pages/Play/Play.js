@@ -34,7 +34,7 @@ function Play(props) {
             restitution: 0.9,
             friction: 0.003,
             render: {
-              fillStyle: "#0000ff",
+              fillStyle: "#f3c41a",
             },
           }),
       },
@@ -44,13 +44,15 @@ function Play(props) {
           y: 200,
         },
         body: () =>
-          Bodies.circle(40, 300, 30, {
+          Bodies.circle(200, 300, 24, {
             label: "goal",
             mass: 10,
             restitution: 0.9,
             friction: 0.003,
             render: {
-              fillStyle: "#000000",
+              lineWidth: 14,
+              strokeStyle: "#f3c41a",
+              fillStyle: "#f8f8f8",
             },
           }),
       },
