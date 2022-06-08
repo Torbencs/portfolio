@@ -31,7 +31,7 @@ const WebGallery = (props) => {
         }`}
         onClick={() => !props.isApp && setIsActive(true)}
       >
-        {props.images
+        {/* {props.images
           ? props.images.map((image, index) => (
               <img
                 key={index}
@@ -41,7 +41,7 @@ const WebGallery = (props) => {
                 }
               />
             ))
-          : props.component}
+          : props.component} */}
       </div>
 
       <div className="webgallery__triangle">
