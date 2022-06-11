@@ -1,26 +1,28 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.f98a034a.chunk.css",
-    "main.js": "/portfolio/static/js/main.b4119b00.chunk.js",
-    "main.js.map": "/portfolio/static/js/main.b4119b00.chunk.js.map",
+    "main.css": "/portfolio/static/css/main.ff2c3b6d.chunk.css",
+    "main.js": "/portfolio/static/js/main.e9089149.chunk.js",
+    "main.js.map": "/portfolio/static/js/main.e9089149.chunk.js.map",
     "runtime-main.js": "/portfolio/static/js/runtime-main.209c2d7e.js",
     "runtime-main.js.map": "/portfolio/static/js/runtime-main.209c2d7e.js.map",
-    "static/js/2.ab340078.chunk.js": "/portfolio/static/js/2.ab340078.chunk.js",
-    "static/js/2.ab340078.chunk.js.map": "/portfolio/static/js/2.ab340078.chunk.js.map",
+    "static/js/2.e91f5b8c.chunk.js": "/portfolio/static/js/2.e91f5b8c.chunk.js",
+    "static/js/2.e91f5b8c.chunk.js.map": "/portfolio/static/js/2.e91f5b8c.chunk.js.map",
     "index.html": "/portfolio/index.html",
-    "precache-manifest.7b766288876bb1cf598f11423feda765.js": "/portfolio/precache-manifest.7b766288876bb1cf598f11423feda765.js",
+    "precache-manifest.cf6a1834a8aebd828b6788eab45db3bf.js": "/portfolio/precache-manifest.cf6a1834a8aebd828b6788eab45db3bf.js",
     "service-worker.js": "/portfolio/service-worker.js",
-    "static/css/main.f98a034a.chunk.css.map": "/portfolio/static/css/main.f98a034a.chunk.css.map",
-    "static/js/2.ab340078.chunk.js.LICENSE.txt": "/portfolio/static/js/2.ab340078.chunk.js.LICENSE.txt",
+    "static/css/main.ff2c3b6d.chunk.css.map": "/portfolio/static/css/main.ff2c3b6d.chunk.css.map",
+    "static/js/2.e91f5b8c.chunk.js.LICENSE.txt": "/portfolio/static/js/2.e91f5b8c.chunk.js.LICENSE.txt",
     "static/media/logo.png": "/portfolio/static/media/logo.9f391b8a.png",
+    "static/media/logo_lrg.png": "/portfolio/static/media/logo_lrg.7c2b7b32.png",
     "static/media/logo_small.png": "/portfolio/static/media/logo_small.d51e9c57.png",
+    "static/media/logo_sml.png": "/portfolio/static/media/logo_sml.e0c2eaf6.png",
     "static/media/fonts.css": "/portfolio/static/media/source-sans-pro-v14-latin-regular.8ddcafb9.eot",
     "static/media/profile.png": "/portfolio/static/media/profile.62ad638c.png"
   },
   "entrypoints": [
     "static/js/runtime-main.209c2d7e.js",
-    "static/js/2.ab340078.chunk.js",
-    "static/css/main.f98a034a.chunk.css",
-    "static/js/main.b4119b00.chunk.js"
+    "static/js/2.e91f5b8c.chunk.js",
+    "static/css/main.ff2c3b6d.chunk.css",
+    "static/js/main.e9089149.chunk.js"
   ]
 }
