@@ -1,50 +1,62 @@
 import React, { useEffect, useRef, useState } from "react";
-
 //Matterjs physics
 import {
   Engine,
   Render,
   Bodies,
   Composite,
+  Composites,
   Body,
   Events,
   Runner,
   Common,
+  World,
 } from "matter-js";
 import { Position } from "@react-three/drei/helpers/Position";
 
-//Components
-import Score from "./Score";
 //Utils
 import { BetweenRange, EuclidDist } from "./Utils";
-
 //Levels
 import { levels, startPos, anchor } from "./config";
+//Css
+import "./Play.sass";
 
-function Play({ handleScore }) {
+function Play() {
   const scene = useRef();
   const isPressed = useRef(false);
   const engine = useRef(Engine.create());
   const runner = useRef(Runner.create());
 
-  //Level state
-  const [currentLevel, setCurrentLevel] = useState(0);
-  // Has the game ended?
-  const [gameEnded, setGameEnded] = useState(false);
+  //Instructions
+  const [showInstructions, setShowInstructions] = useState(true);
   //Mouse state
   const [mouseDown, setMouseDown] = useState(null);
   const [mouseUp, setMouseUp] = useState(null);
 
+  //Score
+  const [score, setScore] = useState(0);
+  //Has the game ended
+  const [gameEnded, setGameEnded] = useState(false);
+
   useEffect(() => {
+    let currentLevel = 4;
+    // Has the game ended?
+    let gameEnded = false;
+    //Score
+    let score = 0;
+    //Ball moving?
+    let ballActive = false;
+    //Ball in play?
+    let ballStarted = false;
+    //Has the end animation started?
+    let endAnimStarted = false;
+
     const cw =
       document.body.clientWidth -
-      document.getElementById("score__header").getBoundingClientRect().width;
+      document.getElementById("play__nav__container").offsetWidth;
     const ch = document.body.clientHeight;
 
-    let ballActive = false;
-    let ballStarted = false;
-
-    const render = Render.create({
+    var render = Render.create({
       element: scene.current,
       engine: engine.current,
       options: {
@@ -52,7 +64,7 @@ function Play({ handleScore }) {
         height: ch,
         wireframes: false,
         showPositions: false,
-        background: "transparent",
+        background: '"transparent"',
       },
     });
 
@@ -61,10 +73,10 @@ function Play({ handleScore }) {
     //Events
     //--Using the matterjs event module instead of running own game loop
     Events.on(runner.current, "afterTick", () => {
-      //-- Check if player has reached the goal
       let player = engine.current.world.bodies.find(
         (bodies) => bodies.label == "player"
       );
+
       let goal = engine.current.world.bodies.find(
         (bodies) => bodies.label == "goal"
       );
@@ -85,8 +97,10 @@ function Play({ handleScore }) {
         ballActive = false;
       }
       if (!ballActive && ballStarted) {
-        handleScore((prev) => prev - 1);
         ballStarted = false;
+        score++;
+        //TODO fix par from updating after next lvl load
+        setScore(score);
       }
     });
     //-- Change zindex of bodies so the player is always rendered above the goal
@@ -102,17 +116,59 @@ function Play({ handleScore }) {
         let player = engine.current.world.bodies.find(
           (bodies) => bodies.label == "player"
         );
-
+        let goal = engine.current.world.bodies.find(
+          (bodies) => bodies.label == "goal"
+        );
         //If player collides with goal go to next level
         if (
           player.render.fillStyle == collision.bodyA.render.fillStyle &&
-          EuclidDist(
-            [anchor.x, anchor.y],
-            [player.position.x, player.position.y]
-          ) < 25
+          collision.bodyA.label == "goal" &&
+          collision.bodyB.label == "player"
         ) {
-          //Go to next level
-          setCurrentLevel(currentLevel + 1);
+          if (!endAnimStarted) {
+            goal.render.visible = false;
+            endAnimStarted = true;
+
+            let shatterBodies = Composites.stack(
+              goal.position.x,
+              goal.position.y,
+              5,
+              5,
+              0,
+              0,
+              (x, y) =>
+                Bodies.circle(x, y, Common.random(1, 6), {
+                  mass: 0.1,
+                  restitution: 0.99,
+                  friction: 0.003,
+                  render: {
+                    //fillStyle: "#fbd277",
+                  },
+                })
+            );
+
+            Composite.add(engine.current.world, shatterBodies);
+            for (let i = 0; i < shatterBodies.bodies.length; i++) {
+              Body.applyForce(
+                shatterBodies.bodies[i],
+                shatterBodies.bodies[i].position,
+                {
+                  x:
+                    Common.random(0, 0.003) *
+                    BetweenRange(player.velocity.x, -1, 1),
+                  y:
+                    Common.random(0, 0.003) *
+                    BetweenRange(player.velocity.y, -1, 1),
+                }
+              );
+            }
+            setTimeout(() => {
+              endAnimStarted = false;
+              //Go to next level
+              currentLevel++;
+              loadLevel(currentLevel, render);
+            }, 3400);
+          }
         }
 
         //If the player collides with an obstacle that isn't a wall or the goal then change the colour of the player to the obstacle colour
@@ -121,47 +177,11 @@ function Play({ handleScore }) {
           collision.bodyA.label !== "goal" &&
           collision.bodyB.label == "player"
         ) {
-          player.render.fillStyle = collision.bodyA.render.fillStyle;
+          goal.render.fillStyle = collision.bodyA.render.fillStyle;
         }
       });
     });
-
-    //Add all the bodies from the 'levels' object
-    for (let key in levels[currentLevel]) {
-      let body = levels[currentLevel][key].body();
-
-      let constraint = levels[currentLevel][key].constraint();
-
-      Composite.add(engine.current.world, [body, constraint]);
-    }
-
-    //Walls
-    Composite.add(engine.current.world, [
-      Bodies.rectangle(cw / 2, -51, cw, 100, {
-        label: "wall",
-        isStatic: true,
-        restitution: 0.99,
-        mass: 50,
-      }),
-      Bodies.rectangle(-51, ch / 2, 100, ch, {
-        label: "wall",
-        isStatic: true,
-        restitution: 0.99,
-        mass: 50,
-      }),
-      Bodies.rectangle(cw / 2, ch + 51, cw, 100, {
-        label: "wall",
-        isStatic: true,
-        restitution: 0.99,
-        mass: 50,
-      }),
-      Bodies.rectangle(cw + 51, ch / 2, 100, ch, {
-        label: "wall",
-        isStatic: true,
-        restitution: 0.99,
-        mass: 50,
-      }),
-    ]);
+    loadLevel(currentLevel);
 
     Render.run(render);
     Runner.run(runner.current, engine.current);
@@ -175,9 +195,67 @@ function Play({ handleScore }) {
       render.context = null;
       render.textures = {};
     };
-  }, [currentLevel]);
+  }, []);
+
+  function loadLevel(level, render) {
+    Composite.clear(engine.current.world);
+    Engine.clear(engine.current);
+
+    if (typeof levels[level] == "undefined") {
+      Runner.stop(runner.current);
+      Render.stop(render);
+      World.clear(engine.current.world);
+      Engine.clear(engine.current);
+
+      setGameEnded(true);
+    } else {
+      //Add all the bodies from the 'levels' object
+      for (let key in levels[level]) {
+        let body = levels[level][key].body();
+
+        let constraint = levels[level][key].constraint();
+
+        Composite.add(engine.current.world, [body, constraint]);
+      }
+
+      const cw =
+        document.body.clientWidth -
+        document.getElementById("play__nav__container").offsetWidth;
+      const ch = document.body.clientHeight;
+
+      //Walls
+      Composite.add(engine.current.world, [
+        Bodies.rectangle(cw / 2, -51, cw, 100, {
+          label: "wall",
+          isStatic: true,
+          restitution: 0.99,
+          mass: 50,
+        }),
+        Bodies.rectangle(-51, ch / 2, 100, ch, {
+          label: "wall",
+          isStatic: true,
+          restitution: 0.99,
+          mass: 50,
+        }),
+        Bodies.rectangle(cw / 2, ch + 51, cw, 100, {
+          label: "wall",
+          isStatic: true,
+          restitution: 0.99,
+          mass: 50,
+        }),
+        Bodies.rectangle(cw + 51, ch / 2, 100, ch, {
+          label: "wall",
+          isStatic: true,
+          restitution: 0.99,
+          mass: 50,
+        }),
+      ]);
+    }
+  }
 
   function handleMouseDown(e) {
+    e.preventDefault();
+    setShowInstructions(false);
     //Find player body
     let player = engine.current.world.bodies.find(
       (bodies) => bodies.label == "player"
@@ -234,8 +312,8 @@ function Play({ handleScore }) {
   }
   function handleMouseUp({ x, y }) {
     let force = {
-      x: BetweenRange(-(x - mouseDown.x) * 0.001, -0.6, 0.6),
-      y: BetweenRange(-(y - mouseDown.y) * 0.001, -0.6, 0.6),
+      x: BetweenRange(-(x - mouseDown.x) * 0.0015, -0.6, 0.6),
+      y: BetweenRange(-(y - mouseDown.y) * 0.0015, -0.6, 0.6),
     };
     let player = engine.current.world.bodies.find(
       (bodies) => bodies.label == "player"
@@ -249,34 +327,68 @@ function Play({ handleScore }) {
 
   //Reset level
   function reset() {
-    let player = engine.current.world.bodies.find(
-      (bodies) => bodies.label == "player"
-    );
-    setGameEnded(false);
-    handleScore(3);
-    //reset player position
-    Body.setVelocity(player, { x: 0, y: 0 });
-    Body.setPosition(player, { x: startPos.x, y: startPos.y });
+    //TODO - Figur out a way to reset in useEffct without the weird side effects
+    window.location.reload();
   }
 
   //Game overlays
   const GameEnded = () => (
-    <div className="Play__gameEnded">
-      <h1>Game Over</h1>
-      <button onClick={reset()}>Play again?</button>
+    <div className="play__notification">
+      {score <= 12 && (
+        <h1>
+          You only used{" "}
+          <span className="play__notification--yellow">{score}</span> balls, not
+          bad at all!
+        </h1>
+      )}
+      {score > 12 && (
+        <h1>
+          Yikes, <span className="play__notification--yellow">{score}</span>{" "}
+          balls.. Let's try again.
+        </h1>
+      )}
+
+      <p>Would you like more levels?</p>
+      <div>
+        <button className="play__notification__thumbs">👍</button>
+        <button className="play__notification__thumbs play__notification__thumbs--red">
+          👎
+        </button>
+      </div>
+      <button onClick={() => reset()}>Retry</button>
+    </div>
+  );
+  const GameInstructions = () => (
+    <div className="play__notification">
+      <img
+        src={`${process.env.PUBLIC_URL}/images/play/eclipse_logo_med_crop.png`}
+      />
+
+      <button onClick={() => setShowInstructions(false)}>Start</button>
     </div>
   );
 
   return (
     <>
+      <div id="play__nav__container">
+        <nav className="play__nav__score">
+          <h1 className="score__title">Score</h1>
+          <h2 className="score__number">{score}</h2>
+        </nav>
+      </div>
       <div
+        id="play__canvas"
         ref={scene}
-        style={{ width: "100%", height: "100%" }}
+        style={{ display: "inline-block" }}
         onMouseDown={(e) => handleMouseDown(e)}
+        onTouchStart={(e) => handleMouseDown(e)}
+        onTouchMove={(e) => handleMouseMove(e)}
         onMouseMove={(e) => handleMouseMove(e)}
         onMouseUp={(e) => handleMouseUp({ x: e.clientX, y: e.clientY })}
+        onTouchEnd={(e) => handleMouseDown(e)}
       ></div>
       {gameEnded && <GameEnded />}
+      {showInstructions && <GameInstructions />}
     </>
   );
 }

@@ -42,10 +42,6 @@ function App() {
         <Route exact path={["/about", "/graphic", "/web", "/score"]}>
           {isMobile ? <HamburgerNav /> : <SideNav />}
         </Route>
-        <Route exact path={"/play"}>
-          {/* {isMobile ? <ScoreMobile /> : <Score />} */}
-          <Score score={score} />
-        </Route>
 
         <main>
           <Switch>
@@ -58,13 +54,9 @@ function App() {
             <Route path="/web" render={(props) => <Web {...props} />} />
             <Route path="/sayit" render={(props) => <Home {...props} />} />
             <Route exact path="/play">
-              <Play handleScore={setScore} score={score} />
+              <Play />
             </Route>
-            <Route
-              exact
-              path="/score"
-              render={(props) => <Score {...props} />}
-            />
+
             <Route path="/tetris" render={(props) => <Tetris />} />
           </Switch>
         </main>
