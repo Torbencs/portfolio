@@ -286,6 +286,7 @@ function Play() {
     }
   }
   function handleMouseMove(e) {
+    e.preventDefault();
     for (let i = 1; i < 3; i++) {
       let aimCircle = engine.current.world.bodies.find(
         (bodies) => bodies.label == `player_aim_circle_${i}`
@@ -311,6 +312,7 @@ function Play() {
     }
   }
   function handleMouseUp({ x, y }) {
+    e.preventDefault();
     let force = {
       x: BetweenRange(-(x - mouseDown.x) * 0.0015, -0.6, 0.6),
       y: BetweenRange(-(y - mouseDown.y) * 0.0015, -0.6, 0.6),
@@ -381,11 +383,11 @@ function Play() {
         ref={scene}
         style={{ display: "inline-block" }}
         onMouseDown={(e) => handleMouseDown(e)}
-        onTouchStart={(e) => handleMouseDown(e)}
-        onTouchMove={(e) => handleMouseMove(e)}
         onMouseMove={(e) => handleMouseMove(e)}
         onMouseUp={(e) => handleMouseUp({ x: e.clientX, y: e.clientY })}
-        onTouchEnd={(e) => handleMouseDown(e)}
+        onTouchStart={(e) => handleMouseDown(e)}
+        onTouchMove={(e) => handleMouseMove(e)}
+        onTouchEnd={(e) => handleMouseDown({ x: e.clientX, y: e.clientY })}
       ></div>
       {gameEnded && <GameEnded />}
       {showInstructions && <GameInstructions />}
