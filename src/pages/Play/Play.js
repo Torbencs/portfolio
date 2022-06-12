@@ -311,11 +311,11 @@ function Play() {
       }
     }
   }
-  function handleMouseUp({ x, y }) {
+  function handleMouseUp(e) {
     e.preventDefault();
     let force = {
-      x: BetweenRange(-(x - mouseDown.x) * 0.0015, -0.6, 0.6),
-      y: BetweenRange(-(y - mouseDown.y) * 0.0015, -0.6, 0.6),
+      x: BetweenRange(-(e.clientX - mouseDown.x) * 0.0015, -0.6, 0.6),
+      y: BetweenRange(-(e.clientY - mouseDown.y) * 0.0015, -0.6, 0.6),
     };
     let player = engine.current.world.bodies.find(
       (bodies) => bodies.label == "player"
@@ -384,10 +384,10 @@ function Play() {
         style={{ display: "inline-block" }}
         onMouseDown={(e) => handleMouseDown(e)}
         onMouseMove={(e) => handleMouseMove(e)}
-        onMouseUp={(e) => handleMouseUp({ x: e.clientX, y: e.clientY })}
+        onMouseUp={(e) => handleMouseUp(e)}
         onTouchStart={(e) => handleMouseDown(e)}
         onTouchMove={(e) => handleMouseMove(e)}
-        onTouchEnd={(e) => handleMouseDown({ x: e.clientX, y: e.clientY })}
+        onTouchEnd={(e) => handleMouseDown(e)}
       ></div>
       {gameEnded && <GameEnded />}
       {showInstructions && <GameInstructions />}
