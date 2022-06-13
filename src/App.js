@@ -30,7 +30,7 @@ function App() {
   //
   */
   return (
-    <Router basename="/portfolio">
+    <Router>
       <Route
         exact
         path="/portfolio"
