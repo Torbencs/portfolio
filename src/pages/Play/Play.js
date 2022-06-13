@@ -81,26 +81,29 @@ function Play() {
         (bodies) => bodies.label == "goal"
       );
 
-      //-- Check if ball is in play
-      if (player.speed > 0.09) {
-        ballActive = true;
-        ballStarted = true;
+      //Only run if player is defined
+      if (player) {
+        //-- Check if ball is in play
+        if (player.speed > 0.09) {
+          ballActive = true;
+          ballStarted = true;
 
-        //-- Remove the aiming circles if body is moving
-        for (let i = 1; i < 3; i++) {
-          let aimCircle = engine.current.world.bodies.find(
-            (bodies) => bodies.label == `player_aim_circle_${i}`
-          );
-          aimCircle && Composite.remove(engine.current.world, aimCircle);
+          //-- Remove the aiming circles if body is moving
+          for (let i = 1; i < 3; i++) {
+            let aimCircle = engine.current.world.bodies.find(
+              (bodies) => bodies.label == `player_aim_circle_${i}`
+            );
+            aimCircle && Composite.remove(engine.current.world, aimCircle);
+          }
+        } else if (player.speed < 0.09) {
+          ballActive = false;
         }
-      } else if (player.speed < 0.09) {
-        ballActive = false;
-      }
-      if (!ballActive && ballStarted) {
-        ballStarted = false;
-        score++;
-        //TODO fix par from updating after next lvl load
-        setScore(score);
+        if (!ballActive && ballStarted) {
+          ballStarted = false;
+          score++;
+          //TODO fix par from updating after next lvl load
+          setScore(score);
+        }
       }
     });
     //-- Change zindex of bodies so the player is always rendered above the goal
