@@ -50,7 +50,7 @@ const CardExpanded = ({ data, referenceNode, onEdit }) => {
                 }}
               />
             )}
-            <span data-text="Share Feedback" class="card__tooltip">
+            <span data-text="Share Feedback" className="card__tooltip">
               <motion.img
                 className="cardIcon--expanded"
                 src={shareIcon}

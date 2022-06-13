@@ -335,9 +335,8 @@ function Play() {
     <div className="play__notification">
       {score <= 12 && (
         <h1>
-          You only used{" "}
-          <span className="play__notification--yellow">{score}</span> balls, not
-          bad at all!
+          You used <span className="play__notification--yellow">{score}</span>{" "}
+          balls, not bad at all!
         </h1>
       )}
       {score > 12 && (
@@ -347,13 +346,13 @@ function Play() {
         </h1>
       )}
 
-      <p>Would you like more levels?</p>
-      <div>
+      {/* <p>Would you like more levels?</p> */}
+      {/* <div>
         <button className="play__notification__thumbs">👍</button>
         <button className="play__notification__thumbs play__notification__thumbs--red">
           👎
         </button>
-      </div>
+      </div> */}
       <button onClick={() => reset()}>Retry</button>
     </div>
   );

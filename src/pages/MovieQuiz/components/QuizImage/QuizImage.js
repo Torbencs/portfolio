@@ -10,7 +10,7 @@ const QuizImage = ({ handleScore, title, handleLoading, onCorrectAnswer }) => {
   const [posterData, setPosterData] = useState(null);
 
   useEffect(() => {
-    handleScore((prev) => prev - 0.05);
+    handleScore((prev) => prev - 0.04);
   }, [moveCount]);
 
   useEffect(() => {

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { CSSTransitionGroup } from "react-transition-group";
 
 import { Route, BrowserRouter as Router, Link } from "react-router-dom";
 import { animate } from "motion";
@@ -10,12 +9,12 @@ import "../../css/fonts.css";
 import "./HomeNav.sass";
 
 function HomeNav() {
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
   const [showSubMenu, setShowSubMenu] = useState(false);
 
-  setTimeout(() => {
-    setShowMenu(true);
-  }, 3400);
+  // setTimeout(() => {
+  //   setShowMenu(true);
+  // }, 3400);
 
   const Torben = () => {
     return (
@@ -55,13 +54,7 @@ function HomeNav() {
     };
     const Menu = () => {
       return (
-        <CSSTransitionGroup
-          transitionName="fadeIn"
-          transitionAppear={true}
-          transitionAppearTimeout={900}
-          transitionEnter={false}
-          transitionLeave={false}
-        >
+        <>
           <Link id={"about"} className="homeMenu__link" to="/about">
             about<span className="homeMenu__link--yellow">.</span>
           </Link>
@@ -71,7 +64,7 @@ function HomeNav() {
           <Link id={"play"} className="homeMenu__link " to="/play">
             play<span className="homeMenu__link--yellow">.</span>
           </Link>
-        </CSSTransitionGroup>
+        </>
       );
     };
 

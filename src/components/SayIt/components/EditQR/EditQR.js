@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, useRouteMatch } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import QRCodeStyling from "qr-code-styling";
 
@@ -11,6 +11,8 @@ import pageBreak from "../../assets/page_break.png";
 import logo from "../../assets/logo_txt_sml.png";
 
 const EditQR = ({ location, qrData, setQrData, history }) => {
+  const { path, url } = useRouteMatch();
+
   const [topic, setTopic] = useState(location.state.topic);
   const [question, setQuestion] = useState(location.state.question);
   const [description, setDescription] = useState(location.state.description);
@@ -91,7 +93,7 @@ const EditQR = ({ location, qrData, setQrData, history }) => {
           data: options.data,
         },
       ]);
-      history.push("/qrcodes");
+      history.push(`${path}/qrcodes`);
     } else {
       console.warn("No QR data - undefined");
     }

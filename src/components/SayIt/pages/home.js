@@ -63,6 +63,8 @@ const Home = (props) => {
     //Remove body border for SayIt app view
     document.body.style.border = "none";
 
+    //history.push("/sayit/new");
+
     return () => {
       document.body.style.border = "40px solid #ffffff";
     };
@@ -78,10 +80,10 @@ const Home = (props) => {
           <Route path={`${path}/qrcodes`} exact>
             <QRCodes qrData={qrData} />
           </Route>
-          <Route path={`${path}/create`} exact>
+          <Route path={`${path}/qrcodes/create`} exact>
             <CreateQR qrData={qrData} setQrData={setQrData} />
           </Route>
-          <Route path={`${path}/edit`} exact>
+          <Route path={`${path}/qrcodes/edit`} exact>
             <EditQR
               qrData={qrData}
               setQrData={setQrData}

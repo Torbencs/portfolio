@@ -16,7 +16,7 @@ const webData = [
     text: "A project I built with the intention of creating the 'easiest way to provide anonymous feedback'. It uses QR codes which can be placed in physical locations to give easy feedback on topics set by managers.",
     images: ["web/inspect/inspect_1.jpg"],
     isApp: true,
-    link: "/sayit",
+    link: "/sayit/new",
     bgColor: "#f8f8f8",
   },
   {
@@ -34,9 +34,9 @@ const webData = [
     bgColor: "#f8f8f8",
   },
   {
-    title: "Low Poly Game",
+    title: "Low Poly Snowboard Game",
     tech: "Babylon.js, Blender 3D, JS",
-    text: "text",
+    text: "A low poly jumping game made with BabylonJS. The game assets were modelled and animated in Blender. Click to jump!",
     isApp: true,
     component: (
       <iframe

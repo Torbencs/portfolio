@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 
 //Assets - REPLACE WITH API CALL
 import salesIcon from "../../assets/sales_icon.png";
@@ -15,6 +15,7 @@ import QR from "../QR/QR";
 
 export default function QRCodes({ history, qrData, setQrData }) {
   const [loading, setLoading] = useState(false);
+  const { path, url } = useRouteMatch();
 
   const LoadedContent = () => {
     //Check if feedback array is empty
@@ -25,7 +26,7 @@ export default function QRCodes({ history, qrData, setQrData }) {
       return sorted.map((item) => (
         <Link
           to={{
-            pathname: "/edit",
+            pathname: `${path}/edit`,
             state: {
               topic: item.topic,
               question: item.question,
@@ -75,7 +76,7 @@ export default function QRCodes({ history, qrData, setQrData }) {
       ) : (
         <React.Fragment>
           <div className="QR__card__container">
-            <Link to="/create">
+            <Link to={`${path}/create`}>
               <div className="QR__newCard">
                 <div className="circle-plus">
                   <div className="circle">
