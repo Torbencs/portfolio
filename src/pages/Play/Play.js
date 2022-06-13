@@ -39,7 +39,7 @@ function Play() {
   const [gameEnded, setGameEnded] = useState(false);
 
   useEffect(() => {
-    let currentLevel = 4;
+    let currentLevel = 0;
     // Has the game ended?
     let gameEnded = false;
     //Score
@@ -253,15 +253,14 @@ function Play() {
     }
   }
 
-  function handleMouseDown(e) {
-    e.preventDefault();
+  function handleMouseDown(x, y) {
     setShowInstructions(false);
     //Find player body
     let player = engine.current.world.bodies.find(
       (bodies) => bodies.label == "player"
     );
     //Save mousedown position to calculate how much force user intends to use
-    setMouseDown({ x: e.clientX, y: e.clientY });
+    setMouseDown({ x: x, y: y });
     //Check that ball is not in play
     if (player.speed < 0.09) {
       //Add UI circles to assist aim accuracy
@@ -285,8 +284,7 @@ function Play() {
       }
     }
   }
-  function handleMouseMove(e) {
-    e.preventDefault();
+  function handleMouseMove(x, y) {
     for (let i = 1; i < 3; i++) {
       let aimCircle = engine.current.world.bodies.find(
         (bodies) => bodies.label == `player_aim_circle_${i}`
@@ -299,10 +297,10 @@ function Play() {
 
         let xPos =
           player.position.x +
-          (BetweenRange(mouseDown.x - e.clientX, -350, 350) / i) * 0.4;
+          (BetweenRange(mouseDown.x - x, -350, 350) / i) * 0.4;
         let yPos =
           player.position.y +
-          (BetweenRange(mouseDown.y - e.clientY, -350, 350) / i) * 0.4;
+          (BetweenRange(mouseDown.y - y, -350, 350) / i) * 0.4;
 
         Body.setPosition(aimCircle, {
           x: xPos,
@@ -311,11 +309,10 @@ function Play() {
       }
     }
   }
-  function handleMouseUp(e) {
-    e.preventDefault();
+  function handleMouseUp(x, y) {
     let force = {
-      x: BetweenRange(-(e.clientX - mouseDown.x) * 0.0015, -0.6, 0.6),
-      y: BetweenRange(-(e.clientY - mouseDown.y) * 0.0015, -0.6, 0.6),
+      x: BetweenRange(-(x - mouseDown.x) * 0.0015, -0.6, 0.6),
+      y: BetweenRange(-(y - mouseDown.y) * 0.0015, -0.6, 0.6),
     };
     let player = engine.current.world.bodies.find(
       (bodies) => bodies.label == "player"
@@ -363,6 +360,8 @@ function Play() {
   const GameInstructions = () => (
     <div className="play__notification">
       <img
+        width={800}
+        height={316}
         src={`${process.env.PUBLIC_URL}/images/play/eclipse_logo_med_crop.png`}
       />
 
@@ -381,13 +380,28 @@ function Play() {
       <div
         id="play__canvas"
         ref={scene}
-        style={{ display: "inline-block" }}
-        onMouseDown={(e) => handleMouseDown(e)}
-        onMouseMove={(e) => handleMouseMove(e)}
-        onMouseUp={(e) => handleMouseUp(e)}
-        onTouchStart={(e) => handleMouseDown(e)}
-        onTouchMove={(e) => handleMouseMove(e)}
-        onTouchEnd={(e) => handleMouseDown(e)}
+        style={{ display: "inline-block", touchAction: "none" }}
+        onMouseDown={(e) => handleMouseDown(e.clientX, e.clientY)}
+        onMouseMove={(e) => handleMouseMove(e.clientX, e.clientY)}
+        onMouseUp={(e) => handleMouseUp(e.clientX, e.clientY)}
+        onTouchStart={(e) =>
+          handleMouseDown(
+            e.changedTouches[0].clientX,
+            e.changedTouches[0].clientY
+          )
+        }
+        onTouchMove={(e) =>
+          handleMouseMove(
+            e.changedTouches[0].clientX,
+            e.changedTouches[0].clientY
+          )
+        }
+        onTouchEnd={(e) =>
+          handleMouseUp(
+            e.changedTouches[0].clientX,
+            e.changedTouches[0].clientY
+          )
+        }
       ></div>
       {gameEnded && <GameEnded />}
       {showInstructions && <GameInstructions />}

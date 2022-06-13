@@ -25,8 +25,6 @@ import "./css/fonts.css";
 import "./App.sass";
 
 function App() {
-  //Store the score from  the play component here to pass down to score component. This should really be managed inside the play component
-  const [score, setScore] = useState(3);
   const isMobile = useMediaQuery({ query: "(max-width: 960px)" });
   /* Render
   //
