@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, HashRouter as Router, Switch } from "react-router-dom";
 
 //Responsive
 import { useMediaQuery } from "react-responsive";
@@ -30,12 +30,8 @@ function App() {
   //
   */
   return (
-    <Router>
-      <Route
-        exact
-        path="/portfolio"
-        render={(props) => <HomeNav {...props} />}
-      />
+    <Router basename="/">
+      <Route exact path="/" render={(props) => <HomeNav {...props} />} />
       <div className={"flex-container"}>
         <Route exact path={["/about", "/graphic", "/web", "/score"]}>
           {isMobile ? <HamburgerNav /> : <SideNav />}
