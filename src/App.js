@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Route, HashRouter as Router, Switch } from "react-router-dom";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 //Responsive
 import { useMediaQuery } from "react-responsive";
@@ -30,7 +30,7 @@ function App() {
   //
   */
   return (
-    <Router>
+    <Router basename="/portfolio">
       <Route
         exact
         path="/portfolio"
