@@ -26,6 +26,7 @@ import "./App.sass";
 
 function App() {
   const isMobile = useMediaQuery({ query: "(max-width: 960px)" });
+
   /* Render
   //
   */
