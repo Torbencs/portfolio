@@ -10,16 +10,14 @@ import About from "./pages/About/About";
 import Play from "./pages/Play/Play";
 import Design from "./pages/Design/Design";
 import Web from "./pages/Web/Web";
-import Tetris from "./pages/Tetris";
 
 //Components
 import HomeNav from "./components/HomeNav/HomeNav";
 import SideNav from "./components/SideNav/SideNav";
 import HamburgerNav from "./components/HamburgerNav/HamburgerNav";
-import Score from "./pages/Play/Score";
 
 //Apps
-import Home from "./components/SayIt/pages/home";
+import Home from "./portfolioComponents/SayIt/pages/home";
 
 import "./css/fonts.css";
 import "./App.sass";
@@ -51,8 +49,6 @@ function App() {
             <Route exact path="/play">
               <Play />
             </Route>
-
-            <Route path="/tetris" render={(props) => <Tetris />} />
           </Switch>
         </main>
       </div>

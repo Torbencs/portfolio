@@ -1,6 +1,5 @@
 import React from "react";
-import MovieQuiz from "../MovieQuiz/MovieQuiz";
-import Home from "../../components/SayIt/pages/home";
+import MovieQuiz from "../../portfolioComponents/MovieQuiz/MovieQuiz";
 const webData = [
   {
     title: "Physics Puzzle Game",
@@ -28,13 +27,7 @@ const webData = [
     link: "/sayit/new",
     bgColor: "#f8f8f8",
   },
-  {
-    title: "Inspection Reporting App",
-    tech: "HTML, Javascript, CSS",
-    text: "text",
-    images: ["web/inspect/inspect_1.jpg", "web/inspect/inspect_2.jpg"],
-    bgColor: "#f8f8f8",
-  },
+
   {
     title: "Real Estate Image",
     tech: "Wordpress, SEO, JS",
@@ -55,6 +48,21 @@ const webData = [
     ),
     bgColor: "#f8f8f8",
   },
+
+  {
+    title: "A Tree",
+    tech: "Adobe XD, Squarespace",
+    text: "text",
+    images: ["web/atree/atree.png"],
+    bgColor: "#f8f8f8",
+  },
+  {
+    title: "Inspection Reporting App",
+    tech: "HTML, Javascript, CSS",
+    text: "text",
+    images: ["web/inspect/inspect_1.jpg", "web/inspect/inspect_2.jpg"],
+    bgColor: "#f8f8f8",
+  },
   {
     title: "SJM Design",
     tech: "HTML, CSS, JS",
@@ -65,13 +73,6 @@ const webData = [
       "web/sjm/sjm_3.png",
       "web/sjm/sjm_4.png",
     ],
-    bgColor: "#f8f8f8",
-  },
-  {
-    title: "A Tree",
-    tech: "Adobe XD, Squarespace",
-    text: "text",
-    images: ["web/atree/atree.png"],
     bgColor: "#f8f8f8",
   },
 ];
