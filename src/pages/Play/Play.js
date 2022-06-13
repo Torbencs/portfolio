@@ -363,6 +363,10 @@ function Play() {
         height={316}
         src={`${process.env.PUBLIC_URL}/images/play/eclipse_logo_med_crop.png`}
       />
+      <p>
+        Try to smash the two yellow circles together - if they are different
+        colours they will just eclipse. Click and drag to move!{" "}
+      </p>
 
       <button onClick={() => setShowInstructions(false)}>Start</button>
     </div>

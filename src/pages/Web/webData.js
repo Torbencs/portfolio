@@ -3,6 +3,15 @@ import MovieQuiz from "../MovieQuiz/MovieQuiz";
 import Home from "../../components/SayIt/pages/home";
 const webData = [
   {
+    title: "Physics Puzzle Game",
+    tech: "React, MatterJS, UI",
+    text: "A project I built with the intention of creating the 'easiest way to provide anonymous feedback'. It uses QR codes which can be placed in physical locations to give easy feedback on topics set by managers.",
+    images: ["web/inspect/inspect_1.jpg"],
+    isApp: true,
+    link: "/play",
+    bgColor: "#f8f8f8",
+  },
+  {
     title: "Movie Quiz Game",
     tech: "REST API, React, Adobe XD",
     text: "A small interactive game built with React where players try to guess the title by slowly revealing the movie poster. I made this over a weekend to practice building interactive React components with seperate API calls. ",
