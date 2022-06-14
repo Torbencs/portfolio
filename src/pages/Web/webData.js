@@ -4,8 +4,8 @@ const webData = [
   {
     title: "Physics Puzzle Game",
     tech: "React, MatterJS, UI",
-    text: "A project I built with the intention of creating the 'easiest way to provide anonymous feedback'. It uses QR codes which can be placed in physical locations to give easy feedback on topics set by managers.",
-    images: ["web/inspect/inspect_1.jpg"],
+    text: "A physics puzzle game built with React, Javascript, and a little help from MatterJS.",
+    images: ["play/eclipse_logo_long.png"],
     isApp: true,
     link: "/play",
     bgColor: "#f8f8f8",
@@ -30,8 +30,8 @@ const webData = [
 
   {
     title: "Real Estate Image",
-    tech: "Wordpress, SEO, JS",
-    text: "A simple website for a Melbourne based business specialising in real estate photography and videography.",
+    tech: "Figma, Wordpress, SEO, JS",
+    text: "A simple website for a Melbourne based business specialising in real estate photography and videography. Designed in Figma and built on Wordpress",
     images: ["web/rei/rei_1.jpg", "web/rei/rei_2.jpg", "web/rei/rei_3.jpg"],
     bgColor: "#f8f8f8",
   },
@@ -52,14 +52,14 @@ const webData = [
   {
     title: "A Tree",
     tech: "Adobe XD, Squarespace",
-    text: "text",
+    text: "The aTree project was launched in 2019 by Cassinia Environmental, a profit-for-purpose organisation dedicated to reconnecting, restoring, and protecting Australian natural systems. Designed in Figma and built with Squarespace. ",
     images: ["web/atree/atree.png"],
     bgColor: "#f8f8f8",
   },
   {
     title: "Inspection Reporting App",
     tech: "HTML, Javascript, CSS",
-    text: "text",
+    text: "A simple form based App for monitoring and updating inspection repeorts. Built with good ol' HTML, and CSS",
     images: ["web/inspect/inspect_1.jpg", "web/inspect/inspect_2.jpg"],
     bgColor: "#f8f8f8",
   },

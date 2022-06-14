@@ -11,6 +11,7 @@ const Gallery = (props) => {
       { duration: 0.3, easing: [0.37, 1.09, 0.71, 1] }
     );
   });
+
   return (
     <section
       className={"work__container--gallery"}
@@ -42,14 +43,6 @@ const Gallery = (props) => {
         >
           {props.text}
         </p>
-        {props.altImg && (
-          <div className="gallery__img__container">
-            <img
-              className="gallery__img--alt"
-              src={`${process.env.PUBLIC_URL}/images/design/${props.altImg}`}
-            />
-          </div>
-        )}
 
         <div className="gallery__triangle">
           <div
