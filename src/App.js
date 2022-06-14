@@ -46,9 +46,7 @@ function App() {
             <Route path="/graphic" render={(props) => <Design {...props} />} />
             <Route path="/web" render={(props) => <Web {...props} />} />
             <Route path="/sayit" render={(props) => <Home {...props} />} />
-            <Route exact path="/play">
-              <Play />
-            </Route>
+            <Route path="/play" render={(props) => <Play {...props} />} />
           </Switch>
         </main>
       </div>

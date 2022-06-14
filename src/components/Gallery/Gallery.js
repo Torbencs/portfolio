@@ -43,10 +43,12 @@ const Gallery = (props) => {
           {props.text}
         </p>
         {props.altImg && (
-          <img
-            className="gallery__img--alt"
-            src={`${process.env.PUBLIC_URL}/images/design/${props.altImg}`}
-          />
+          <div className="gallery__img__container">
+            <img
+              className="gallery__img--alt"
+              src={`${process.env.PUBLIC_URL}/images/design/${props.altImg}`}
+            />
+          </div>
         )}
 
         <div className="gallery__triangle">

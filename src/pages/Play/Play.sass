@@ -81,3 +81,33 @@
             background-color: #fbd277
             color: #342647
             transition: 0.1s
+    &--small
+        width: 30%
+        height: 25vh
+
+.play__close
+    position: absolute
+    right: 5px
+    top: 5px
+    width: 32px
+    height: 32px
+    opacity: .23
+    cursor: pointer
+
+    &:hover
+        opacity: 1
+        transition: 0.1s ease-in-out
+
+    &:before, &:after
+        position: absolute
+        left: 15px
+        content: " "
+        height: 30px
+        width: 4px
+        background-color: #8d8d8d
+
+    &:before
+        transform: rotate(45deg)
+
+    &:after
+        transform: rotate(-45deg)

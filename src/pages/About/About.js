@@ -37,10 +37,6 @@ const About = (props) => {
       <a href="mail" className="about__links">
         Email
       </a>
-
-      <a href="linkedin.com" className="about__links">
-        LinkedIn
-      </a>
     </article>
   );
 };

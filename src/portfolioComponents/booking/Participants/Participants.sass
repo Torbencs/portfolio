@@ -1,0 +1,79 @@
+.Participants-center
+  text-align: center
+  margin-top: 20%
+
+.Participants-middle
+  display: inline-block
+
+  position: relative
+
+.Participants-selector
+
+  font-size: 6em
+  line-height: 1
+  color: #8012ab
+
+.Participants-plural
+  font-size: 2em
+
+//Plus and minus sign colour
+$signColor: #cccccc
+
+//Border radius
+$borderRadius: 0.3em
+
+.Participants-plus
+  display: inline-block
+  text-align: left
+  position: relative
+  margin-left: 1.2em
+  width: 2em
+  height: 2em
+  top: 2em
+
+  &::before
+    background-color: $signColor
+    position: absolute
+    content: ""
+    border-radius: $borderRadius
+    width: 1.9em
+    height: 0.3em
+    top: 0.8em
+
+  &::after
+    background-color: $signColor
+    border-radius: $borderRadius
+    position: absolute
+    content: ""
+    width: 0.3em
+    height: 1.9em
+    top: 0px
+    left: 0.85em
+
+.Participants-minus
+  margin-right: 1.8em
+  position: relative
+  width: 2em
+  height: 2em
+  top: 2em
+
+  &::before
+    position: absolute
+    content: ""
+    background-color: $signColor
+    border-radius: $borderRadius
+    width: 1.9em
+    height: 0.3em
+    top: 0.8em
+
+.left
+  position: absolute
+  top: 0
+  left: 0
+  transform: translateX(-100%)
+
+.right
+  position: absolute
+  top: 0
+  right: 0
+  transform: translateX(100%)

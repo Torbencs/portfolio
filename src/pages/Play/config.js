@@ -3,12 +3,12 @@ import { Quad, SemiCircle, Tri, Arch } from "./Shapes";
 
 //Starting options
 export const anchor = {
-  x: (document.body.offsetWidth - 240) / 2 - 100,
-  y: 300,
+  x: (document.body.offsetWidth - 240) / 2,
+  y: document.body.offsetWidth > 800 ? 180 : 300,
 };
 export const startPos = {
   x: anchor.x,
-  y: 680,
+  y: anchor.y + 400,
 };
 const player = {
   radius: 30,
@@ -105,7 +105,7 @@ export const levels = [
   {
     tri: {
       body: () =>
-        Tri(anchor.x + 300, anchor.y, 101, {
+        Tri(anchor.x + 300, anchor.y + 120, 101, {
           label: "tri1",
           mass: 50,
           restitution: 0.99,
@@ -120,7 +120,7 @@ export const levels = [
     },
     semi: {
       body: () =>
-        SemiCircle(anchor.x - 320, anchor.y, 50, 120, {
+        SemiCircle(anchor.x - 320, anchor.y + 120, 50, 120, {
           label: "semi",
           mass: 50,
           restitution: 0.99,
@@ -138,7 +138,7 @@ export const levels = [
       body: () =>
         Bodies.circle(
           anchor.x + 100,
-          anchor.y,
+          anchor.y + 120,
           player.radius,
           {
             label: "goal",
@@ -161,7 +161,7 @@ export const levels = [
       body: () =>
         Bodies.circle(
           anchor.x - 100,
-          anchor.y,
+          anchor.y + 120,
           player.radius,
           {
             label: "player",
@@ -186,7 +186,7 @@ export const levels = [
   {
     quad: {
       body: () =>
-        Quad(anchor.x - 120, anchor.y, 70, 120, {
+        Quad(anchor.x - 120, anchor.y + 100, 70, 120, {
           label: "quad1",
           mass: 50,
           restitution: 0.99,
@@ -200,7 +200,7 @@ export const levels = [
     },
     quad2: {
       body: () =>
-        Quad(anchor.x - 120, anchor.y + 139, 70, 120, {
+        Quad(anchor.x - 120, anchor.y + 239, 70, 120, {
           label: "quad2",
           mass: 50,
           restitution: 0.99,
@@ -215,7 +215,7 @@ export const levels = [
     },
     quad3: {
       body: () =>
-        Quad(anchor.x + 100, anchor.y + 120, 70, 120, {
+        Quad(anchor.x + 100, anchor.y + 220, 70, 120, {
           label: "quad3",
           mass: 50,
           restitution: 0.99,
@@ -230,7 +230,7 @@ export const levels = [
     },
     quad4: {
       body: () =>
-        Quad(anchor.x + 100, anchor.y + 259, 70, 120, {
+        Quad(anchor.x + 100, anchor.y + 359, 70, 120, {
           label: "quad4",
           mass: 50,
           restitution: 0.99,
@@ -248,7 +248,7 @@ export const levels = [
       body: () =>
         Bodies.circle(
           anchor.x + 120,
-          anchor.y - 16,
+          anchor.y - 16 + 100,
           player.radius,
           {
             label: "goal",
@@ -271,7 +271,7 @@ export const levels = [
       body: () =>
         Bodies.circle(
           anchor.x - 141,
-          anchor.y + 278,
+          anchor.y + 378,
           player.radius,
           {
             label: "player",
@@ -296,7 +296,7 @@ export const levels = [
   {
     tri: {
       body: () =>
-        Tri(anchor.x - 130, anchor.y, 101, {
+        Tri(anchor.x - 170, anchor.y + 80, 101, {
           label: "tri1",
           mass: 50,
           restitution: 0.99,
@@ -311,7 +311,7 @@ export const levels = [
     },
     tri2: {
       body: () =>
-        Tri(anchor.x - 130, anchor.y + 240, 101, {
+        Tri(anchor.x - 170, anchor.y + 370, 101, {
           label: "tri2",
           mass: 50,
           restitution: 0.99,
@@ -328,8 +328,8 @@ export const levels = [
     goal: {
       body: () =>
         Bodies.circle(
-          anchor.x + 130,
-          anchor.y + 240,
+          anchor.x + 170,
+          anchor.y + 370,
           player.radius,
           {
             label: "goal",
@@ -351,8 +351,8 @@ export const levels = [
       label: "Player",
       body: () =>
         Bodies.circle(
-          anchor.x + 130,
-          anchor.y,
+          anchor.x + 170,
+          anchor.y + 80,
           player.radius,
           {
             label: "player",
@@ -377,7 +377,7 @@ export const levels = [
   {
     quad: {
       body: () =>
-        Quad(anchor.x + 92, anchor.y - 40, 70, 120, {
+        Quad(anchor.x + 92 - 50, anchor.y - 40 + 130, 70, 120, {
           label: "quad1",
           mass: 50,
           restitution: 0.99,
@@ -392,7 +392,7 @@ export const levels = [
     },
     quad2: {
       body: () =>
-        Quad(anchor.x + 110, anchor.y + 60, 70, 120, {
+        Quad(anchor.x + 110 - 50, anchor.y + 60 + 130, 70, 120, {
           label: "quad2",
           mass: 50,
           restitution: 0.99,
@@ -407,7 +407,7 @@ export const levels = [
     },
     quad3: {
       body: () =>
-        Quad(anchor.x - 30, anchor.y + 150, 70, 120, {
+        Quad(anchor.x - 30 - 50, anchor.y + 150 + 130, 70, 120, {
           label: "quad3",
           mass: 50,
           restitution: 0.99,
@@ -422,7 +422,7 @@ export const levels = [
     },
     quad4: {
       body: () =>
-        Quad(anchor.x - 12, anchor.y + 250, 70, 120, {
+        Quad(anchor.x - 12 - 50, anchor.y + 250 + 130, 70, 120, {
           label: "quad4",
           mass: 50,
           restitution: 0.99,
@@ -439,8 +439,8 @@ export const levels = [
     goal: {
       body: () =>
         Bodies.circle(
-          anchor.x - 90,
-          anchor.y - 30,
+          anchor.x - 90 - 50,
+          anchor.y - 30 + 130,
           player.radius,
           {
             label: "goal",
@@ -462,8 +462,8 @@ export const levels = [
       label: "Player",
       body: () =>
         Bodies.circle(
-          anchor.x + 170,
-          anchor.y + 250,
+          anchor.x + 170 - 50,
+          anchor.y + 250 + 130,
           player.radius,
           {
             label: "player",

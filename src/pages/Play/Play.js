@@ -12,7 +12,6 @@ import {
   Common,
   World,
 } from "matter-js";
-import { Position } from "@react-three/drei/helpers/Position";
 
 //Utils
 import { BetweenRange, EuclidDist } from "./Utils";
@@ -21,7 +20,7 @@ import { levels, startPos, anchor } from "./config";
 //Css
 import "./Play.sass";
 
-function Play() {
+function Play(props) {
   const scene = useRef();
   const isPressed = useRef(false);
   const engine = useRef(Engine.create());
@@ -39,6 +38,10 @@ function Play() {
   const [gameEnded, setGameEnded] = useState(false);
 
   useEffect(() => {
+    console.log(
+      document.getElementsByClassName("flex-container")[0].offsetHeight
+    );
+    //Zero index
     let currentLevel = 0;
     // Has the game ended?
     let gameEnded = false;
@@ -329,13 +332,13 @@ function Play() {
 
   //Reset level
   function reset() {
-    //TODO - Figur out a way to reset in useEffct without the weird side effects
+    //TODO - Figure out a way to reset in useEffect without the weird side effects
     window.location.reload();
   }
 
   //Game overlays
   const GameEnded = () => (
-    <div className="play__notification">
+    <div className="play__notification play__notification--small">
       {score <= 12 && (
         <h1>
           You used <span className="play__notification--yellow">{score}</span>{" "}
@@ -379,10 +382,15 @@ function Play() {
     <>
       <div id="play__nav__container">
         <nav className="play__nav__score">
-          <h1 className="score__title">Score</h1>
-          <h2 className="score__number">{score}</h2>
+          <h1 className="play__nav__title">Score</h1>
+          <h2 className="play__nav__number">{score}</h2>
         </nav>
       </div>
+      <div
+        className="play__close"
+        onClick={() => props.history.push("/")}
+      ></div>
+
       <div
         id="play__canvas"
         ref={scene}
