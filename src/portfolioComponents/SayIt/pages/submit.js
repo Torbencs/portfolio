@@ -17,6 +17,8 @@ const PageContainer = styled.div`
   margin-top: 2em;
   background-color: white;
   width: 400px;
+  border: 10px solid #dfdfdf;
+  border-radius: 30px;
   @media (min-width: 800px) {
     width: 400px;
   }
