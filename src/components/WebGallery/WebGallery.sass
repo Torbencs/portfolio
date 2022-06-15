@@ -47,10 +47,11 @@
         img
             display: block
             border-radius: 0px
+            border-bottom: 10px solid white
+
             &:first-child:hover
                 transform: none
     &--app
-        margin-top: 5em
         text-align: center
     iframe
         border-radius: 20px
@@ -104,6 +105,10 @@
 //Scroll custom
 .web__webgallery::-webkit-scrollbar
     width: 0px
+
+@media (max-width: 1300px)
+    .webgallery__h1
+        font-size: 2.6em
 
 @media (max-width: 650px)
 

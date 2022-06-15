@@ -1,7 +1,10 @@
 $fontColor: #2f2042
 
-header.main__header
+.main__header
     height: calc( 100vh - 80px )
+    display: flex
+    justify-content: center
+    align-items: center
 
     h1
         font-family: 'Poppins'
@@ -22,12 +25,6 @@ header.main__header
     text-align: center
     position: relative
     font-weight: 600
-
-    /* Vertical align middle */
-    top: 50%
-    -webkit-transform: translateY(-50%)
-    -ms-transform: translateY(-50%)
-    transform: translateY(-50%)
 
     &__link
         font-size: 2.4em
@@ -59,76 +56,6 @@ header.main__header
     opacity: 0
     cursor: default
 
-.fadeIn-enter
-    opacity: 0.01
-
-.fadeIn-enter.fadeIn-enter-active
-    opacity: 1
-    transition: opacity 800ms ease-in
-
-.fadeIn-leave
-    opacity: 1
-    &.fadeIn-leave-active
-        opacity: 0.01
-        transition: opacity 800ms ease-in
-.fadeIn-appear
-    opacity: 0.01
-    &.fadeIn-appear-active
-        opacity: 1
-        transition: opacity .8s ease-in
-
-.slideInUp
-    -webkit-animation-name: slideInUp
-    animation-name: slideInUp
-    -webkit-animation-duration: 0.3s
-    animation-duration: 0.3s
-    -webkit-animation-fill-mode: both
-    animation-fill-mode: both
-
-@-webkit-keyframes slideInUp
-  0% 
-    -webkit-transform: translateY(80%)
-    transform: translateY(80%)
-    visibility: visible
-
-  100% 
-    -webkit-transform: translateY(10%)
-    transform: translateY(10%)
-
-@keyframes slideInUp
-    0%
-        -webkit-transform: translateY(80%)
-        transform: translateY(80%)
-        visibility: visible
-
-    100%
-        -webkit-transform: translateY(10%)
-        transform: translateY(10%)
-
-.slideInDown
-    -webkit-animation-name: slideInDown
-    animation-name: slideInDown
-    -webkit-animation-duration: 0.3s
-    animation-duration: 0.3s
-    -webkit-animation-fill-mode: both
-    animation-fill-mode: both
-
-@-webkit-keyframes slideInDown
-  0% 
-    -webkit-transform: translateY(-80%)
-    transform: translateY(-80%)
-    visibility: visible
-
-  100% 
-    -webkit-transform: translateY(-10%)
-    transform: translateY(-10%)
-
-@keyframes slideInDown
-    0%
-        -webkit-transform: translateY(-80%)
-        transform: translateY(-80%)
-        visibility: visible
-
-    100%
-        -webkit-transform: translateY(-10%)
-        transform: translateY(-10%)
+@media (max-width: 800px)
+    .main__header
+        height: calc( 100vh - 40px )

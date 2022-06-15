@@ -109,7 +109,7 @@ const QuizImage = ({ handleScore, title, handleLoading, onCorrectAnswer }) => {
           className="quiz__image quiz__image--blur"
           xlinkHref={posterData}
         ></image>
-        <filter id="filter2">
+        <filter id="filter2" width="100%" height="100%">
           <feGaussianBlur stdDeviation="5" />
         </filter>
         <mask id="mask1"></mask>

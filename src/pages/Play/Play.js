@@ -14,7 +14,7 @@ import {
 } from "matter-js";
 
 //Utils
-import { BetweenRange, EuclidDist } from "./Utils";
+import { BetweenRange, getIsPortrait } from "./Utils";
 //Levels
 import { levels, startPos, anchor } from "./config";
 //Css
@@ -28,6 +28,8 @@ function Play(props) {
 
   //Instructions
   const [showInstructions, setShowInstructions] = useState(true);
+  //Is the device in portrait orientation
+  const [isPortrait, setIsPortrait] = useState(getIsPortrait());
   //Mouse state
   const [mouseDown, setMouseDown] = useState(null);
   const [mouseUp, setMouseUp] = useState(null);
@@ -38,9 +40,16 @@ function Play(props) {
   const [gameEnded, setGameEnded] = useState(false);
 
   useEffect(() => {
-    console.log(
-      document.getElementsByClassName("flex-container")[0].offsetHeight
-    );
+    function orientationChange() {
+      //Set true if in portrait orientation
+      setIsPortrait(getIsPortrait());
+    }
+
+    window.addEventListener("resize", orientationChange);
+    return () => window.removeEventListener("resize", orientationChange);
+  }, []);
+
+  useEffect(() => {
     //Zero index
     let currentLevel = 0;
     // Has the game ended?
@@ -378,6 +387,15 @@ function Play(props) {
     </div>
   );
 
+  const GamePortrait = () => (
+    <div className="play__notification">
+      <h1>
+        Please <span className="play__notification--yellow">rotate</span> your
+        device to play!
+      </h1>
+    </div>
+  );
+
   return (
     <>
       <div id="play__nav__container">
@@ -417,8 +435,9 @@ function Play(props) {
           )
         }
       ></div>
-      {gameEnded && <GameEnded />}
-      {showInstructions && <GameInstructions />}
+      {isPortrait && <GamePortrait />}
+      {showInstructions && !isPortrait && <GameInstructions />}
+      {gameEnded && !isPortrait && <GameEnded />}
     </>
   );
 }

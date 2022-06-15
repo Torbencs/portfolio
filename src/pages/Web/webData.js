@@ -5,7 +5,7 @@ const webData = [
     title: "Physics Puzzle Game",
     tech: "React, MatterJS, UI",
     text: "A physics puzzle game built with React, Javascript, and a little help from MatterJS.",
-    images: ["play/eclipse_logo_long.png"],
+    images: ["play/eclipse_logo_med.png"],
     isApp: true,
     link: "/play",
     bgColor: "#f8f8f8",

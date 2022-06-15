@@ -11,3 +11,8 @@ export const BetweenRange = (value, min, max) => {
 export const EuclidDist = (a, b) => {
   return Math.hypot(...Object.keys(a).map((k) => b[k] - a[k]));
 };
+
+export const getIsPortrait = () => {
+  const { innerWidth: width, innerHeight: height } = window;
+  return width < height;
+};

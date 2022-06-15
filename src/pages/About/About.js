@@ -22,6 +22,8 @@ const About = (props) => {
         insatiable curiosity to learn and as such have a broad range of skills
         to offer. What I may lack in industry experience I believe I make up for
         in my eagerness to learn and strong work ethic.
+        <br></br>When I'm not behind the screen I'm usually dreaming up new
+        ideas while sailing or climbing.
       </p>
 
       <a href="mailto:tschlawe@gmail.com" className="about__links">
