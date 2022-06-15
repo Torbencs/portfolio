@@ -9,6 +9,7 @@
 }
 .form__logo {
   width: 130px;
+  padding-left: 20px;
 }
 .form__h1 {
   font-weight: 700;
@@ -28,7 +29,7 @@
   background: none repeat scroll 0 0 rgba(134, 136, 151, 0.14);
   border-radius: 9px;
   border-style: none;
-  padding: 0.5em;
+  padding: 10px;
   margin-bottom: 1.5em;
   -ms-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -40,11 +41,14 @@
 }
 .form textarea {
   height: 17em;
-  width: 77vw;
+  width: calc(100% - 40px);
   text-align: start;
 }
 .form select {
-  width: 77vw;
+  width: calc(100% - 40px);
+}
+.form option {
+  width: 100%;
 }
 .form button {
   text-decoration: none;

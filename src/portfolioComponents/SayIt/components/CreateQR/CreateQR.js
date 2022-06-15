@@ -94,7 +94,7 @@ const CreateQR = ({ history, setQrData, qrData }) => {
         data: options.data,
       },
     ]);
-    history.push("/qrcodes");
+    history.push("/sayit/qrcodes");
   };
 
   return (

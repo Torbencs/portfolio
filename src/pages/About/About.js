@@ -24,6 +24,8 @@ const About = (props) => {
         in my eagerness to learn and strong work ethic.
         <br></br>When I'm not behind the screen I'm usually dreaming up new
         ideas while sailing or climbing.
+        <br></br>Currently searching for an entry level role in an exciting
+        company with a vision.
       </p>
 
       <a href="mailto:tschlawe@gmail.com" className="about__links">

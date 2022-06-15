@@ -14,7 +14,7 @@ export default function (props) {
     <button
       className={`hamburger hamburger--minus ${active && "is-active"}`}
       type="button"
-      onClick={handleClick}
+      //onClick={handleClick}
     >
       <span className="hamburger-box">
         <span className="hamburger-inner"></span>

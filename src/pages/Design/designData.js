@@ -53,7 +53,7 @@ let designData = [
     title: "Plant a tree Certificate",
     text: "The aTree project is all about empowering people to help revitalise natural ecosystems. I designed this print and digital certificate for their.. ",
     imgSrc: "cert.jpg",
-    bgColor: "#e1ebf0",
+    bgColor: "#eeeeee",
     textTheme: "dark",
     size: "wide",
   },

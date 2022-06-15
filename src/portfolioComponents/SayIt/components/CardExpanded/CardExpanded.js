@@ -39,18 +39,21 @@ const CardExpanded = ({ data, referenceNode, onEdit }) => {
           <motion.h1 className="cardH1--expanded">{data.topic}</motion.h1>
           <motion.div className="cardIcons--expanded">
             {params.pathName !== "saved" && (
-              <motion.img
-                className="cardIcon--expanded"
-                src={savedIcon}
-                alt={`Share feedback icon`}
-                whileHover={{ scale: 1.2 }}
-                onClick={(e) => {
-                  data.status = "saved";
-                  onEdit(data.feedbackId);
-                }}
-              />
+              <div class="tooltip">
+                <motion.img
+                  className="cardIcon--expanded"
+                  src={savedIcon}
+                  alt={`Save icon`}
+                  whileHover={{ scale: 1.2 }}
+                  onClick={(e) => {
+                    data.status = "saved";
+                    onEdit(data.feedbackId);
+                  }}
+                />
+                <span class="tooltiptext">Save</span>
+              </div>
             )}
-            <span data-text="Share Feedback" className="card__tooltip">
+            <div class="tooltip">
               <motion.img
                 className="cardIcon--expanded"
                 src={shareIcon}
@@ -58,18 +61,22 @@ const CardExpanded = ({ data, referenceNode, onEdit }) => {
                 whileHover={{ scale: 1.2 }}
                 onClick={handleShare}
               />
-            </span>
+              <span class="tooltiptext">Share</span>
+            </div>
             {params.pathName !== "deleted" && (
-              <motion.img
-                className="cardIcon--expanded"
-                src={deleteIcon}
-                alt={`Delete feedback icon`}
-                whileHover={{ scale: 1.2 }}
-                onClick={(e) => {
-                  data.status = "deleted";
-                  onEdit(data.feedbackId);
-                }}
-              />
+              <div class="tooltip">
+                <motion.img
+                  className="cardIcon--expanded"
+                  src={deleteIcon}
+                  alt={`Delete feedback icon`}
+                  whileHover={{ scale: 1.2 }}
+                  onClick={(e) => {
+                    data.status = "deleted";
+                    onEdit(data.feedbackId);
+                  }}
+                />
+                <span class="tooltiptext">Delete</span>
+              </div>
             )}
           </motion.div>
         </motion.header>

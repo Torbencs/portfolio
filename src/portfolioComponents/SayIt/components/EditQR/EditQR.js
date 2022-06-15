@@ -93,7 +93,7 @@ const EditQR = ({ location, qrData, setQrData, history }) => {
           data: options.data,
         },
       ]);
-      history.push(`${path}/qrcodes`);
+      history.push(`/sayit/qrcodes`);
     } else {
       console.warn("No QR data - undefined");
     }
@@ -107,7 +107,7 @@ const EditQR = ({ location, qrData, setQrData, history }) => {
         (item) => item.qrId !== location.state.qrId
       );
       setQrData([...filtered]);
-      history.push("/qrcodes");
+      history.push(`/sayit/qrcodes`);
     } else {
       console.warn("No QR data - undefined");
     }

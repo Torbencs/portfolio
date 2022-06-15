@@ -12,9 +12,16 @@ import Form from "../components/Form/Form";
 
 //Styles
 const PageContainer = styled.div`
-  margin-left: 2em;
-  margin-right: 2em;
+  position: relative;
+  margin: auto;
+  margin-top: 2em;
+  background-color: white;
+  width: 400px;
+  @media (min-width: 800px) {
+    width: 400px;
+  }
 `;
+
 const Body = styled.div`
   position: relative;
   width: 100%;

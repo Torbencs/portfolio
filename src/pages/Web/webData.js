@@ -21,7 +21,7 @@ const webData = [
   {
     title: "Feedback App",
     tech: "React, QR Codes, UI",
-    text: "A project I built with the intention of creating the 'easiest way to provide anonymous feedback'. It uses QR codes which can be placed in physical locations to give easy feedback on topics set by managers.",
+    text: "MVP of a front end for a feedback app I built with the intention of creating the 'easiest way to provide anonymous feedback'. It uses QR codes which can be placed in physical locations to give easy feedback on topics set by managers.",
     images: ["web/inspect/inspect_1.jpg"],
     isApp: true,
     link: "/sayit/new",

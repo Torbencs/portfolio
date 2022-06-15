@@ -18,6 +18,7 @@ import HamburgerNav from "./components/HamburgerNav/HamburgerNav";
 
 //Apps
 import Home from "./portfolioComponents/SayIt/pages/home";
+import Submit from "./portfolioComponents/SayIt/pages/submit";
 
 import "./css/fonts.css";
 import "./App.sass";
@@ -45,8 +46,9 @@ function App() {
             />
             <Route path="/graphic" render={(props) => <Design {...props} />} />
             <Route path="/web" render={(props) => <Web {...props} />} />
-            <Route path="/sayit" render={(props) => <Home {...props} />} />
             <Route path="/play" render={(props) => <Play {...props} />} />
+            <Route path="/sayit" render={(props) => <Home {...props} />} />
+            <Route path="/submit" render={(props) => <Submit {...props} />} />
           </Switch>
         </main>
       </div>
