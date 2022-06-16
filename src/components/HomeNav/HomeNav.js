@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Link } from "react-router-dom";
 import { animate } from "motion";
 
-import Typist from "react-typist";
-
 import "../../css/fonts.css";
 import "./HomeNav.sass";
 
@@ -16,19 +14,19 @@ function HomeNav() {
   //   setShowMenu(true);
   // }, 3400);
 
-  const Torben = () => {
-    return (
-      <h1>
-        <a id={"home"}>
-          <Typist avgTypingDelay={150} cursor={{ show: false }}>
-            Torben
-            <Typist.Delay ms={1000} />
-            <span className="dot--yellow">.</span>
-          </Typist>
-        </a>
-      </h1>
-    );
-  };
+  // const Torben = () => {
+  //   return (
+  //     <h1>
+  //       <a id={"home"}>
+  //         <Typist avgTypingDelay={150} cursor={{ show: false }}>
+  //           Torben
+  //           <Typist.Delay ms={1000} />
+  //           <span className="dot--yellow">.</span>
+  //         </Typist>
+  //       </a>
+  //     </h1>
+  //   );
+  // };
 
   const NavLinks = () => {
     const SubMenu = () => {
@@ -76,7 +74,7 @@ function HomeNav() {
   return (
     <header className={"main__header"}>
       <nav className={"homeMenu"} onMouseLeave={() => setShowSubMenu(false)}>
-        {showMenu ? <NavLinks /> : <Torben />}
+        <NavLinks />
       </nav>
     </header>
   );

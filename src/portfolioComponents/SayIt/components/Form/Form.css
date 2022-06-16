@@ -11,6 +11,7 @@
   width: 130px;
   padding-left: 20px;
 }
+
 .form__h1 {
   font-weight: 700;
   font-size: 1.6em;
@@ -81,4 +82,33 @@
   font-weight: 800;
   color: #4142496f;
   margin: 1.5em 0.9em 0.9em 0.9em;
+}
+
+@media (max-height: 750px) {
+ .form__header img {
+   width: 100px;
+ }
+ .form__h1 {
+  font-size: 1.4em;
+ }
+ .form__h2 {
+  font-size: 1em;
+ }
+ .form__field {
+   font-size: 0.9em;
+   padding: 5px
+ }
+ .form textarea{
+   height: 9em;
+ }
+ .form button {
+   width: 5em;
+   font-size: 1em;
+ }
+ .form__footer h3 {
+   font-size: 0.8em;
+   font-weight: 800;
+   color: #4142496f;
+   margin: 2em 0.3em 0.3em 0.5em;
+ }
 }

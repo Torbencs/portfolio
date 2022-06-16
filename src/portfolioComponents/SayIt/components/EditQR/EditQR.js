@@ -7,7 +7,6 @@ import QRCodeStyling from "qr-code-styling";
 import "../CreateQR/CreateQR.css";
 //Components
 //Assets
-import pageBreak from "../../assets/page_break.png";
 import logo from "../../assets/logo_txt_sml.png";
 
 const EditQR = ({ location, qrData, setQrData, history }) => {

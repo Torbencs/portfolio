@@ -13,6 +13,43 @@ const WebGallery = (props) => {
     return () => window.removeEventListener("wheel", scroll);
   }, []);
 
+  const Images = () => {
+    //If there are multiple links then apply css class to use the images as thumbnails
+    if (props.link.length > 1) {
+      return props.images.map((image, index) => (
+        <img
+          key={index}
+          src={`${process.env.PUBLIC_URL}/images/${image}`}
+          className="webGallery__images"
+          onClick={() =>
+            props.link &&
+            window.open(
+              `https://torbencs.github.io/portfolio/#${props.link[index]}`
+            )
+          }
+        />
+      ));
+    } else if (props.images) {
+      //Else if there are images but one or no links then use large image
+      return props.images.map((image, index) => (
+        <img
+          key={index}
+          src={`${process.env.PUBLIC_URL}/images/${image}`}
+          onClick={() =>
+            props.link &&
+            window.open(
+              `https://torbencs.github.io/portfolio/#${props.link[0]}`
+            )
+          }
+        />
+      ));
+    } else if (props.component) {
+      //No images then render the component
+      return props.component;
+    }
+    //Render this if there are multiple links
+  };
+
   return (
     <section
       className={"web__container--gallery"}
@@ -32,20 +69,7 @@ const WebGallery = (props) => {
         }`}
         onClick={() => !props.isApp && setIsActive(true)}
       >
-        {props.images
-          ? props.images.map((image, index) => (
-              <img
-                key={index}
-                src={`${process.env.PUBLIC_URL}/images/${image}`}
-                onClick={() =>
-                  props.link &&
-                  window.open(
-                    `https://torbencs.github.io/portfolio/#${props.link}`
-                  )
-                }
-              />
-            ))
-          : props.component}
+        <Images />
       </div>
 
       <div className="webgallery__triangle">

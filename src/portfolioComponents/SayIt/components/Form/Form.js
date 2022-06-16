@@ -12,7 +12,13 @@ import LogoLrg from "../../assets/logo_lrg.png";
 //Components
 import Hamburger from "../Hamburger/Hamburger";
 
-export default function ({ history, handleLogout, data, setData }) {
+export default function ({
+  history,
+  handleLogout,
+  data,
+  setData,
+  falseSubmit,
+}) {
   const params = useParams();
   const [topic, setTopic] = useState([
     "Sales",
@@ -29,16 +35,25 @@ export default function ({ history, handleLogout, data, setData }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const feedback = {
-      feedbackId: data.length + 1,
-      topic: selectedTopic,
-      body: text,
-      status: "new",
-    };
 
-    setData([...data, feedback]);
+    //Don't submit if user is visiting the demo front end from a device that scanned the QR code
+    if (falseSubmit) {
+      alert(
+        "This demo isn't currently connected to a backend. You can see the intended user flow on the emulated version instead of going through the QR code"
+      );
+      history.push("/sayit/new");
+    } else {
+      const feedback = {
+        feedbackId: data.length + 1,
+        topic: selectedTopic,
+        body: text,
+        status: "new",
+      };
 
-    history.push("/sayit/new");
+      setData([...data, feedback]);
+
+      history.push("/sayit/new");
+    }
   };
 
   return (

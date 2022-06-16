@@ -14,6 +14,7 @@ import Header from "../components/Header";
 import Nav from "../components/Nav/Nav";
 import Content from "../components/Content";
 import QRCodes from "../components/QRCodes/QRCodes";
+import Chart from "../components/Chart/Chart";
 
 //Pages
 import CreateQR from "../components/CreateQR/CreateQR";
@@ -44,18 +45,24 @@ const Home = ({ location, data }) => {
   });
 
   const [qrData, setQrData] = useState([
-    { qrId: 1, topic: "qr topic", question: "this is the question" },
+    {
+      qrId: 1,
+      topic: "Customer Satisfaction",
+      question: "Did you enjoy your stay with us?",
+      data: "https://torbencs.github.io/portfolio/#/demo",
+    },
     {
       qrId: 2,
-      topic: "qr topic",
-      question: "this is the question",
-      data: "www.google.com",
+      topic: "New Procedures",
+      question: "Have the new sales procedures been implemented well?",
+      data: "https://torbencs.github.io/portfolio/#/demo",
     },
     {
       qrId: 3,
-      topic: "Third topic",
-      question: "this is the question",
-      data: "www.google.com",
+      topic: "Workplace safety",
+      question: "Do you feel safe at work?",
+      description: "",
+      data: "https://torbencs.github.io/portfolio/#/demo",
     },
   ]);
 
@@ -85,6 +92,9 @@ const Home = ({ location, data }) => {
           </Route>
           <Route path={`${path}/qrcodes/edit`} exact>
             <EditQR qrData={qrData} setQrData={setQrData} location={location} />
+          </Route>
+          <Route path={`${path}/stats`} exact>
+            <Chart />
           </Route>
 
           {

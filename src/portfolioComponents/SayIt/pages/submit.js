@@ -2,11 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import axios from "axios";
-
-import Account from "../components/account";
-import Todo from "../components/todo";
-
 //Components
 import Form from "../components/Form/Form";
 
@@ -20,6 +15,10 @@ const PageContainer = styled.div`
   height: 620px;
   border: 9px solid #dfdfdf;
   border-radius: 36px;
+  @media (max-height: 750px) {
+    width: 245px;
+    height: 500px;
+  }
 `;
 
 const IphoneCamera = styled.div`
@@ -30,6 +29,12 @@ const IphoneCamera = styled.div`
   top: -1px;
   border-radius: 0 0 20px 20px;
   background-color: #dfdfdf;
+  @media (max-height: 750px) {
+    width: 110px;
+    height: 15px;
+    left: 67px;
+    top: -1px;
+  }
 `;
 const IphoneButton = styled.div`
   position: absolute;
@@ -39,6 +44,9 @@ const IphoneButton = styled.div`
   top: 110px;
   border-radius: 20px 0 0 20px;
   background-color: #dfdfdf;
+  @media (max-height: 750px) {
+    top: 80px;
+  }
 `;
 const IphoneButton2 = styled.div`
   position: absolute;
@@ -48,6 +56,9 @@ const IphoneButton2 = styled.div`
   top: 160px;
   border-radius: 20px 0 0 20px;
   background-color: #dfdfdf;
+  @media (max-height: 750px) {
+    top: 130px;
+  }
 `;
 const IphoneButton3 = styled.div`
   position: absolute;
@@ -57,6 +68,10 @@ const IphoneButton3 = styled.div`
   top: 120px;
   border-radius: 0 20px 20px 0;
   background-color: #dfdfdf;
+  @media (max-height: 750px) {
+    top: 95px;
+    left: 253px;
+  }
 `;
 
 const Home = ({ history, data, setData }) => {

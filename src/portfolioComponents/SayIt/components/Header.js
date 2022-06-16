@@ -14,7 +14,9 @@ const HeaderDiv = styled.header`
   position: relative;
   padding: 20px 10px;
   min-width: 700px;
-
+  @media (max-width: 1200px) {
+    margin-bottom: 1em;
+  }
   @media (max-width: 850px) {
     padding: 0;
   }
@@ -25,7 +27,6 @@ const AvatarDiv = styled.div`
   align-items: center;
   position: absolute;
   bottom: 0.5em;
-  right: 8%;
   @media (max-width: 850px) {
     bottom: 0px;
   }

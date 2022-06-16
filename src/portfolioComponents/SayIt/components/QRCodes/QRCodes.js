@@ -10,7 +10,6 @@ import Loader from "../../assets/Loader/Loader";
 import "./QRCodes.css";
 
 //Components
-import CardSettings from "../CardSettings/CardSettings";
 import QR from "../QR/QR";
 
 export default function QRCodes({ history, qrData, setQrData }) {

@@ -1,7 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import { withRouter } from "react-router-dom";
-import axios from "axios";
-// import { authMiddleWare } from "../../util/auth";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import QRCodeStyling from "qr-code-styling";
@@ -76,7 +74,7 @@ const CreateQR = ({ history, setQrData, qrData }) => {
     setTopic(value);
     setOptions((options) => ({
       ...options,
-      data: encodeURI(`http://sayit.company/submit/${userId}/${value}`),
+      data: encodeURI(`https://torbencs.github.io/portfolio/#/demo/${value}`),
     }));
   };
 

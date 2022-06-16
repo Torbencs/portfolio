@@ -19,6 +19,7 @@ import HamburgerNav from "./components/HamburgerNav/HamburgerNav";
 //Apps
 import Home from "./portfolioComponents/SayIt/pages/home";
 import Submit from "./portfolioComponents/SayIt/pages/submit";
+import Demo from "./portfolioComponents/SayIt/pages/demo";
 
 import "./css/fonts.css";
 import "./App.sass";
@@ -31,25 +32,41 @@ function App() {
     {
       feedbackId: 1,
       topic: "Sales",
-      body: "this is the body text",
+      body: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+molestiae quas vel sint commodi repudiandae consequuntur voluptatum!`,
       status: "new",
     },
     {
       feedbackId: 2,
-      topic: "Sales",
-      body: "this is the body text",
+      topic: "Complaint",
+      body: `Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
+sapiente officiis modi at sunt excepturi expedita sint?`,
       status: "saved",
     },
     {
       feedbackId: 3,
       topic: "Customer Experience",
-      body: "this is the body text",
+      body: `Nulla, placeat. Voluptatem quaerat non architecto ab laudantium
+modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam 
+totam ratione voluptas quod exercitationem fuga.`,
       status: "new",
     },
     {
       feedbackId: 4,
       topic: "Returns Policy",
-      body: "this is the body text",
+      body: `Proin sem purus, accumsan id finibus et, elementum a est. Etiam vehicula convallis tempor. Nullam quis metus tempor, varius lorem quis, imperdiet metus. Vivamus a dui dolor.`,
+      status: "new",
+    },
+    {
+      feedbackId: 5,
+      topic: "Other",
+      body: `Sed ultrices erat orci, a porttitor leo convallis vel. Sed pharetra augue at condimentum lacinia. In consequat magna non sodales bibendum. Donec rhoncus tellus a laoreet ornare.`,
+      status: "new",
+    },
+    {
+      feedbackId: 6,
+      topic: "Returns Policy",
+      body: `Suspendisse egestas tellus odio, a sagittis nunc condimentum ac.`,
       status: "new",
     },
   ]);
@@ -74,6 +91,7 @@ function App() {
             <Route path="/graphic" render={(props) => <Design {...props} />} />
             <Route path="/web" render={(props) => <Web {...props} />} />
             <Route path="/play" render={(props) => <Play {...props} />} />
+            //SayIt Demo Routes
             <Route
               path="/sayit"
               render={(props) => (
@@ -85,6 +103,10 @@ function App() {
               render={(props) => (
                 <Submit data={data} setData={setData} {...props} />
               )}
+            />
+            <Route
+              path="/demo"
+              render={(props) => <Demo data={data} {...props} />}
             />
           </Switch>
         </main>
