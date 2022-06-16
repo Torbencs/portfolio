@@ -10,7 +10,7 @@ const webData = [
       "web/sayit/dashboard_thumbnail.jpg",
     ],
     isApp: true,
-    link: ["/demo", "/sayit/new"],
+    link: ["/submit", "/sayit/new"],
     bgColor: "#f8f8f8",
   },
   {
