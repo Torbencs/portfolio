@@ -39,7 +39,13 @@
 //Scroll custom
 .design__grid::-webkit-scrollbar
     width: 0px
+
+@media (max-width: 1250px)
+    .design__grid
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr))
+        grid-template-rows: repeat(auto-fill, minmax(100px, 1fr))
+
 @media (max-width: 650px)
     .design__grid
         margin: 0
-        height: calc(86vh - 40px)
+        height: calc(100vh - 40px)
