@@ -14,19 +14,49 @@ import Form from "../components/Form/Form";
 const PageContainer = styled.div`
   position: relative;
   margin: auto;
-  margin-top: 2em;
+  margin-top: 20px;
   background-color: white;
-  width: 400px;
-  border: 10px solid #dfdfdf;
-  border-radius: 30px;
-  @media (min-width: 800px) {
-    width: 400px;
-  }
+  width: 300px;
+  height: 620px;
+  border: 9px solid #dfdfdf;
+  border-radius: 36px;
 `;
 
-const Body = styled.div`
-  position: relative;
-  width: 100%;
+const IphoneCamera = styled.div`
+  position: absolute;
+  width: 140px;
+  height: 20px;
+  left: 80px;
+  top: -1px;
+  border-radius: 0 0 20px 20px;
+  background-color: #dfdfdf;
+`;
+const IphoneButton = styled.div`
+  position: absolute;
+  width: 5px;
+  height: 40px;
+  left: -13px;
+  top: 110px;
+  border-radius: 20px 0 0 20px;
+  background-color: #dfdfdf;
+`;
+const IphoneButton2 = styled.div`
+  position: absolute;
+  width: 5px;
+  height: 40px;
+  left: -13px;
+  top: 160px;
+  border-radius: 20px 0 0 20px;
+  background-color: #dfdfdf;
+`;
+const IphoneButton3 = styled.div`
+  position: absolute;
+  width: 5px;
+  height: 60px;
+  left: 308px;
+  top: 120px;
+  border-radius: 0 20px 20px 0;
+  background-color: #dfdfdf;
 `;
 
 const Home = ({ history, data, setData }) => {
@@ -38,6 +68,10 @@ const Home = ({ history, data, setData }) => {
 
   return (
     <PageContainer>
+      <IphoneCamera />
+      <IphoneButton />
+      <IphoneButton2 />
+      <IphoneButton3 />
       <Form history={history} data={data} setData={setData} />
     </PageContainer>
   );

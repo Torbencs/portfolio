@@ -2,7 +2,7 @@
   text-align: center;
 }
 .form__header {
-  padding-top: 1.4em;
+  padding-top: 30px;
 }
 .form__menu {
   float: right;
@@ -13,11 +13,20 @@
 }
 .form__h1 {
   font-weight: 700;
-  font-size: 1.8em;
-  padding-top: 0.5em;
+  font-size: 1.6em;
+  padding-top: 0.2em;
+  margin-bottom: 0;
   color: #414249f8;
   text-align: center;
   letter-spacing: 0.8px;
+}
+.form__h2 {
+  font-weight: 700;
+  font-size: 1.4em;
+  color: #414249f8;
+  text-align: center;
+  letter-spacing: 0.8px;
+  margin-bottom: 0.6em;
 }
 .form__h1--yellow {
   color: #f8c630;
@@ -29,7 +38,7 @@
   background: none repeat scroll 0 0 rgba(134, 136, 151, 0.14);
   border-radius: 9px;
   border-style: none;
-  padding: 10px;
+  padding: 7px;
   margin-bottom: 1.5em;
   -ms-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -40,7 +49,7 @@
   text-transform: capitalize;
 }
 .form textarea {
-  height: 17em;
+  height: 13em;
   width: calc(100% - 40px);
   text-align: start;
 }
@@ -55,12 +64,12 @@
   border: none;
   background: #1583d8;
   color: rgb(255, 255, 255);
-  border-radius: 9px;
+  border-radius: 10px;
   font-family: inherit;
   font-size: 1.1em;
   font-weight: 600;
-  width: 6.5em;
-  height: 2.3em;
+  width: 6em;
+  height: 2.2em;
 }
 .form__footer {
   display: flex;
@@ -70,6 +79,6 @@
 .form__footer h3 {
   font-size: 90%;
   font-weight: 800;
-  color: #414249b4;
-  margin: 2em 1em 1em 1em;
+  color: #4142496f;
+  margin: 1.5em 0.9em 0.9em 0.9em;
 }

@@ -52,10 +52,11 @@ export default function ({ history, handleLogout, data, setData }) {
         />
         <Hamburger handleLogout={handleLogout} />
       </div>
-      <h1 className="form__h1">
-        Got Feedback? <br /> Just{" "}
-        <span className="form__h1--yellow">say it.</span>
-      </h1>
+      <h1 className="form__h1">Got Feedback? </h1>
+      <h2 className="form__h2">
+        {" "}
+        Just <span className="form__h1--yellow">say it.</span>
+      </h2>
       <form className="form" onSubmit={handleSubmit}>
         <select
           name="select"
