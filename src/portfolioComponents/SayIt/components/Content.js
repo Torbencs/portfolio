@@ -3,7 +3,6 @@ import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
 import { useParams } from "react-router-dom";
 
 //Assets - REPLACE WITH API CALL
-import salesIcon from "../assets/sales_icon.png";
 import Loader from "../assets/Loader/Loader";
 
 //Styles
@@ -12,33 +11,7 @@ import "../components/Card/Card.sass";
 //Components
 import Card from "../components/Card/Card";
 
-export default function Content({ history }) {
-  const [data, setData] = useState([
-    {
-      feedbackId: 1,
-      topic: "Sales",
-      body: "this is the body text",
-      status: "new",
-    },
-    {
-      feedbackId: 2,
-      topic: "Sales",
-      body: "this is the body text",
-      status: "saved",
-    },
-    {
-      feedbackId: 3,
-      topic: "Customer Experience",
-      body: "this is the body text",
-      status: "new",
-    },
-    {
-      feedbackId: 4,
-      topic: "Returns Policy",
-      body: "this is the body text",
-      status: "new",
-    },
-  ]);
+export default function Content({ history, data }) {
   const [feedback, setFeedback] = useState();
   const [loading, setLoading] = useState(false);
 
@@ -52,7 +25,7 @@ export default function Content({ history }) {
     setTimeout(() => {
       setLoading(false);
     }, 500);
-  }, [params.pathName]);
+  }, [params.pathName, data]);
 
   const LoadedContent = () => {
     //Check if feedback array is empty
@@ -60,8 +33,8 @@ export default function Content({ history }) {
       return feedback.map((item) => (
         <Card
           key={item.feedbackId}
-          icon={salesIcon}
           data={item}
+          iconNumber={Math.floor(Math.random() * 4)}
           onEdit={handleEdit}
         />
       ));

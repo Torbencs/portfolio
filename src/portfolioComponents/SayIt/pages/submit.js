@@ -29,7 +29,7 @@ const Body = styled.div`
   width: 100%;
 `;
 
-const Home = ({ history }) => {
+const Home = ({ history, data, setData }) => {
   const handleLogout = () => {
     history.push("/login");
   };
@@ -38,7 +38,7 @@ const Home = ({ history }) => {
 
   return (
     <PageContainer>
-      <Form handleLogout={handleLogout} />
+      <Form history={history} data={data} setData={setData} />
     </PageContainer>
   );
 };

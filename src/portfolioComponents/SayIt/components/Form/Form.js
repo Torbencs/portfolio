@@ -12,9 +12,14 @@ import LogoLrg from "../../assets/logo_lrg.png";
 //Components
 import Hamburger from "../Hamburger/Hamburger";
 
-export default function ({ history, handleLogout }) {
+export default function ({ history, handleLogout, data, setData }) {
   const params = useParams();
-  const [topic, setTopic] = useState([`${decodeURI(params.topic)}`, "Other"]);
+  const [topic, setTopic] = useState([
+    "Sales",
+    "IT issue",
+    "Complaint",
+    "Other",
+  ]);
   const [selectedTopic, setSelectedTopic] = useState(topic[0]);
   const [text, setText] = useState("");
 
@@ -25,25 +30,15 @@ export default function ({ history, handleLogout }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const feedback = {
-      userId: params.userId,
+      feedbackId: data.length + 1,
       topic: selectedTopic,
       body: text,
-      new: true,
+      status: "new",
     };
 
-    let options = {
-      url: "/todo",
-      method: "post",
-      data: feedback,
-    };
+    setData([...data, feedback]);
 
-    axios(options)
-      .then(() => {
-        window.location.reload();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    history.push("/sayit/new");
   };
 
   return (

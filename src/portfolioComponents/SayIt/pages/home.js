@@ -32,7 +32,7 @@ const Body = styled.div`
   width: 100%;
 `;
 
-const Home = (props) => {
+const Home = ({ location, data }) => {
   const history = useHistory();
   const { path, url } = useRouteMatch();
 
@@ -84,18 +84,14 @@ const Home = (props) => {
             <CreateQR qrData={qrData} setQrData={setQrData} />
           </Route>
           <Route path={`${path}/qrcodes/edit`} exact>
-            <EditQR
-              qrData={qrData}
-              setQrData={setQrData}
-              location={props.location}
-            />
+            <EditQR qrData={qrData} setQrData={setQrData} location={location} />
           </Route>
 
           {
             //Below should really be called "cards" instead of "content"
           }
           <Route path={`${path}/:pathName`} exact>
-            <Content />
+            <Content data={data} />
           </Route>
         </Switch>
       </Body>

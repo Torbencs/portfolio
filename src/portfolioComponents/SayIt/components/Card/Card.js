@@ -6,14 +6,21 @@ import { motion, AnimatePresence } from "framer-motion";
 //Component
 import CardExpanded from "../CardExpanded/CardExpanded";
 
+//Icons
+import icon1 from "../../assets/sales_icon.png";
+import icon2 from "../../assets/support_icon.png";
+import icon3 from "../../assets/it_icon.png";
+import icon4 from "../../assets/complaint_icon.png";
+
 //Styles
 import "./Card.sass";
 import "../../assets/icons.css";
 
-export default function Card({ icon, data, onEdit }) {
+export default function Card({ data, onEdit, iconNumber }) {
   const [isOpen, setIsOpen] = useState(false);
-  const handleClick = () => setIsOpen(!isOpen);
+  const icons = [icon1, icon2, icon3, icon4];
 
+  const handleClick = () => setIsOpen(!isOpen);
   //Handle click outside of expanded card and close it
   const node = useRef();
   const handleClickOutside = (e) => {
@@ -44,7 +51,7 @@ export default function Card({ icon, data, onEdit }) {
     >
       <motion.img
         className="cardImg"
-        src={icon}
+        src={icons[iconNumber]}
         alt={`Topic Icon for ${data.topic}`}
       />
       <motion.h2 className="cardH2">{data.topic}</motion.h2>

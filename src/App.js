@@ -26,6 +26,33 @@ import "./App.sass";
 function App() {
   const isMobile = useMediaQuery({ query: "(max-width: 960px)" });
 
+  //State for SayIt app demo. I am keeping it here instead of in it's own component to keep the git hub hash URL simple
+  const [data, setData] = useState([
+    {
+      feedbackId: 1,
+      topic: "Sales",
+      body: "this is the body text",
+      status: "new",
+    },
+    {
+      feedbackId: 2,
+      topic: "Sales",
+      body: "this is the body text",
+      status: "saved",
+    },
+    {
+      feedbackId: 3,
+      topic: "Customer Experience",
+      body: "this is the body text",
+      status: "new",
+    },
+    {
+      feedbackId: 4,
+      topic: "Returns Policy",
+      body: "this is the body text",
+      status: "new",
+    },
+  ]);
   /* Render
   //
   */
@@ -47,8 +74,18 @@ function App() {
             <Route path="/graphic" render={(props) => <Design {...props} />} />
             <Route path="/web" render={(props) => <Web {...props} />} />
             <Route path="/play" render={(props) => <Play {...props} />} />
-            <Route path="/sayit" render={(props) => <Home {...props} />} />
-            <Route path="/submit" render={(props) => <Submit {...props} />} />
+            <Route
+              path="/sayit"
+              render={(props) => (
+                <Home setData={setData} data={data} {...props} />
+              )}
+            />
+            <Route
+              path="/submit"
+              render={(props) => (
+                <Submit data={data} setData={setData} {...props} />
+              )}
+            />
           </Switch>
         </main>
       </div>
