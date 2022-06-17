@@ -15,21 +15,26 @@ const About = (props) => {
       />
       <p className="about__subheading">Graphic Design | Web Development</p>
       <p>
-        Hey! I'm Torben, half Australian, half Danish and currently living in
-        Norway. I hold a bachelor degree in business but my real passion is
-        problem solving and transforming ideas into designs and designs into
-        code. <br></br>I am predominately self taught and driven by an
-        insatiable curiosity to learn and as such have a broad range of skills
-        to offer. What I may lack in industry experience I believe I make up for
-        in my eagerness to learn and strong work ethic.
+        Hey! I'm Torben, half Australian, half Danish, currently living in
+        Norway. I hold a bachelor degree in business but my passion is problem
+        solving and transforming ideas into designs and designs into code.{" "}
+        <br></br>I am predominately self taught and driven by an insatiable
+        curiosity to learn and understand the bigger picture. Due to this I have
+        many areas of interest and a broad range of skills, predominately in
+        design and web development. What I may lack in industry experience I
+        believe I make up for in my eagerness to learn, ability to pick things
+        up quickly, and strong work ethic.
         <br></br>When I'm not behind the screen I'm usually dreaming up new
         ideas while sailing or climbing.
         <br></br>Currently searching for an entry level role in an exciting
-        company with a vision.
+        company with a purpose.
       </p>
 
       <a href="mailto:tschlawe@gmail.com" className="about__links">
         Email
+      </a>
+      <a href="https://github.com/torbencs" className="about__links">
+        GitHub
       </a>
     </article>
   );

@@ -9,7 +9,7 @@ let designData = [
   },
   {
     title: "T-Shirt Branding",
-    text: "Brand and merchandise design. The design brings together expressive elements of climbing and music culture (No that's not a toothbrush!). The colour palette is bold and emotive and tries to reflect the business's two female owners.",
+    text: "I designed this illustration for ClimbWest's in-store merchandise shop. The design brings together expressive elements of climbing culture (No that's not a toothbrush!). The colour palette is bold and emotive and tries to reflect the business's two female owners.",
     imgSrc: "handshirt.png",
     altImg: "handdesign.png",
     bgColor: "#EDEFF1",
@@ -18,7 +18,7 @@ let designData = [
   },
   {
     title: "Logo Design",
-    text: "Early concept for the logo and branding of the ClimbWest gym. The grayscale mockup includes climbing holds and elements found inside and around the climbing gym such as walls and climbing holds.",
+    text: "Prior to the gym openeing I was tasked with designing two different logo's for the business. This was the first of two early concepts and includes climbing volumes and elements found inside and around the gym.",
     imgSrc: "climb.png",
     bgColor: "#d3d3d3",
     textTheme: "dark",
@@ -26,7 +26,7 @@ let designData = [
   },
   {
     title: "Social Media Illustrations",
-    text: "As the main product offering of an indoor climbing gym, the climbing routes are arguably the important aspect of this business and communicating how they work to customers is crucial.  ",
+    text: "Unsuprisingly, social media is the main channel of communication between many small businesses and their customers. I was tasked in designing some graphics to communicate some recent changes in the gyms operating procedures in image format.",
     imgSrc: "instagram.png",
     bgColor: "#efefef",
     textTheme: "dark",
@@ -43,7 +43,7 @@ let designData = [
 
   {
     title: "Up Unlimited Challenge",
-    text: "This poster was designed as the starting point for UpUnlimited's marketing project to engage children climbers while they.... Teenagers or parents could scan the QR code to launch the app and begin one of the many activity challanges at the facility.",
+    text: "This poster was designed as the starting point for UpUnlimited's marketing project to engage children while they visited the facility. Teenagers or parents could scan the QR code to launch the accompanying app and begin one of the many activity challanges.",
     imgSrc: "ninja.jpg",
     bgColor: "#EEEEEE",
     textTheme: "dark",
@@ -51,7 +51,7 @@ let designData = [
   },
   {
     title: "Plant a tree Certificate",
-    text: "The aTree project is all about empowering people to help revitalise natural ecosystems. I designed this print and digital certificate for their.. ",
+    text: "The aTree project is all about empowering people to help revitalise natural ecosystems. This illustration was used as a digital certificate sent to customers after donating and planting a tree. It was important to align the 'feel' of the certificate with the brand to give a sense of purpose and provide the customer with something tangible after their donation",
     imgSrc: "cert.jpg",
     bgColor: "#eeeeee",
     textTheme: "dark",
@@ -59,7 +59,7 @@ let designData = [
   },
   {
     title: "Logo Illustration",
-    text: "The simplest of the three logo's I created for the ClimbWest branding. It was chosen by the owners as the main brand identity for its simplicity",
+    text: "The second of two logo's I designed for ClimbWest indoor climbing gym. I simple logo with elements of the outdoors and geometric shapes often used as indoor climbing holds. It was chosen by the owners for its simplicity and minimalism. Currently being used in both print and digital as the main brand identity",
     imgSrc: "climb_2.png",
     bgColor: "#EEEEEE",
     textTheme: "dark",
