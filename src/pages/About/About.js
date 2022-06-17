@@ -20,10 +20,9 @@ const About = (props) => {
         solving and transforming ideas into designs and designs into code.{" "}
         <br></br>I am predominately self taught and driven by an insatiable
         curiosity to learn and understand the bigger picture. Due to this I have
-        many areas of interest and a broad range of skills, predominately in
-        design and web development. What I may lack in industry experience I
-        believe I make up for in my eagerness to learn, ability to pick things
-        up quickly, and strong work ethic.
+        many areas of interest and a broad range of skills. What I may lack in
+        industry experience I believe I make up for in my eagerness to learn,
+        ability to pick things up quickly, and strong work ethic.
         <br></br>When I'm not behind the screen I'm usually dreaming up new
         ideas while sailing or climbing.
         <br></br>Currently searching for an entry level role in an exciting
