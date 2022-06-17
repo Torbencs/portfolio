@@ -31,7 +31,6 @@
     align-items: center
     img
         max-height: 90vh
-        max-width: 80%
         object-fit: contain
 .work__article
     position: relative
@@ -51,9 +50,9 @@
     padding: 10%
 
 .gallery__img--alt
-    width: 100%
-    height: 100%
-    object-fit: scale-down
+    position: absolute
+    max-width: 500px
+    opacity: 0
 
 .gallery__close
     position: absolute
@@ -133,3 +132,89 @@
     .gallery__close
         top: -74px
         right: 0px
+
+.fade-img-in
+    animation: fadeImgIn ease 3s
+    -webkit-animation: fadeImgIn ease 3s
+    -moz-animation: fadeImgIn ease 3s
+    -o-animation: fadeImgIn ease 3s
+    -ms-animation: fadeImgIn ease 3s
+    animation-fill-mode: forwards
+
+@keyframes fadeImgIn
+    0%
+        opacity: 0
+
+    100%
+        opacity: 1
+
+@-moz-keyframes fadeImgIn
+  0% 
+    opacity: 0
+
+  100% 
+    opacity: 1
+
+@-webkit-keyframes fadeImgIn
+  0% 
+    opacity: 0
+
+  100% 
+    opacity: 1
+
+@-o-keyframes fadeImgIn
+  0% 
+    opacity: 0
+
+  100% 
+    opacity: 1
+
+@-ms-keyframes fadeImgIn
+  0% 
+    opacity: 0
+
+  100% 
+    opacity: 1
+
+.fade-img-out
+    animation: fadeImgOut ease 3s
+    -webkit-animation: fadeImgOut ease 3s
+    -moz-animation: fadeImgOut ease 3s
+    -o-animation: fadeImgOut ease 3s
+    -ms-animation: fadeImgOut ease 3s
+    animation-fill-mode: forwards
+
+@keyframes fadeImgOut
+    0%
+        opacity: 1
+
+    100%
+        opacity: 0
+
+@-moz-keyframes fadeImgIn
+  0% 
+    opacity: 1
+
+  100% 
+    opacity: 0
+
+@-webkit-keyframes fadeImgIn
+  0% 
+    opacity: 1
+
+  100% 
+    opacity: 0
+
+@-o-keyframes fadeImgIn
+  0% 
+    opacity: 1
+
+  100% 
+    opacity: 0
+
+@-ms-keyframes fadeImgIn
+  0% 
+    opacity: 1
+
+  100% 
+    opacity: 0

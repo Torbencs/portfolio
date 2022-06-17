@@ -96,7 +96,7 @@ function Play(props) {
       //Only run if player is defined
       if (player) {
         //-- Check if ball is in play
-        if (player.speed > 0.09) {
+        if (player.speed > 0.15) {
           ballActive = true;
           ballStarted = true;
 
@@ -107,7 +107,7 @@ function Play(props) {
             );
             aimCircle && Composite.remove(engine.current.world, aimCircle);
           }
-        } else if (player.speed < 0.09) {
+        } else if (player.speed < 0.15) {
           ballActive = false;
         }
         if (!ballActive && ballStarted) {
@@ -277,7 +277,7 @@ function Play(props) {
     //Save mousedown position to calculate how much force user intends to use
     setMouseDown({ x: x, y: y });
     //Check that ball is not in play
-    if (player.speed < 0.09) {
+    if (player.speed < 0.13) {
       //Add UI circles to assist aim accuracy
       for (let i = 1; i < 3; i++) {
         Composite.add(
@@ -311,10 +311,10 @@ function Play(props) {
         );
 
         let xPos =
-          player.position.x +
+          player.position.x -
           (BetweenRange(mouseDown.x - x, -350, 350) / i) * 0.4;
         let yPos =
-          player.position.y +
+          player.position.y -
           (BetweenRange(mouseDown.y - y, -350, 350) / i) * 0.4;
 
         Body.setPosition(aimCircle, {
@@ -326,15 +326,15 @@ function Play(props) {
   }
   function handleMouseUp(x, y) {
     let force = {
-      x: BetweenRange(-(x - mouseDown.x) * 0.0015, -0.6, 0.6),
-      y: BetweenRange(-(y - mouseDown.y) * 0.0015, -0.6, 0.6),
+      x: BetweenRange((x - mouseDown.x) * 0.0015, -0.6, 0.6),
+      y: BetweenRange((y - mouseDown.y) * 0.0015, -0.6, 0.6),
     };
     let player = engine.current.world.bodies.find(
       (bodies) => bodies.label == "player"
     );
 
     //Check if player body exists and if that it is not already moving
-    if (player && player.speed < 0.09) {
+    if (player && player.speed < 0.15) {
       Body.applyForce(player, player.position, force);
     }
   }
@@ -400,7 +400,7 @@ function Play(props) {
     <>
       <div id="play__nav__container">
         <nav className="play__nav__score">
-          <h1 className="play__nav__title">Score</h1>
+          <h1 className="play__nav__title">Ball</h1>
           <h2 className="play__nav__number">{score}</h2>
         </nav>
       </div>

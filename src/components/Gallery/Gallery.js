@@ -12,16 +12,43 @@ const Gallery = (props) => {
     );
   });
 
+  const Image = () => {
+    if (props.altImg) {
+      window.setTimeout(() => {
+        document.getElementById("img1").classList.add("fade-img-out");
+        document.getElementById("img2").classList.add("fade-img-in");
+      }, 4000);
+      return (
+        <>
+          <img
+            id="img1"
+            src={`${process.env.PUBLIC_URL}/images/design/${props.imgSrc}`}
+            className="gallery__img"
+          />
+          <img
+            id="img2"
+            src={`${process.env.PUBLIC_URL}/images/design/${props.altImg}`}
+            className="gallery__img--alt"
+          />
+        </>
+      );
+    } else {
+      return (
+        <img
+          src={`${process.env.PUBLIC_URL}/images/design/${props.imgSrc}`}
+          className="gallery__img"
+        />
+      );
+    }
+  };
+
   return (
     <section
       className={"work__container--gallery"}
       style={{ backgroundColor: props.bgColor }}
     >
       <aside className="work__gallery">
-        <img
-          src={`${process.env.PUBLIC_URL}/images/design/${props.imgSrc}`}
-          className="gallery__img"
-        />
+        <Image />
       </aside>
       <article className="work__article">
         <h1
