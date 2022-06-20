@@ -4,7 +4,7 @@ const webData = [
   {
     title: "Feedback App",
     tech: "React, QR Codes, UI",
-    text: "MVP of a front end for a feedback app I built with the intention of creating the 'easiest way to provide anonymous feedback'. It uses QR codes which can be placed in physical locations to give easy feedback on topics set by managers.",
+    text: "MVP of a front end and dashboard for a feedback app I built with the intention of creating the 'easiest way to provide anonymous feedback'. Managers create printable QR sticker with a question or prompt which can be scanned by a user with a smartphone to leave feedback or answer a question. The feedback is anonymous and provides a very simple way to gather feedback from your company, team, or customers. This portfolio version is just a demo and not connected to a backend",
     images: [
       "web/sayit/frontend_thumbnail.jpg",
       "web/sayit/dashboard_thumbnail.jpg",
@@ -23,9 +23,9 @@ const webData = [
     bgColor: "#f8f8f8",
   },
   {
-    title: "Movie Quiz Game",
+    title: "Movie Quiz",
     tech: "REST API, React, Adobe XD",
-    text: "A small interactive game built with React where players try to guess the title by slowly revealing the movie poster. I made this over a weekend to practice building interactive React components with seperate API calls. ",
+    text: "A small interactive quiz built with React where players try to guess the movie by slowly revealing the poster. I made this over a weekend to practice building interactive React components with seperate API calls. ",
     isApp: true,
     link: false,
     component: <MovieQuiz />,
@@ -57,7 +57,7 @@ const webData = [
   {
     title: "A Tree",
     tech: "Adobe XD, Squarespace",
-    text: "The aTree project was launched in 2019 by Cassinia Environmental, a profit-for-purpose organisation dedicated to reconnecting, restoring, and protecting Australian natural systems. Designed in Figma and built with Squarespace. ",
+    text: "The aTree project was launched in 2019 by Cassinia Environmental, a profit-for-purpose organisation dedicated to reconnecting, restoring, and protecting Australian natural systems. The site was designed in Figma and built with Squarespace. ",
     images: ["web/atree/atree.png"],
     link: false,
     bgColor: "#f8f8f8",
