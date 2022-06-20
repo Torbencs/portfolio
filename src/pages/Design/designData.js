@@ -9,7 +9,7 @@ let designData = [
   },
   {
     title: "T-Shirt Branding",
-    text: "I designed this illustration for ClimbWest's in-store merchandise shop. The design brings together expressive elements of climbing culture (No that's not a toothbrush!). The colour palette is bold and emotive and tries to reflect the business's two female owners.",
+    text: "I designed this illustration to be printed on the back of t-shirts and sold in ClimbWest's merchandise shop. The design brings together expressive elements of climbing culture (No, that's not a toothbrush!) while the colour palette is bold and emotive -reflecting the business's two female owners.",
     imgSrc: "handshirt.png",
     altImg: "handdesign.png",
     bgColor: "#EDEFF1",
@@ -18,7 +18,7 @@ let designData = [
   },
   {
     title: "Logo Design",
-    text: "Prior to the gym openeing I was tasked with designing two different logo's for the business. This was the first of two early concepts and includes climbing volumes and elements found inside and around the gym.",
+    text: "Prior to the gym openeing I was tasked with designing two different logo's for the business. This grayscale design was the first of two early concepts and includes climbing volumes and elements found inside and around the gym.",
     imgSrc: "climb.png",
     bgColor: "#d3d3d3",
     textTheme: "dark",
@@ -26,7 +26,7 @@ let designData = [
   },
   {
     title: "Social Media Illustrations",
-    text: "Unsuprisingly, social media is the main channel of communication between many small businesses and their customers. I was tasked in designing some graphics to communicate some recent changes in the gyms operating procedures in image format.",
+    text: "Unsuprisingly, social media is the main channel of communication between many small businesses and their customers. I was tasked in designing some graphics to communicate some recent changes in the gyms operating procedures in image format for their social channels. ",
     imgSrc: "instagram.png",
     bgColor: "#efefef",
     textTheme: "dark",
@@ -34,7 +34,7 @@ let designData = [
   },
   {
     title: "Recycle Responsibly",
-    text: "Recycling infographic concept designed for Moorland city council to be placed on the front of recycling bins. The brief required a short and effective way to communicate and help residents understand what could and could not be places into the recycling bins.",
+    text: "Recycling infographic concept designed for Moorland city council to be placed on the front of recycling bins. The design brief required a short and effective way to communicate and help residents understand what could and could not be places into the recycling bins.",
     imgSrc: "recycle.png",
     bgColor: "#EEEEEE",
     textTheme: "dark",
@@ -59,7 +59,7 @@ let designData = [
   },
   {
     title: "Logo Illustration",
-    text: "The second of two logo's I designed for ClimbWest indoor climbing gym. I simple logo with elements of the outdoors and geometric shapes often used as indoor climbing holds. It was chosen by the owners for its simplicity and minimalism. Currently being used in both print and digital as the main brand identity",
+    text: "The second of two logo's I designed for ClimbWest indoor climbing gym. The simple and clean logo contains elements of the outdoors and geometric shapes often used as indoor climbing holds. It was chosen by the owners for its simplicity and minimalism. Currently being used in both print and digital as the main brand identity",
     imgSrc: "climb_2.png",
     bgColor: "#EEEEEE",
     textTheme: "dark",
