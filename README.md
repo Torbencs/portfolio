@@ -1,8 +1,8 @@
 <h1 align="center">Hi 👋, I'm Torben</h1>
-<h3 align="center">Front End Developer and Graphic Designer</h3>
-<h4 align="center">Currently searching for an entry level job or internship </h4>
+<h3 align="center">Front End Developer</h3>
+<h4 align="center">Currently searching for an entry level / junior dev job </h4>
 <div align="center">
-👨‍💻 Portfolio at https://torbens.me
+👨‍💻 Portfolio at https://torbencs.github.io/portfolio/
 
 📫  **tschlawe@gmail.com**
 
