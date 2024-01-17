@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { isMobile } from "react-device-detect";
+import { shuffle } from "../../helpers/shuffle";
 
 //Components
 import QuizImage from "./components/QuizImage/QuizImage";
 import QuizButtons from "./components/QuizButtons/QuizButtons";
 //Css
 import "./MovieQuiz.sass";
+import "./components/QuizButtons/QuizButtons.sass";
 //Images
 import MovieQuizLogo from "./assets/logo.png";
 import MovieQuizLogoSmall from "./assets/logo_small.png";
@@ -23,20 +25,61 @@ const MovieQuiz = () => {
   useEffect(() => {
     setLoading(true);
 
-    const options = {
-      method: "GET",
-      url: "https://imdb-api.com/en/API/MostPopularMovies/k_bzwgpl46",
-    };
+    const getPopularMovies = async () => {
+      const options = {
+        method: "GET",
+        url: "https://imdb8.p.rapidapi.com/title/get-most-popular-movies",
+        params: {
+          homeCountry: "US",
+          currentCountry: "US",
+          purchaseCountry: "US",
+        },
+        headers: {
+          "X-RapidAPI-Key":
+            "f586acb3f2msh3c251997a0eed75p1e62a8jsn022c62e388a7",
+          "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
+        },
+      };
 
-    axios
-      .request(options)
-      .then(function (response) {
-        setMovieResults(response.data.items.slice(0, 10));
+      try {
+        const response = await axios.request(options);
+        const titleList = shuffle(response.data).slice(0, 10);
+
+        const movieDetails = [];
+        for (const title of titleList) {
+          const info = await getMovieInfo(title);
+          movieDetails.push(info);
+        }
+
+        setMovieResults(movieDetails);
         setLoading(false);
-      })
-      .catch(function (error) {
+      } catch (error) {
         console.error(error);
-      });
+      }
+    };
+    const getMovieInfo = async (title) => {
+      const tt = title.split("/")[2];
+      const options = {
+        method: "GET",
+        url: "https://imdb8.p.rapidapi.com/title/get-details",
+        params: {
+          tconst: tt,
+        },
+        headers: {
+          "X-RapidAPI-Key":
+            "f586acb3f2msh3c251997a0eed75p1e62a8jsn022c62e388a7",
+          "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
+        },
+      };
+
+      try {
+        const response = await axios.request(options);
+        return response.data;
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getPopularMovies();
   }, []);
 
   const handleChoice = (selectedTitle) => {
@@ -73,7 +116,7 @@ const MovieQuiz = () => {
         1000
       );
 
-      //Reduce score by 50
+      //Reduce score by 5
       setScore(score - 5);
     }
   };
@@ -108,40 +151,53 @@ const MovieQuiz = () => {
   return (
     <>
       <link rel="preload" as="image" href={MovieQuizLogo} />
-      {!loading && (
-        <div
-          className={`quiz__container ${isActive && "quiz__container--active"}`}
-        >
-          <img
-            className={`quiz__bg ${isActive && "quiz__bg--hide"}`}
-            src={MovieQuizLogo}
-            onClick={() => setIsActive(true)}
-          />
-          {/* Instruction overlay */}
-          {isActive && showOverlay && <Popup type={showOverlay} />}
-          <img className="quiz__logo" src={MovieQuizLogoSmall} />
-          {isActive && (
+
+      <div
+        className={`quiz__container ${isActive && "quiz__container--active"}`}
+      >
+        <img
+          className={`quiz__bg ${isActive && "quiz__bg--hide"}`}
+          src={MovieQuizLogo}
+          alt="Movie Quiz Logo"
+        />
+        {loading ? (
+          <button className="btn--loading">Loading..</button>
+        ) : (
+          !isActive && (
+            <button className="btn" onClick={() => setIsActive(true)}>
+              Start
+            </button>
+          )
+        )}
+
+        {/* Instruction overlay */}
+        {isActive && showOverlay && <Popup type={showOverlay} />}
+
+        {!loading && isActive && (
+          <>
+            <img className="quiz__logo" src={MovieQuizLogoSmall} />
             <QuizImage
-              title={movieResults[currentMovie].id}
+              image={movieResults[currentMovie].image.url}
               handleScore={setScore}
               handleLoading={setLoading}
               onCorrectAnswer={correctAnimation}
             />
-          )}
-          <div id="score" className="quiz__score">
-            <div
-              className="quiz__score--value"
-              style={{ width: `${score}%` }}
-            ></div>
-          </div>
 
-          <QuizButtons
-            titles={movieResults}
-            correctTitle={movieResults[currentMovie]}
-            handleClick={handleChoice}
-          />
-        </div>
-      )}
+            <div id="score" className="quiz__score">
+              <div
+                className="quiz__score--value"
+                style={{ width: `${score}%` }}
+              ></div>
+            </div>
+
+            <QuizButtons
+              movies={movieResults}
+              correctTitle={movieResults[currentMovie].title}
+              handleClick={handleChoice}
+            />
+          </>
+        )}
+      </div>
     </>
   );
 };

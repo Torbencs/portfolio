@@ -48,6 +48,7 @@ const Web = (props) => {
             link={webData[index].link}
             text={webData[index].text}
             title={webData[index].title}
+            video={webData[index].video}
           />
         )}
       />

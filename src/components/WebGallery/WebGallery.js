@@ -7,7 +7,7 @@ const WebGallery = (props) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    const scroll = () => !props.isApp && setIsActive(true);
+    const scroll = () => !props.isApp && !props.video && setIsActive(true);
     window.addEventListener("wheel", scroll);
 
     return () => window.removeEventListener("wheel", scroll);
@@ -46,8 +46,15 @@ const WebGallery = (props) => {
     } else if (props.component) {
       //No images then render the component
       return props.component;
+    } else if (props.video) {
+      return (
+        <video
+          src={`${process.env.PUBLIC_URL}/videos/${props.video}`}
+          width={"100%"}
+          controls
+        />
+      );
     }
-    //Render this if there are multiple links
   };
 
   return (

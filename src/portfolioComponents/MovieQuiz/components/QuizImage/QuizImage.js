@@ -4,33 +4,9 @@ import axios from "axios";
 //Css
 import "./QuizImage.sass";
 
-const QuizImage = ({ handleScore, title, handleLoading, onCorrectAnswer }) => {
+const QuizImage = ({ handleScore, image, handleLoading, onCorrectAnswer }) => {
   const [pressed, setPressed] = useState(false);
   const [moveCount, setMoveCount] = useState(0);
-  const [posterData, setPosterData] = useState(null);
-
-  useEffect(() => {
-    handleScore((prev) => prev - 0.04);
-  }, [moveCount]);
-
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      url: `https://imdb-api.com/en/API/Posters/k_bzwgpl46/${title}`,
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        setPosterData(response.data.posters[0].link);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-
-    //Bring mask back when next image is loaded
-    reset();
-  }, [title]);
 
   const unMask = (event) => {
     event.preventDefault();
@@ -61,26 +37,29 @@ const QuizImage = ({ handleScore, title, handleLoading, onCorrectAnswer }) => {
     }
   };
 
-  const CorrectAnimation = () => (
-    <svg
-      className="checkmark"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 52 52"
-    >
-      <circle
-        className="checkmark__circle"
-        cx="26"
-        cy="26"
-        r="25"
-        fill="none"
-      />
-      <path
-        className="checkmark__check"
-        fill="none"
-        d="M14.1 27.2l7.1 7.2 16.7-16.8"
-      />
-    </svg>
-  );
+  const CorrectAnimation = () => {
+    reset();
+    return (
+      <svg
+        className="checkmark"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 52 52"
+      >
+        <circle
+          className="checkmark__circle"
+          cx="26"
+          cy="26"
+          r="25"
+          fill="none"
+        />
+        <path
+          className="checkmark__check"
+          fill="none"
+          d="M14.1 27.2l7.1 7.2 16.7-16.8"
+        />
+      </svg>
+    );
+  };
 
   const handleMouseDown = (event) => {
     setPressed(true);
@@ -91,6 +70,7 @@ const QuizImage = ({ handleScore, title, handleLoading, onCorrectAnswer }) => {
     pressed && setMoveCount((prevCount) => prevCount + 1);
     if (pressed && moveCount % 2 == 0) {
       unMask(event);
+      handleScore((prev) => (prev -= 0.08));
     }
   };
   return (
@@ -107,7 +87,7 @@ const QuizImage = ({ handleScore, title, handleLoading, onCorrectAnswer }) => {
         <image
           id="quiz__image"
           className="quiz__image quiz__image--blur"
-          xlinkHref={posterData}
+          xlinkHref={image}
         ></image>
         <filter id="filter2" width="100%" height="100%">
           <feGaussianBlur stdDeviation="5" />
@@ -115,7 +95,7 @@ const QuizImage = ({ handleScore, title, handleLoading, onCorrectAnswer }) => {
         <mask id="mask1"></mask>
         <image
           className="quiz__image"
-          xlinkHref={posterData}
+          xlinkHref={image}
           mask="url(#mask1)"
         ></image>
       </svg>

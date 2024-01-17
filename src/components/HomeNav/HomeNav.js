@@ -7,45 +7,27 @@ import "../../css/fonts.css";
 import "./HomeNav.sass";
 
 function HomeNav() {
-  const [showMenu, setShowMenu] = useState(true);
   const [showSubMenu, setShowSubMenu] = useState(false);
-
-  // setTimeout(() => {
-  //   setShowMenu(true);
-  // }, 3400);
-
-  // const Torben = () => {
-  //   return (
-  //     <h1>
-  //       <a id={"home"}>
-  //         <Typist avgTypingDelay={150} cursor={{ show: false }}>
-  //           Torben
-  //           <Typist.Delay ms={1000} />
-  //           <span className="dot--yellow">.</span>
-  //         </Typist>
-  //       </a>
-  //     </h1>
-  //   );
-  // };
 
   const NavLinks = () => {
     const SubMenu = () => {
       return (
         <>
           <Link
-            id={"design"}
-            className="homeMenu__link--option slideInUp"
-            to="/graphic"
-          >
-            <span className="highlight--yellow">graphic</span>
-          </Link>
-          <div className="homeMenu__link--option hidden">.</div>
-          <Link
             id={"web"}
-            className="homeMenu__link--option slideInDown"
+            className="homeMenu__link--option slideInUp"
             to="/web"
           >
             <span className="highlight--yellow">web</span>
+          </Link>
+          <div className="homeMenu__link--option hidden">.</div>
+
+          <Link
+            id={"design"}
+            className="homeMenu__link--option slideInDown "
+            to="/graphic"
+          >
+            <span className="highlight--yellow">graphic</span>
           </Link>
         </>
       );

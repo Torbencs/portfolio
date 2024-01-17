@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { CSSTransitionGroup } from "react-transition-group";
 
 import { Route, BrowserRouter as Router, NavLink } from "react-router-dom";
 import { animate } from "motion";
@@ -40,14 +39,19 @@ function SideNav() {
   );
   const SubMenu = () => (
     <>
-      <NavLink id={"design"} className="sideMenu__link slideInUp" to="/graphic">
-        graphic
+      <NavLink id={"web"} className="sideMenu__link slideInUp " to="/web">
+        web
       </NavLink>
       <a className="sideMenu__link hidden" style={{ cursor: "default" }}>
         .
       </a>
-      <NavLink id={"web"} className="sideMenu__link slideInDown" to="/web">
-        web
+
+      <NavLink
+        id={"design"}
+        className="sideMenu__link slideInDown"
+        to="/graphic"
+      >
+        graphic
       </NavLink>
     </>
   );
