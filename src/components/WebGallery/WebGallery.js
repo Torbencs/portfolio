@@ -48,11 +48,13 @@ const WebGallery = (props) => {
       return props.component;
     } else if (props.video) {
       return (
-        <video
-          src={`${process.env.PUBLIC_URL}/videos/${props.video}`}
-          width={"100%"}
-          controls
-        />
+        <div style={{ width: "100%", maxWidth: "1200px" }}>
+          <video
+            src={`${process.env.PUBLIC_URL}/videos/${props.video}`}
+            width={"100%"}
+            controls
+          />
+        </div>
       );
     }
   };
@@ -60,7 +62,12 @@ const WebGallery = (props) => {
   return (
     <section
       className={"web__container--gallery"}
-      style={{ backgroundColor: props.bgColor }}
+      style={{
+        backgroundColor: props.bgColor,
+        ...(props.video && {
+          overflowY: "scroll",
+        }),
+      }}
     >
       <div className="webgallery__header">
         <h1 className="webgallery__h1">
@@ -74,7 +81,7 @@ const WebGallery = (props) => {
         className={`web__webgallery ${isActive && "web__webgallery--active"} ${
           props.isApp && "web__webgallery--app"
         }`}
-        onClick={() => !props.isApp && setIsActive(true)}
+        onClick={() => !props.isApp && !props.video && setIsActive(true)}
       >
         <Images />
       </div>
