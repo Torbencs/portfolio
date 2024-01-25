@@ -65,6 +65,22 @@ let designData = [
     textTheme: "dark",
     size: "wide",
   },
+  {
+    title: "Social Media Carousel",
+    text: "A catchy social media carousel used for Again X marketing",
+    imgSrc: "againx.png",
+    bgColor: "#EEEEEE",
+    textTheme: "dark",
+    size: "wide",
+  },
+  {
+    title: "Rollup Banner",
+    text: "This poster and rollup banner was designed to display at one of our trade fairs. It provides an easy way for people walking past to engage with our website.",
+    imgSrc: "banner.png",
+    bgColor: "#EEEEEE",
+    textTheme: "dark",
+    size: "tall",
+  },
 ];
 
 export default designData;
